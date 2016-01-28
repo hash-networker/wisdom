@@ -1,0 +1,55 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>PE-Style PIC</title>
+    <ns>0</ns>
+    <id>1362</id>
+      <sha1>nhe8ovv7vrp3ngxdgowqkex08ohpzyx</sha1>
+    <revision>
+      <id>2179</id>
+      <timestamp>2005-08-23T18:37:04Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>punctuation</comment>
+      <text xml:space="preserve" bytes="1009">[[Image:PE-PIC_Front.jpg|thumb|right|PE-Style PIC]]
+
+The PE-Style mechanical interface is similar to the [[P-Style PIC|P-Style]]. The dimensions are precisely the same; in fact, the only change is the addition of an ejector lever on the front panel, and an ejector mechanism attached to a metal plate which is added to the bottom of the PIC. The actual electronics on a PE PIC are precisely the same as a P PIC.
+
+[[Image:PE-Ejector.jpg|400px|PE Ejector Mechanism]]
+
+The PE-Style PIC was originally created for use in the [[M5]] and [[M10]] product lines, which have integrated [[FPC]]s. The ejector system allows for the PIC to be physically removed without pulling out the FPC, which would be impossible on the M5/M10. The [[M7i]] and [[M10i]], which replaced the [[M5]] and [[M10]] products respectively, have continued to use the PE-Style PIC. The PE-Style interface is currently used only on [[type-1]] PICs intended for use in chassis with an integrated [[FPC]].
+
+
+[[Category:Hardware]]
+[[Category:PICs]]</text>
+    </revision>
+  </page>
+</mediawiki>

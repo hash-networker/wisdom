@@ -1,0 +1,94 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Noc interface description.xslt</title>
+    <ns>0</ns>
+    <id>1847</id>
+      <sha1>p24upg187smyi2jpzt5ixjpzyiw4ft9</sha1>
+    <revision>
+      <id>3268</id>
+      <timestamp>2007-06-11T19:56:01Z</timestamp>
+      <contributor>
+        <username>Gareth</username>
+        <id>578</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="2178">   &lt;?xml version=&quot;1.0&quot; standalone=&quot;yes&quot;?&gt;
+   &lt;xsl:stylesheet version=&quot;1.0&quot;
+   xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+   xmlns:junos=&quot;http://xml.juniper.net/junos/*/junos&quot;
+   xmlns:xnm=&quot;http://xml.juniper.net/xnm/1.1/xnm&quot;
+   xmlns:jcs=&quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;&gt;
+   &lt;xsl:import href=&quot;../import/junos.xsl&quot;/&gt;
+   &lt;xsl:template match=&quot;configuration&quot;&gt;
+ 
+   &lt;!-- isleme alinacak interface isimleri --&gt;
+   &lt;xsl:variable name=&quot;ifler&quot; select=&quot;apply-macro[name = 'noc_interface_description']/data[not(starts-with(name,      'noc_interface_descriptio'))]&quot;/&gt;
+   &lt;xsl:if test=&quot;$ifler/name&quot;&gt;
+ 
+   &lt;xsl:for-each select=&quot;$ifler&quot;&gt;
+        &lt;change&gt;
+                &lt;interfaces&gt;
+                        &lt;interface&gt;
+ 
+                                &lt;!-- Interface isminde nokta olup olmadigina gore dallaniyor. --&gt;
+                                &lt;xsl:if test=&quot;contains(./name, '.')&quot;&gt;
+                                        &lt;name&gt;&lt;xsl:value-of select=&quot;substring-before(./name, '.')&quot;/&gt;&lt;/name&gt;
+                                                &lt;unit&gt;&lt;xsl:value-of select=&quot;substring-after(./name, '.')&quot;/&gt;
+                                                        &lt;description&gt;&lt;xsl:value-of select=&quot;./value&quot;/&gt;&lt;/description&gt;
+                                                &lt;/unit&gt;
+                                &lt;/xsl:if&gt;
+ 
+                                &lt;xsl:if test=&quot;not(contains(./name, '.'))&quot;&gt;
+                                        &lt;name&gt;&lt;xsl:value-of select=&quot;./name&quot;/&gt;&lt;/name&gt;
+                                                &lt;description&gt;&lt;xsl:value-of select=&quot;./value&quot;/&gt;&lt;/description&gt;
+                                &lt;/xsl:if&gt;
+ 
+                        &lt;/interface&gt;
+                &lt;/interfaces&gt;
+        &lt;/change&gt;
+ 
+  &lt;/xsl:for-each&gt;
+ 
+  &lt;change action = &quot;replace&quot;&gt;
+        &lt;apply-macro replace=&quot;replace&quot;&gt;
+                &lt;name&gt;noc_interface_description&lt;/name&gt;
+                        &lt;data&gt;
+                                &lt;name&gt;noc_interface_description&lt;/name&gt;
+                                        &lt;value&gt;ok&lt;/value&gt;
+                                &lt;/data&gt;
+                        &lt;/apply-macro&gt;
+  &lt;/change&gt;
+ 
+  &lt;/xsl:if&gt;
+ 
+  &lt;/xsl:template&gt;
+  &lt;/xsl:stylesheet&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

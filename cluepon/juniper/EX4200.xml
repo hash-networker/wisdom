@@ -1,0 +1,155 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>EX4200</title>
+    <ns>0</ns>
+    <id>1918</id>
+      <sha1>7ojwmbsancuum9mx89l0jah0vlwznvh</sha1>
+    <revision>
+      <id>4090</id>
+      <timestamp>2010-11-18T10:40:18Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4028 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]])(vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="3340">On this page there are some pictures and some CLI info on the EX-4200:
+
+== Pictures ==
+
+Front view:
+
+[[Image:Ex4200-1.jpg]]
+[[Image:Ex4200-2.jpg]]
+[[Image:Ex4200-4.jpg]]
+
+Ethernet Ports:
+
+[[Image:Ex4200-3.jpg]]
+
+Rear fan tray + Virtual Chasis connector slots
+
+[[Image:Ex4200-5.jpg]]
+
+Power supply slots:
+
+[[Image:Ex4200-6.jpg]]
+
+The power supplies are universal.  the screw down on the left supply is not used when the second supply is installed.  the screws are on the supplies directly and lock the latching lever in place.
+
+The hotswapable fan tray:
+
+[[Image:Ex4200-7.jpg]]
+
+The power supply:
+
+[[Image:Ex4200-8.jpg]]
+
+Inside the power supply slot in the switch:
+
+[[Image:Ex4200-9.jpg]]
+
+Virtual Chasis connecting cable:
+
+[[Image:Ex4200-10.jpg]]
+[[Image:Ex4200-11.jpg]]
+
+On the cable there says PCI-e x8
+
+Inside the front UpLink port slot (you can see how the connector looks like):
+
+[[Image:Ex4200-12.jpg]]
+[[Image:Ex4200-13.jpg]]
+
+2 EX4200 connected together as a Virtual Chasis:
+
+[[Image:Ex4200-14.jpg]]
+[[Image:Ex4200-16.jpg]]
+
+Two switches powered on:
+
+[[Image:Ex4200-15.jpg]]
+
+[[Category:Hardware]]
+[[Category:EX-series]]
+[[Category:Stub]]
+
+== CLI info ==
+
+ root@ex4200-1# run show chassis routing-engine
+ Routing Engine status:
+  Slot 0:
+    Current state                  Master
+    Temperature                 34 degrees C / 93 degrees F
+    DRAM                      1024 MB
+    Memory utilization          24 percent
+    CPU utilization:
+      User                       9 percent
+      Kernel                     2 percent
+      Interrupt                  0 percent
+      Idle                      89 percent
+    Model                          EX4200-24T, 8 POE
+    Serial ID                      XXXXXXXXXX
+    Start time                     2008-05-10 18:35:29 EEST
+    Uptime                         10 hours, 49 minutes, 4 seconds
+    Load averages:                 1 minute   5 minute  15 minute
+                                       0.06       0.10       0.13
+ Routing Engine status:
+  Slot 1:
+    Current state                  Backup
+    Temperature                 42 degrees C / 107 degrees F
+    DRAM                      1024 MB
+    Memory utilization          24 percent
+    CPU utilization:
+      User                       8 percent
+      Kernel                     1 percent
+      Interrupt                  0 percent
+      Idle                      91 percent
+    Model                          EX4200-24T, 8 POE
+    Serial ID                      XXXXXXXXXX
+    Start time                     2008-05-10 18:45:26 EEST
+    Uptime                         10 hours, 39 minutes, 7 seconds
+    Load averages:                 1 minute   5 minute  15 minute
+                                       0.02       0.06       0.07
+
+ 
+ root@ex4200-1# run show virtual-chassis status
+ 
+ Virtual Chassis ID: 0019.e251.9d00
+                                          Mastership            Neighbor List
+ Member ID  Status   Serial No    Model    priority    Role      ID  Interface
+ 0 (FPC 0)  Prsnt    XXXXXXXXXXX  ex4200-24t      128  Master*    1  vcp-0
+                                                                  1  vcp-1
+ 1 (FPC 1)  Prsnt    XXXXXXXXXXX  ex4200-24t      128  Backup     0  vcp-0
+                                                                  0  vcp-1 
+ 
+ Member ID for next new member: 2 (FPC 2)</text>
+    </revision>
+  </page>
+</mediawiki>

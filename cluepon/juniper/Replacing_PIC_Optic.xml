@@ -1,0 +1,88 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Replacing PIC Optic</title>
+    <ns>0</ns>
+    <id>1927</id>
+      <sha1>1bbkwjo04q23bm5ucpi8adbwcvrvnnl</sha1>
+    <revision>
+      <id>3525</id>
+      <timestamp>2008-06-14T16:12:41Z</timestamp>
+      <contributor>
+        <username>Zoiah</username>
+        <id>972</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1046">{{danger}}
+
+It's relatively trivial to replace the optic of a PIC that has a soldered 9-pin optic.
+
+In the case of my PE-1OC12-SON-MMF I used a 9-pin optic with the following specs:
+* Data Rate: 622Mb/s 
+* Distance: Intermediate
+* Wavelength: 1310nm
+* LD/PD Type: FP-LD/PIN-TIA
+* Connector: SC/PC
+* Package Type: 1 X 9 Pin
+* Temperature: 0-70
+* Voltage: +5v
+* Data/SD Interface: Data-PECL, SD-PECL
+* Fiber Type: SM
+
+The typenumber of the replacement optic was 9STR-12-33111152.
+
+Here are some pictures of the process:
+
+[[Image:Step1.jpg]]
+Admire the pristine PIC.
+
+[[Image:Step2.jpg]]
+Remove the PCB from the board.
+
+[[Image:Step3a.jpg]]
+Remove the solder from the original optic so you can remove it.
+
+[[Image:Step3b.jpg]]
+Check top if everything is fine.
+
+[[Image:Step3c.jpg]]
+Check bottom if everything is fine.
+
+[[Image:Step4a.jpg]]
+New optic.
+
+[[Image:Step5a.jpg]]
+Put new optic in place.
+
+[[Image:Step5b.jpg]]
+Solder new optic and check connections.
+
+[[Image:Step6.jpg]]
+Check if it's working and don't forget to label it with new specs. :)</text>
+    </revision>
+  </page>
+</mediawiki>

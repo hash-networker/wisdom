@@ -1,0 +1,67 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MX240</title>
+    <ns>0</ns>
+    <id>1882</id>
+      <sha1>priqumg0r7wr3p85wbubrj35k8hpof3</sha1>
+    <revision>
+      <id>4576</id>
+      <timestamp>2012-03-07T22:37:51Z</timestamp>
+      <contributor>
+        <username>Kris</username>
+        <id>879</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1275">{{Infobox_router | 
+  product_name = Juniper MX240 ESR |
+  product_image = [[Image:MX240_Front.jpg|200px]] |
+  slots = 3 DPC |
+  bandwidth = 240 Gbit/s |
+  fpc = [[DPC]] |
+  style = [[DPC-Style]]|
+  power = 4 (2+2 DC, 2+2 AC) |
+  switch = [[SCB]] (1+1) | 
+  date = shipping Q1/2008| 
+}}
+
+The [[MX240]] ([[codenames|Codename:]] ''Hermes'') became the third member of the MX-Series family, and was originally designed as a competitor to the Cisco 6506/7606 and Alcatel 7750 SR7 routers. Currently it is mostly positioned against A7750SR7 (IOM3) and Cisco ASR9006.
+
+The MX240 has 4 horizontal front-end slots, one (1) of which is reserved for switch control board (with onboard RE-1300 or RE-2000 routing engine), and three (3) of which are available for physical interfaces or second SCB (for redundancy; with onboard RE). The MX240 is 5RU high, and under 800mm deep, with side-to-side airflow. 
+
+As is the case with other MX-series systems, MX240 chassis is upgradeable and supports 1st gen (40G/slot) DPC cards as well as 2nd gen (120G/slot) MPC cards. The upgraded Mx480 system is also referred to as MX240 3D.
+
+== Family information ==
+
+See flagship [[MX960]] page for description of common MX-series features
+
+[[Category:Hardware]]
+[[Category:MX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

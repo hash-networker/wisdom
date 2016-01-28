@@ -1,0 +1,120 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>SRX210</title>
+    <ns>0</ns>
+    <id>1985</id>
+      <sha1>kyix1y00ymxcjupo27wsx2xi7xouco0</sha1>
+    <revision>
+      <id>3840</id>
+      <timestamp>2010-02-13T10:50:41Z</timestamp>
+      <contributor>
+        <username>Mennie</username>
+        <id>1442</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2363">{{Infobox_srxbranch | 
+  product_name = SRX210 Services Gateway |
+  product_image = [[Image:Lbox-srx210-front.jpg‎|200px]] |
+  rackspace = 1 RU |
+  slots = 1 Mini-PIM slot, 1 3G ExpressCard slot |
+  bandwidth = 750 Mbps (large packets) 250 Mbps (IMIX),&lt;br&gt;IPS 80 Mbps, VPN 75 Mbps (JUNOS 10.0) | 
+  power =  100–240 VAC, 60 W Non-PoE / 150 W PoE |
+  cpu = Cavium Networks OCTEON CN5020 Dual Core MIPS64 |
+  memory =  512 MB (LM) / 1 GB (HM) |
+  flash = 1 GB |
+}}
+
+([[codenames|Codename:]] ''Loki'')&lt;br&gt;
+This was the smallest SRX Series for the branch device until the SRX100 came out.&lt;br&gt;
+Three models offered: SRX210B with 512MB of RAM, SRX210H with 1GB of RAM and SRX210H-POE with 4 ports PoE (50 W).&lt;br&gt;
+It runs on JUNOS! :-) With lots of software features, including: BGP, OSPF, RIP, MPLS/VPLS, IPsec VPN, UAC, statefull firewall with zones, screens and policies, virtual routers, UTM (IPS, AV), active/passive and active/active clustering with JSRP.&lt;br&gt;
+The branch SRX Series has separation of Control Plane &amp; Forwarding by using multi-core processors, unlike the Intel based J-Series with Enhanced Services.
+
+
+Upcoming:&lt;br&gt;
+SRX210 ICS with 2 FXS and 2 FXO ports.&lt;br&gt;
+‎[[File:Lbox-srx210-ics-left.jpg‎|200px]]
+
+
+
+Average power consumption: &lt;br&gt;
+27 W Low Memory (LM), &lt;br&gt;
+28 W High Memory (HM), 84 W (PoE)
+
+more CPU info:&lt;br&gt;
+Cavium Networks OCTEON Plus CN5020 - Block Diagram &lt;br&gt;
+http://www.caviumnetworks.com/OCTEON-Plus_CN50XX.html
+
+
+'''Built-in Interfaces: '''
+
+2 x 10/100/1000BASE-T + 6 x 10/100
+
+
+'''Interface Modules:'''
+
+SRX-MP-1SERIAL 
+1-port Sync Serial Mini Physical Interface Module (Mini-PIM) for branch SRX Series
+
+SRX-MP-1ADSL2-A
+1-port ADSL2+ Mini-PIM supporting ADSL/ADSL2/ADSL2+ Annex A
+
+SRX-MP-1ADSL2-B
+1-port ADSL2+ Mini-PIM supporting ADSL/ADSL2/ADSL2+ Annex B
+
+SRX-MP-1SFP
+1-port SFP Mini-PIM for branch SRX Series
+
+SRX-MP-1T1E1
+1-port T1 or E1 Mini-PIM for branch SRX Series
+
+
+Upcoming:
+
+Single-port VDSL2
+
+Single-port G.SHDSL
+
+Single-port DOCSIS
+
+
+'''3G ExpressCard: '''
+
+EXPCD-3G-CDMA-V 	CDMA/EVDO 3G Modem ExpressCard34 for Verizon Wireless. For SRX and CX-Series. Ships with an external Antenna.
+
+EXPCD-3G-CDMA-S 	CDMA/EVDO 3G Modem ExpressCard34 for Sprint. For SRX and CX-Series. Ships with an external Antenna.
+
+[[File:Lbox-srx210-3g-expcard.jpg|200px]]
+
+
+[[Category:Hardware]]
+[[Category:SRX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

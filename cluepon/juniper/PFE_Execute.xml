@@ -1,0 +1,66 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>PFE Execute</title>
+    <ns>0</ns>
+    <id>2210</id>
+      <sha1>q80mc8flo7l45sgg7o6l7yztpjujwo6</sha1>
+    <revision>
+      <id>4489</id>
+      <timestamp>2012-02-09T14:04:44Z</timestamp>
+      <contributor>
+        <username>Rix</username>
+        <id>55</id>
+      </contributor>
+      <text xml:space="preserve" bytes="726">{{danger}}
+
+Execute a command in the micro-kernel running on a switch card or FPC, use the following command from the CLI:
+
+ user@router&gt; request pfe execute target &lt;component&gt; command &quot;&lt;command&gt;&quot;
+
+== Example: ==
+
+ user@router&gt; request pfe execute target fpc0 command &quot;show version&quot;
+ SENT: Ukern command: show version
+ GOT:
+ GOT:
+ GOT: Juniper Embedded Microkernel Version 10.4R8.5
+ GOT: Built by builder on 2011-11-19 06:47:53 UTC
+ GOT: Copyright (C) 1998-2011, Juniper Networks, Inc.
+ GOT: All rights reserved.
+ GOT:
+ GOT:
+ GOT: ADPC platform (1200Mhz MPC 8548 processor, 1024MB memory, 512KB flash)
+ GOT: Current time   : Feb  9 14:02:52.795897
+ GOT: Elapsed time   :      8+20:29:54
+ LOCAL: End of file
+
+[[Category:JunOS]]</text>
+    </revision>
+  </page>
+</mediawiki>

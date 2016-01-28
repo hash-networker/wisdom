@@ -1,0 +1,104 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER BGP Neighbor prefix list</title>
+    <ns>0</ns>
+    <id>1791</id>
+      <sha1>ks9ht5ah3bq4xmdx9z7uaymi6shbd0p</sha1>
+    <revision>
+      <id>3103</id>
+      <timestamp>2007-04-15T10:50:38Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1964">== Problem ==
+Currently, in order to utilize a prefix-list to filter BGP routes, a user must create both a prefix-list and a policy-statement which references that prefix-list, for example:
+
+ policy-options {
+     prefix-list CUSTOMER:AS1234 {
+         1.2.3.0/24;
+         2.3.0.0/16;
+         3.4.0.0/19;
+         ...
+     }
+     policy-statement CUSTOMER:AS1234 {
+         term routes {
+             from route-list-filter CUSTOMER:AS1234 orlonger;
+             then next policy;
+         }
+         then reject;
+     }
+ }
+ protocol bgp {
+     group customer {
+         neighbor x.x.x.x {
+             peer-as 1234;
+             import [ CUSTOMER:AS1234 ... ];
+             ...
+         }
+     }
+ }
+
+In addition to requiring an often unnecessary policy-statement, if this is done on an export policy it can unnecessarily break BGP neighbor grouping (update replication) by creating a unique export policy where none is necessary.
+
+== Solution ==
+
+Implement a per BGP Neighbor prefix-list, which is applied before the import/export policy-statements to remove routes which will always be explicitly filtered.
+
+For example:
+
+ policy-options {
+     prefix-list CUSTOMER:AS1234 {
+         1.2.3.0/24;
+         2.3.0.0/16;
+         3.4.0.0/19;
+         ...
+     }
+ }
+ protocol bgp {
+     group customer {
+         neighbor x.x.x.x {
+             peer-as 1234;
+             import [ ... ];
+             prefix-list input CUSTOMER:AS1234 orlonger;
+             ...
+         }
+     }
+ }
+
+This has several advantages. In addition to eliminating an unnecessary policy-statement and making the configuration more manageable, the routes which are filtered by this prefix-list can have a &quot;keep none&quot; applied to reduce memory usage. This is also a viable solution for the problems illustrated by [[ER BGP Prefix limit enhancements]], and is more consistent with Cisco behavior which many users may be more familiar with.
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

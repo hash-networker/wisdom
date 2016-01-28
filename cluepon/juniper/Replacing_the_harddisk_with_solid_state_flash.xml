@@ -1,0 +1,68 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Replacing the harddisk with solid state flash</title>
+    <ns>0</ns>
+    <id>1897</id>
+      <sha1>bksg0rkhdim53wh7pgfvjpbgx3zso1p</sha1>
+    <revision>
+      <id>18725</id>
+      <timestamp>2013-05-02T00:59:11Z</timestamp>
+      <contributor>
+        <username>Ms</username>
+        <id>45</id>
+      </contributor>
+      <comment>/* Replacing the harddisk on a RE with solid state flash */</comment>
+      <text xml:space="preserve" bytes="1657">== Replacing the harddisk on a RE with solid state flash ==
+
+The harddisk on a RE (atleast 2.0/3/4/5) can be easily upgraded to solid state flash. This
+helps to mitigate mechanical failures of harddisks. Especially the M7i harddisks are known
+to have high failure rates. 
+
+Its recommended to use a fast SSD media, in particular one with SLC chips since they are
+alot faster than MLC versions. This helps speeding up the boot process.
+
+You need a 2,5&quot; (laptop style) IDE harddisk. For example: Transcend 8GB SLC: TS8GSSD25-S. The newer model TS32GPSD320 (32 GB in this example) will work as well, but you won't be able to tighten the SSD to the RE because of a tiny design flaw. Half of the SSD will be &quot;in the air&quot;. Only use this model if you're feeling adventurous. Check www.truemetal.org/universe/blog/2013/03/upgrading-juniper-re-5-0-re-400-to-ssd for a picture of what it looks like.
+
+KingSpec SSD 32 GB MLC (model CM3-KS-057-107 / KSD-PA25.1-032MJ) will work. But you have to play around with the jumper settings until you find slave or CS. The jumper settings are printed incorrectly on the SSD case (CS and slave is *both* &quot;no jumper&quot; - which is wrong)!
+
+Note: You need to jumper the SSD to CS (cable select) *or* SLAVE. If the HDD is not detected on 
+boot-up please try a different setting. Do not set to Master/Primary as this will cause a collision with
+the on-board compact flash card.
+
+It is very likely that JunOS will not be able to use the SMART function of the SSD thus you will have errors
+in your logs. If this happens you need to turn off SMART:
+
+== Turning off SMART ==
+
+set system processes disk-monitoring disable
+
+[[Image:ressd.jpg]]</text>
+    </revision>
+  </page>
+</mediawiki>

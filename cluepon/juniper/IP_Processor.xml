@@ -1,0 +1,49 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>IP Processor</title>
+    <ns>0</ns>
+    <id>2000</id>
+      <sha1>gl7pkvpiohy7wpn0hvli9uh2lz8l1bf</sha1>
+    <revision>
+      <id>3872</id>
+      <timestamp>2010-03-01T04:08:10Z</timestamp>
+      <contributor>
+        <username>Ckt2packet</username>
+        <id>1443</id>
+      </contributor>
+      <comment>/* created the article */</comment>
+      <text xml:space="preserve" bytes="571">
+Juniper &quot;IP Processor&quot; is a commercial name for the key (packet L3 lookup) ASIC for the original Juniper M40 product.
+Internally known as &quot;C-chip&quot;, this ASIC was a part of 3-piece [[ABC chipset]] constellation that proved hardware-based packet forwarding possible and led to initial commercial success of Juniper Networks.
+
+The name &quot;IP Processor&quot; was also used in the follow-up products, such as &quot;IP Processor II&quot; (internally known as CF-chip).
+Juniper also sparingly uses &quot;IP Processor&quot; tag to refer to later generations of packet processor engines developed in-house.</text>
+    </revision>
+  </page>
+</mediawiki>

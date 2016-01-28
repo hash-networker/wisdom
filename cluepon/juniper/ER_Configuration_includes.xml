@@ -1,0 +1,106 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Configuration includes</title>
+    <ns>0</ns>
+    <id>1565</id>
+      <sha1>0tz2kbcin8et1yd4g4uaozy6vw0mra8</sha1>
+    <revision>
+      <id>2493</id>
+      <timestamp>2005-11-08T07:48:22Z</timestamp>
+      <contributor>
+        <username>Rix</username>
+        <id>55</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2082">== Problem ==
+
+JunOS does not allow for configuration options like 'include &lt;file_path&gt;'.  Often, a large network has common prefix-lists, firewall filters, static routes, or SNMP settings configured on many different routers.  Currently, one has to rely on externally created software to make mass configuration changes when, for example, a common prefix-list needs to be updated.
+
+== Solution ==
+
+JunOS could be modified to allow the inclusion of external text files as such:
+
+ prefix-lists {
+      bogons {
+           include {
+               remote-path &quot;https://files.foo.com/bogon_list.txt&quot;;
+               local-path &quot;/config/includes/&quot;;
+      }
+ }
+
+Upon a 'commit', JunOS could fetch the specified file, copy it to the local directory, check syntax, and apply it to the config:
+
+ [edit]
+ user@core2.iad# commit 
+ fetch: https://files.foo.com/bogon_list.txt succeeded
+ commit complete
+ 
+ [edit]
+ user@core2.iad#
+
+If for some reason the URL is not available, JunOS can check to see if the local copy exists and apply that to the config instead, and issue a warning:
+
+ [edit]
+ user@core2.iad# commit 
+ fetch: https://files.foo.com/bogon_list.txt failed
+ [edit policy-options prefix-list bogons]
+   'remote-path &quot;https://files.foo.com/bogon_list.txt&quot;' cannot be contacted; using local copy
+ commit complete
+ 
+ [edit]
+ user@core2.iad#
+
+or, fail if neither copy is retrievable:
+
+ [edit]
+ user@core2.iad# commit 
+ fetch: https://files.foo.com/bogon_list.txt failed
+ [edit policy-options prefix-list bogons]
+   'remote-path &quot;https://files.foo.com/bogon_list.txt&quot;' cannot be contacted; local copy doesn't exist
+ error: configuration check-out failed
+ 
+ [edit]
+ user@core2.iad#
+
+== Status ==
+A solution can be achieved with Junos 7.4 using a [http://www.juniper.net/techpubs/software/junos/junos74/swconfig74-scripts/html/commit-scripts-overview.html#1033561 Commit Scripts].
+
+ system {
+     scripts {
+         commit {
+             allow-transients;
+             file &lt;filename.xsl&gt; {
+                 refresh;
+                 refresh-from &lt;url&gt;;
+             }
+         }
+     }
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

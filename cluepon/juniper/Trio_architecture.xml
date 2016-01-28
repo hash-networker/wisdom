@@ -1,0 +1,95 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Trio architecture</title>
+    <ns>0</ns>
+    <id>2066</id>
+      <sha1>ed6pkf1kxgpd7gnaaicvcykzs3movlm</sha1>
+    <revision>
+      <id>4125</id>
+      <timestamp>2010-11-24T05:07:54Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2946">The '''Trio architecture''' announced in November 2009, powering the [[MX80]], [[MPC]]1 and MPC2 cards, and the 16-port SFP+ MPC on the [[MX-series]] routers.
+
+== Trio Chipset ==
+
+The Trio Chipset is composed of 4 individual ASICs, each of which is responsible for different functions within a single [[PFE]]. Every Trio PFE will contain and MQ and LU chip, while the QX and IX chips are optional.
+
+=== MQ-Chip ===
+
+The MQ-chip controls the packet memory, connects to the WAN interfaces and the chassis fabric, and is responsible for sending the first 256 bytes of each packet to the LU-chip for processing. The MQ-chip also performs port-based QoS, and manages scheduling and shaping of the ports and queues. Each MQ-chip has four 10GE MACs, that can be used to directly drive four 10GE PHYs.
+
+Each MQ-chip is capable of handling approximately 70Gbps of total unidirectional traffic, though the exact performance depends on the packet size. This bandwidth is shared between the fabric and WAN interfaces, so with 1:1 bidirectional traffic each MQ-chip is capable of handling 35Gbps. If the traffic is not bidirectional, the MQ-chip is capable of achieving line-rate 40Gbps per PFE (e.g. 40Gbps in, 30Gbps out).
+
+=== LU-Chip ===
+
+The LU-chip implements all of the lookup and packet processing features, including routing, MAC, and MPLS label lookups. It is also responsible for implementing firewalls, multi-field classifiers, policers, maintaining accounting and interface statistics, and performing packet header rewrites and layer 2 encapsulations.
+
+Each LU-chip is capable of processing approximately 55Mpps, though the exact performance depends on the features enabled.
+
+Some Trio PFE also support external TCAM, which the LU-chip can use to offer accelerated lookup processing of certain features.
+
+=== IX-Chip ===
+
+The IX-chip implements support for 1GE interfaces, and talks to the MQ-chip for further processing. Each IX-chip supports up to (24) 10/100/1000 GigE MACs and (2) 10GE MACs, as well as pre-classification of incoming packets.
+
+=== QX-Chip ===
+
+The QX-chip implements fine-grained hierarchical queueing. If HQoS is supported the QX-chip handles all queueing and scheduling functions. Otherwise, the MQ-chip handles port-level queueing and scheduling.
+
+== Trio Architecture ==
+
+&lt;graphviz&gt;
+graph triooverall { 
+fontsize=10
+  &quot;LU&quot; [shape=box];
+  &quot;QX&quot; [shape=box];
+  &quot;MQ&quot; [shape=box];
+  &quot;RLDRAM&quot; [shape=box];
+  &quot;DDR3&quot; [shape=box];
+  &quot;LU&quot; -- &quot;MQ&quot; [color=blue];
+  &quot;QX&quot; -- &quot;MQ&quot; [color=blue];
+  &quot;Fabric&quot; -- &quot;MQ&quot; [arrowhead=normal,arrowtail=normal];
+  &quot;MQ&quot; -- &quot;WAN&quot; [arrowhead=normal,arrowtail=normal];
+  &quot;MQ&quot; -- &quot;RLDRAM&quot; [color=blue];
+  &quot;MQ&quot; -- &quot;DDR3&quot; [color=blue];
+{ rank=same; Fabric MQ WAN }
+}
+&lt;/graphviz&gt;
+
+== PFE Capacity ==
+
+Each Trio PFE uses 72MB of RLDRAM for lookup memory, and 1GB of DDR3 for packet buffering memory. This is designed to allow the Trio PFE to handle up to 2 million routes.
+
+[[Category:Router Architecture]]</text>
+    </revision>
+  </page>
+</mediawiki>

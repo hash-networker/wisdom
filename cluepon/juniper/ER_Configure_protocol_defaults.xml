@@ -1,0 +1,84 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Configure protocol defaults</title>
+    <ns>0</ns>
+    <id>1500</id>
+      <sha1>1qtvk0g7omla9achai5zlynke9wegx8</sha1>
+    <revision>
+      <id>2112</id>
+      <timestamp>2005-08-23T17:47:09Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>/* Problem */  caps</comment>
+      <text xml:space="preserve" bytes="1456">== Problem ==
+[[JunOS]] has different built-in default policy termination actions for import/export policies based on the protocol in question, which are not configurable. For example, the following configuration:
+
+ policy-options {
+     policy-statement example-export-policy {
+         term example {
+             from match_criteria;
+             then reject;
+         }
+     }
+ }
+ protocols {
+     bgp {
+         group example {
+             neighbor 1.2.3.4 {
+                 remote-as 1234;
+                 export example-export-policy;
+             }
+         }
+     }
+ }
+
+will allow any route which does not match the term &quot;example&quot;, because the default BGP action for import and export is to accept the route. While these per-protocol default policy termination actions are documented, they can not be changed. It is the responsibility of the policy-statement to reject any routes which should not be imported or exported.
+
+== Solution ==
+Allowing the default policy termination action to be configured on a per-protocol basis would allow power users to optionally configure their import or export defaults to reject routes, rather than accept them. This could be used to prevent accidental routing leaks due to policy-statement mistakes, by erring in favor of rejecting the route if not explicitly permitted.
+
+For example:
+
+ protocols {
+     bgp {
+         default-action reject;
+     }
+ }
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,117 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>CS MPLS AutoMesh</title>
+    <ns>0</ns>
+    <id>1835</id>
+      <sha1>82wc80s01i4m0afemyq5b60fkjw4mqt</sha1>
+    <revision>
+      <id>3233</id>
+      <timestamp>2007-06-07T23:40:48Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3308">{{Infobox_script | 
+  name = MPLS AutoMesh |
+  type = Commit |
+  author = Richard Steenbergen | 
+  version = 1.0 |
+  min_junos = All Versions |
+  slax = [[automesh.slax]] |
+  xslt = [[automesh.xslt]] |
+}}
+
+== Information ==
+
+This script automatically builds a complete mesh of label-switched-paths using a non-transient configuration from the current router to all other routers, based on a simple list of MPLS-speaking routers which can be uploaded to every device through Netconf or other management systems.
+
+== Usage ==
+
+ system {
+     host-name rtr1.example1;
+ }
+ protocols {
+     mpls {
+         apply-macro automesh {
+            rtr1.example1 1.2.3.1;
+            rtr2.example1 1.2.3.2;
+            rtr1.example2 1.2.4.1;
+            rtr2.example2 1.2.4.2;
+            rtr1.example3 1.2.5.1;
+            rtr2.example3 1.2.5.2;
+            rtr1.example4 1.2.6.1;
+            rtr2.example4 1.2.6.2;
+         }
+     }
+ }
+
+Will automatically create the full mesh:
+
+ protocols {
+     mpls {
+         label-switched-path RTR1.EXAMPLE1-RTR2.EXAMPLE1 {
+             to 1.2.3.2;
+         }
+         label-switched-path RTR1.EXAMPLE1-RTR1.EXAMPLE2 {
+             to 1.2.4.1;
+         }
+         label-switched-path RTR1.EXAMPLE1-RTR2.EXAMPLE2 {
+             to 1.2.3.2;
+         }
+         label-switched-path RTR1.EXAMPLE1-RTR1.EXAMPLE3 {
+             to 1.2.4.1;
+         }
+         label-switched-path RTR1.EXAMPLE1-RTR2.EXAMPLE3 {
+             to 1.2.3.2;
+         }
+         label-switched-path RTR1.EXAMPLE1-RTR1.EXAMPLE4 {
+             to 1.2.4.1;
+         }
+         label-switched-path RTR1.EXAMPLE1-RTR2.EXAMPLE4 {
+             to 1.2.3.2;
+         }
+     }
+ }
+
+== Bugs ==
+
+The script determines which device in the list is the &quot;current&quot; router by comparing the device name and local hostname. If your hostname is not an exact match for the device name listed in the automesh macro, the script won't work, so you may also need to use [[CS_Dual_RE_Hostname_Manager]] to manage your hostname for dual-RE routers.
+
+I also have a personal preference for lsp names in the form of &quot;RTRA-RTRB&quot;, in all capital letters. Currently the Juniper scripts are based on XSLT 1.1, which lacks an uppercase or lowercase function, so I've implemented the capitalization using a ghetto little hack which you can see in the code. There are indications that future JUNOS versions will support XSLT 2.0 functions as well.
+
+The current implementation will overwrite any changes to make to the &quot;to&quot; destination address for a label-switch-path using a script-created name, but will not stop you from adding other configurations inside the LSP or from deactivating the LSP if you would like. An idea for a future version is to include a warning if there is a configured LSP which matches the auto-generated format but which does not exist in the auto-mesh configuration. Currently this script only creates LSPs, it makes no attempt to remove old ones.
+
+A more complex network making use of other Commit Scripts may want to have a single configured automesh list located out of the MPLS hierarchy, which could be used to build other configurations such as IBGP neighbors and firewall filters. Changes to this script to support such a configuration are left as an exercise for the reader.
+
+== ChangeLog ==
+
+1.0 - Initial Version</text>
+    </revision>
+  </page>
+</mediawiki>

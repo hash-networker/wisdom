@@ -1,0 +1,68 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Routing Engine Compatibility</title>
+    <ns>0</ns>
+    <id>1569</id>
+      <sha1>e60jt7tntb18zk1b2f3477w2rftumvz</sha1>
+    <revision>
+      <id>3722</id>
+      <timestamp>2009-04-23T16:10:09Z</timestamp>
+      <contributor>
+        <username>Trbooth</username>
+        <id>1274</id>
+      </contributor>
+      <comment>/* Other experiences? */</comment>
+      <text xml:space="preserve" bytes="1440">== RE-2.0 and RE-3.0 Compat Issues ==
+
+There is one HUGE issue with using RE-2.0 and RE-3.0 RE's in the same chassis;
+otherwise it works just fine.
+
+If you're running RE-3.0 as master, and insert RE-2.0 as a slave in an empty slot,
+the master RE crashes immediately.  There is no workaround.  Juniper is aware of this problem (PR 27851),
+with apparently no intention to fix the crashing.
+
+
+== Other experiences? ==
+
+The routing engines use the following harddiscs:&lt;br&gt;&lt;br&gt;
+
+Original Routing Engine (233)--[http://www.seagate.com/support/disc/ata/st310212a.html ST310212A], [http://www.seagate.com/support/disc/ata/st36421a.html ST36421A], and Quantum Fireball SE6.4A (Enhanced ATA/IDE; 6.4 GB)&lt;br&gt;
+Routing Engine 333--IBM-DARA-212000, IBM-DCXA-210000, IBM-DJSA-210, IBM-DJSA-220, and Toshiba MK2016GA&lt;br&gt;
+Routing Engine 600--Fujitsu MHN2300AT, Fujitsu MHL2300AT, Fujitsu MHM2100AT, and Fujitsu MHR2030AT&lt;br&gt;
+(taken from release notes of junos 5.5)&lt;br&gt;&lt;br&gt;
+
+They can easily be changed. 
+
+CF can be easily changed on [[RE-600]], it's possible on [[RE-333]] too but it sits &lt;br&gt;
+below the hdd thus you have to completly remove all parts of the RE to gain access to it. Its not soldered, its just plugged in.&lt;br&gt;&lt;br&gt;
+
+The flash on the [[RE-233]] is not very easy to replace/modify/remove because it is mounted to be difficult to remove. It is a circuit board plugged in via a ribbon cable and not a standard pluggable CF or PCMCIA flash device.</text>
+    </revision>
+  </page>
+</mediawiki>

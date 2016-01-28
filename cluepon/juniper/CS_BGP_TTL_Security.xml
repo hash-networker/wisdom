@@ -1,0 +1,110 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>CS BGP TTL Security</title>
+    <ns>0</ns>
+    <id>1818</id>
+      <sha1>ir693fp7yruz6gc611ble1de9h7xtwp</sha1>
+    <revision>
+      <id>3572</id>
+      <timestamp>2008-09-05T01:39:05Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="2855">{{Infobox_script | 
+  name = BGP TTL Security (GTSM) |
+  type = Commit |
+  author = Richard Steenbergen | 
+  version = 1.0 |
+  min_junos = All Versions |
+  slax = [[gtsm.slax]] |
+  xslt = [[gtsm.xslt]] |
+}}
+
+== Information ==
+
+This script replicates the simple &quot;ttl-security&quot; configuration option provided by Cisco for Generalized TTL Security Mechanism (GTSM) implementation.
+
+== Usage ==
+Example:
+
+ protocols {
+     bgp 
+         group example {
+             type external;
+             neighbor 192.168.2.1 {
+                 peer-as 1234;
+                 apply-macro ttl-security;
+             }
+         }
+     }
+ }
+
+=== Configure Firewall Filter ===
+
+To do the actual hardware drop, you'll need to add a term like this to your loopback lo0 firewall filter to drop non-compliant packets from GTSM neighbors.
+
+ term GTSM-NEIGHBORS {
+     from {
+         source-prefix-list {
+             GTSM-IPV4-NEIGHBORS;
+         }
+         ttl-except [ 254 255 ];
+         protocol tcp;
+         port 179;
+     }
+     then {   
+         discard;
+         count DENY-GTSM-IPV4;
+     }
+ }
+
+To filter IPv6, add a similar term to your lo0 inet6 filter, but replace the IPV4 reference with IPV6. Juniper prefix-lists cannot mix IPv4 and IPv6, so two lists are required.
+
+== Desperate Hack for Missing Feature ==
+
+[[ER_BGP_TTL_Security_support_enhancements|Native BGP commmand for GTSM/TTL Security]]
+
+== Bugs ==
+
+This script uses a firewall filter to enforce IP TTL, which only works on T-series and similarly derived hardware (M120/M320/MX/etc). Unfortunately there is no way to match IP TTL in software, so older hardware is not supported.
+
+Using this script as a work-around also breaks the BGP &quot;Fast External Failover&quot; mechanism, where an eBGP session is immediately dropped if the interface link goes down. This can make failure detection take much longer in the event of a outage, potentially up to the configured hold-time (default of 90 secs).
+
+There is also currently no attempt to replicate the &quot;hops&quot; parameter of the Cisco version, as this would require a separate firewall term for every unique TTL value. Implementing this today would be unnecessarily messy, since what you really want is a dedicated firewall filter which you can reference as a subroutine (similar to the policy language), rather than having the script try to insert terms into a firewall filter at potentially arbitrary locations. Since Juniper has so far refused to fix the &quot;bug&quot; which prevents you from creating a chainable firewall filter unless it is actively referenced in a chain, we're not going to attempt that route as a solution either.
+
+Of course at this point you should realize that this is a hack around a blatantly missing feature which should just be implemented in JUNOS directly in the first place, and beg Juniper to do it. 
+
+== ChangeLog ==
+
+1.0 - Initial Version</text>
+    </revision>
+  </page>
+</mediawiki>

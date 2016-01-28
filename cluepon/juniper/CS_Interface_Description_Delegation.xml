@@ -1,0 +1,72 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>CS Interface Description Delegation</title>
+    <ns>0</ns>
+    <id>1846</id>
+      <sha1>1blt5l8t1azg11sq2rja4x3jkxrq8mw</sha1>
+    <revision>
+      <id>3267</id>
+      <timestamp>2007-06-11T15:08:05Z</timestamp>
+      <contributor>
+        <username>SideEffect</username>
+        <id>588</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="954">{{Infobox_script | 
+  name = Interface Description Rights Delegation|
+  type = Commit |
+  author = Sinan ilkiz| 
+  version = 1.0 |
+  min_junos = All Versions  |
+  xslt = [[noc_interface_description.xslt]] |
+}}
+
+== Information ==
+
+With this script, you can delegate interface description rights to operators without the delegation of &quot;interfaces&quot; rights. So this way operator will not have access to any interface configuration but can write or edit interface descriptions. Perhaps this is a safe way of having operators take care of interface descriptions and being safe about operator misconfigurations.
+
+== Usage ==
+
+apply-macro noc_interface_description {
+    ds-1/2/1:2.0 desctiption_here;
+    noc_interface_description ok;
+}
+
+After you commit this configuration, interface statements under this macro will disappear and descriptions will be written to referenced interfaces.
+
+== Bugs ==
+
+Please let me know...
+
+== ChangeLog ==
+
+1.0 - Initial Version</text>
+    </revision>
+  </page>
+</mediawiki>

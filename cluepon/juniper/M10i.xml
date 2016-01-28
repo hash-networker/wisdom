@@ -1,0 +1,92 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>M10i</title>
+    <ns>0</ns>
+    <id>1296</id>
+      <sha1>5h4ivdpn36troqgo6x5z73r9zlas1s1</sha1>
+    <revision>
+      <id>4095</id>
+      <timestamp>2010-11-18T17:01:37Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Reverted edits by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]]) to last revision by [[User:Nemith|Nemith]]</comment>
+      <text xml:space="preserve" bytes="3016">{{Infobox_router | 
+  product_name = Juniper M10i Router |
+  product_image = [[Image:M10i_Front.jpg|200px]] |
+  slots = 2 FPC, 8 PIC |
+  bandwidth = 6.4 Gbit/s | 
+  fpc = [[type-1]] |
+  style = [[PE-Style_PIC|PE-style]] |
+  power = 3 or 4 (2+1 or 2 redundant) |
+  switch = [[CFEB]] (1+1 redundant) | 
+  date = November 3, 2003 | 
+}}
+
+The [[Juniper]] [[M10i]] ([[codenames|Codename:]] ''Hobbes'') router replaced Juniper's [[M10]] router. The M10i is a minor product refresh which decreased the cost of production, reduced the router depth, and added more redundancy than its predecessor
+__NOTOC__
+
+== Innovations ==
+The M10i and [[M7i]] were the first routers released using the [[ABC-Chip]] chipset, and replaced the older [[Martini architecture]] based [[M10]] and [[M5]] respectively. The [[ABC-Chip]] reduced the cost of production significantly. The M10i also reduced the weight and depth of the [[M10]] significantly.
+
+== Physical ==
+
+The M10i is 8.7&quot; (5U) high, 17.5&quot; wide (19&quot; with rack ears), 18&quot; deep, and weighs 79lbs when fully loaded.
+
+=== Power === 
+
+Both AC and DC [[power supplies]] are available for the M10i. The system requires two power supplies for operation, with up to two more for redundancy. When more than two power supplies are operating, the load is shared across them. The maximum system power draw for a fully loaded configuration is around 960 watts. The AC supply supports input voltages in the range of 100-264 volts, while the DC supply supports from -36 to -72 volts.
+
+=== Cooling ===
+
+The M10i is cooled by a replacable fan tray proving side to side cooling with airflow from left to right. There is an option for a second fan tray, but most M10is will only have one fitted. The fans are field replaceable but the router should not be operated without fans for more than a moment.
+
+== Routing Engine ==
+
+The M10i can support up to two routing engines, and if both are present can support graceful switchover between them.
+
+The M10i originally shipped with [[RE-400|RE-5.0]] (Celeron 400MHz, 256MB/512MB/768MB DRAM), but now has the [[RE-850|RE-5.0+]] (Celeron 850MHz, 1536MB DRAM) available as an option.
+
+== Forwarding ==
+
+The M10i utilizes the [[Calvin architecture]] which is largely the same as the [[Martini architecture]]. The Calvin architecture does have somewhat lower performance than the Martini (16Mpps vs 40Mpps) but the M10i does not have sufficient [[PIC]] slot capacity to approach this reduced limit.
+
+The M10i uses the same physical forwarding engine board as the M7i (the CFEB), but can have up to two installed. If it has two CFEBs presence, then it can switch between them in the event of a failure, but the router will go offline for around 2-3 minutes while the new CFEB starts up.
+
+== Hot Swapping ==
+PICs, Fans, and Power Supplies are hot swappable. If redundant routing engines or CFEBs are fitted, then it is possible to replace the inactive board with no interruption to packet forwarding.
+
+[[Category:Hardware]]
+[[Category:M-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

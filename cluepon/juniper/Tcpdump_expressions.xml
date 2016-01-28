@@ -1,0 +1,70 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Tcpdump expressions</title>
+    <ns>0</ns>
+    <id>1472</id>
+      <sha1>bikyshyhksm6enw0prcjvd65hqhdcta</sha1>
+    <revision>
+      <id>2203</id>
+      <timestamp>2005-08-23T18:49:23Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>/* Solution */ sp fix</comment>
+      <text xml:space="preserve" bytes="867">== Problem ==
+
+Juniper PICs strip the link-layer headers before passing packets to the PFE. Unfortunately, the lack of link-layer headers breaks some versions of tcpdump's pcap expression matching functions.
+
+Not working:
+ root@router% tcpdump -h
+ Version 3.5
+
+Working:
+ JunOS 7.2R1.7
+ root@router% tcpdump -h
+ Version 4.0-PRE-CVS
+
+Not certain exactly what version this is fixed in, something recent.
+
+== Solution ==
+
+A quick fix for this on older versions is to write the packet captures in tcpdump binary format to stdout, and pipe it to another tcpdump invocation which reads the packet captures from stdin. This resets the missing link-layer headers and makes expressions work again.
+
+== Example ==
+
+ user@router&gt; start shell tcsh 
+ &gt; su -
+ Password:
+ root@router% tcpdump -w - | tcpdump -n -r - port 22 and host 10.0.0.1
+ Listening on fxp0, capture size 96 bytes</text>
+    </revision>
+  </page>
+</mediawiki>

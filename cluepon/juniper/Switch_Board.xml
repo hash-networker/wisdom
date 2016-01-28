@@ -1,0 +1,57 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Switch Board</title>
+    <ns>0</ns>
+    <id>1340</id>
+      <sha1>c1aedjd8tl67kr3nfxqxvkqgaz2vwjx</sha1>
+    <revision>
+      <id>3882</id>
+      <timestamp>2010-03-01T04:32:53Z</timestamp>
+      <contributor>
+        <username>Ckt2packet</username>
+        <id>1443</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="654">&quot;Switch Board&quot; is a generic Juniper term to refer to the pluggable board involved in traffic transport at any level.
+
+Different generations of Juniper products use the term differently:
+
+[[M-series]] products are using the more specific term [[S-Board]] to refer to a board with L3 lookup processing.
+
+[[T-series]] products are using a term [[SIB]] to refer to the fabric planes. Packet processing itself is done on the linecards.
+
+[[MX-series]] products use [[SCB]] term to refer to integrated fabric/[[Routing Engine|RE]] carrier card. Packet processing itself is done on the linecards.
+
+
+[[Category:Hardware]]
+[[Category:Components]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

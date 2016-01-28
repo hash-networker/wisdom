@@ -1,0 +1,99 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>M40</title>
+    <ns>0</ns>
+    <id>1317</id>
+      <sha1>9keakwpkvjtnv9nvts5yxpwpt1x0jb6</sha1>
+    <revision>
+      <id>4093</id>
+      <timestamp>2010-11-18T10:41:19Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4025 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]])(vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="3320">{{Infobox_router | 
+  product_name = Juniper M40 Router |
+  product_image = [[Image:M40_Front.jpg|200px|]] |
+  slots = 8 FPC, 32 PIC |
+  bandwidth = 25.6 Gbit/s | 
+  fpc = [[type-1]] |
+  style = [[P-Style_PIC|P-style]] |
+  power = 2 (1+1 redundant) |
+  switch = [[SCB]] (non-redundant) | 
+  date = September 16, 1998 | 
+}}
+
+The [[Juniper]] '''M40''' ([[codenames|Codename:]] ''Martini'') was Juniper's first shipping product. Although it has been [[EOL|end of lifed]] and replaced with the [[M40e]], it is still widely used in many networks.
+
+__NOTOC__
+
+== Innovations ==
+
+== Physical ==
+
+The M40 is a rack-mount unit 35&quot; (20U) in height. The system can contain up to eight [[FPC (generic)|FPCs]], and each FPC can contain up to four [[type-1]] [[PIC]]s with [[P-Style_PIC|P-style]] mechanicals.
+
+=== Power === 
+
+Both AC and DC [[power supplies]] are available for the M40. The maximum system power draw for a fully loaded configuration is around ''??'' watts. The AC supply supports input voltages in the range of ''??'' volts, while the DC supply supports from ''??'' volts.
+
+=== Cooling ===
+
+It comes with two blowers and 3 fans removable from the rear. They sit right above the RE enclosure; the two blowers at the top in their own enclosure; the fans, just below the two blowers, also in their own enclosure; with the RE at the bottom.
+
+== Craft Interface == 
+
+== Routing Engine ==
+
+The M40 originally shipped with [[RE-1.0]] (PII 233MHz, 256MB). The M40 is the only JunOS platform with a half-duplex ethernet connection between the RE and the PFE.
+
+It can come with an 80MB of Flash (primary), a hard drive (secondary), and LS-120 Floppy drive.
+
+=== Hard Drives ===
+
+The routing engine can use the following hard drives: [http://www.seagate.com/support/disc/ata/st310212a.html ST310212A] (10.2 GB), [http://www.seagate.com/support/disc/ata/st36421a.html ST36421A] (6.4 GB), and Quantum Fireball SE6.4A (Enhanced ATA/IDE; 6.4 GB)
+
+== Forwarding ==
+
+The M40 uses an [[ASICs|ASIC]] based forwarding path which offers better than 40 million packets per second in lookup performance. The M40 initially shipped with the original [[Internet Processor]] ASIC but was later upgraded to the [[Internet Processor II]]. The forwarding architecture of the M40, called the [[Martini architecture]], was reused directly on many of Juniper's later routers such as the [[M20]], [[M5]], and [[M10]], and with some modification in the [[M160]] and the [[M40e]].
+
+Unlike the other Martini architecture routers, the [[A-Chip]]s of the M40 are installed on the backplane rather than on a removable card. Later Juniper products have far fewer active components on their midplanes and backplanes. The balance of the packet forwarding engine is contained on the [[SCB]].
+
+== Hot Swapping ==
+
+Like the M20, an entire FPC must be disabled and removed to swap a single PIC, which requires the interruption of three unrelated PICs and is considered an annoyance. This is due entirely to mechanical considerations, as the PICs themselves are capable of being hot-swapped as long as they have been previously disabled in software (no [[Craft]] offline button exists). On later models, Juniper made mechanical changes which make it easy to [[PIC hotswap]]. 
+
+[[Category:Hardware]]
+[[Category:M-series]]
+[[Category:Image needed]] [[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

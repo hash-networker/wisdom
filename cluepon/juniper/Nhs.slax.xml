@@ -1,0 +1,78 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Nhs.slax</title>
+    <ns>0</ns>
+    <id>2014</id>
+      <sha1>m4qwckajsmz8xasesizwmayvjyl5v8m</sha1>
+    <revision>
+      <id>3938</id>
+      <timestamp>2010-05-15T18:24:32Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1098"> version 1.0;
+ ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ import &quot;../import/junos.xsl&quot;;
+ 
+ template nhs ($family, $nexthop)
+ {   
+     var $path = ../../../../policy-options;
+ 
+     call jcs:emit-change($tag = 'transient-change', $dot = $path) {
+         with $content = {
+             &lt;policy-statement&gt; {
+                 &lt;name&gt; &quot;NHS&quot;;
+                 &lt;term&gt; {
+                     &lt;name&gt; $family;
+                     &lt;from&gt; {
+                         &lt;family&gt; $family;
+                     }
+                     &lt;then&gt; {
+                         &lt;next-hop&gt; {
+                             &lt;address&gt; substring-before($nexthop, &quot;/&quot;);
+                         }
+                     }
+                 }
+             }
+         }
+     }
+ }
+ 
+ match configuration {
+     for-each (//interfaces/interface[name == &quot;lo0&quot;]/unit/family) {
+         call nhs($family = &quot;inet&quot;, $nexthop = inet/address/name);
+         call nhs($family = &quot;inet6&quot;, $nexthop = inet6/address/name);
+     }
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

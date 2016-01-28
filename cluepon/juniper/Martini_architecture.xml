@@ -1,0 +1,62 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Martini architecture</title>
+    <ns>0</ns>
+    <id>1473</id>
+      <sha1>mm4nujjjlmwvcu013ij3lbran0ppex7</sha1>
+    <revision>
+      <id>2055</id>
+      <timestamp>2005-08-23T00:53:07Z</timestamp>
+      <contributor>
+        <username>Ras</username>
+        <id>3</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2396">[[Image:Martini_arch.png|thumb|400px|Logical view of the Martini architecture]]
+The Martini architecture consists of several discrete [[ASICs]]. The primary features include two [[A-Chip]]s, one [[B-Chip]] per-FPC, and the Internet Processor ASIC ([[Internet Processor II|Internet Processor II (CF-Chip)]], or [[Internet Processor (I)|Internet Processor (C-Chip)]] on older [[M20]] and [[M40]] Switch Boards), SRAM, DRAM, and a PowerPC processor. There are also a number of smaller control processors and control buses which our discussion will omit for clarity.
+
+The Martini architecture is applied most directly in the [[M40]], [[M20]], [[M5]], and [[M10]] routers, and is used in a scaled up form in the [[M160]] and a scaled down form in the [[Calvin architecture]] routers, the [[M7i]] and [[M10i]].
+
+== Packet Flow == 
+
+Physically [[PIC]]s are installed into [[FPC]]s, which are seated in the chassis. Packets enter the router through a port on a PIC, and ASICs on the PIC perform the media-specific processing and decapsulation. 
+
+The packet is then handed to the Bi portion of the B chip of its FPC. The Bi removes the L2 packet headers and extracts the L3 headers. L2 header processing is performed using a set of microcode engines in the B-Chip. The packets are then segmented into 64 Byte [[J-cell]]s, and passed to the A1 chip.
+
+A1 performs memory allocation for the shared memory across the FPCs, which is connected to the Bm portion of the B-chips on the FPCs. A1 hands the extracted notification, lookup key, and information needed to retrieve the packet to the C or CF-Chip (depending on the platform vintage). As a result, the cells of a packet are sprayed across all FPCs.
+
+The CF-chip is equipped with a number of parallel microcode engines which perform a lookup on the key data against the CF connected SRAM. The CF then passes a notification and recovery information to the A2 chip. A2 hands the information to the Bo section of the correct FPC. 
+
+The egress Bo queues the notification for transmission. When the packet's time has come, Bo requests the needed cells from A1 which then collects the cells from the shared memory. Bo adds the correct L2 headers, then passes the packet to the outbound PIC.
+
+The same Bm accessed SDRAM is also used for Bo notification queuing. Approximately a quarter of the SDRAM is reserved for this purpose.
+
+[[Category:Router Architecture]]</text>
+    </revision>
+  </page>
+</mediawiki>

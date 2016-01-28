@@ -1,0 +1,126 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>J4350</title>
+    <ns>0</ns>
+    <id>1776</id>
+      <sha1>ha3l9w2x9zxsnp0bqex8t4uyfklt8ho</sha1>
+    <revision>
+      <id>4091</id>
+      <timestamp>2010-11-18T10:40:45Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4027 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]])(vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="1984">{{Infobox_jseries | 
+  product_name = J4350 Router |
+  product_image = [[Image:J4350.png|200px]] |
+  rackspace = 2U |
+  slots = 6: 4 PIMs + 2 EPIMs or PIMs |
+  bandwidth = 1+ Gbit/s (large packets) 600MBit/s (IMIX) | 
+  power =  Single|
+  memory =  256MB/2GB |
+  flash = 256MB/1GB |
+}}
+
+Two models offered:  J4350-JB with hardware crypto (300MBit/sec using 3DES/SHA1), and J4350-JB-SC with software crypto (30Mbit/sec), and only 256MB of RAM. 
+
+A NEBS compliant version of the J4350-JB with AC or DC power supplies is also offered.
+
+Can support the following interfaces:
+
+'''Built-in Interfaces: '''
+
+4 x 10/100/1000 Copper Ethernet
+
+'''LAN (uPIMs - support either PCI PIM or PCI-E ePIM slot)'''
+
+8 x 10/100/1000 Copper Ethernet
+
+16 x 10/100/1000 Copper Ethernet (Double-Height)
+
+6 x Gigabit Ethernet SFP
+
+'''LAN (ePIMs - 2 only): '''
+
+1x1000 (SFP)
+
+1x10/100/1000
+
+4x10/100
+
+'''WAN (PIMs - 4-6 supported):'''
+
+2xSerial
+
+2xT1/E1 
+
+1xDS3 
+
+1xE3 
+
+2xFE 
+
+4xISDN BRI (U or ST) 
+
+1xADSL2+ (Annex A and Annex B)
+
+2x2-wire or 1x4-wire G.SHDSL 
+ 
+==Some photos==
+The brand-new Juniper J4350 software-router. Photos made at 2007/06/01. 
+
+The hardware is the same as the [http://www.juniper.net/products_and_services/firewall_slash_ipsec_vpn/ssg_500_series/index.html Juniper Netscreen SSG 520/SSG 520M Appliance]. 
+[[Image:J4350-1.jpg]]&lt;br&gt;
+4x DDR-RAM banks, 1x CF right next to a 40pin pin-header (IDE??), P4 CPU (Celeron 2.53Ghz) with passive cooler, 144pin mini-pci socket. Seems like this is for the hardware VPN accelerator module. 2 very quiet fans at the back
+
+[[Image:J4350-2.jpg]]
+
+[[Image:J4350-3.jpg]]
+
+[[Image:J4350-4.jpg]]&lt;br&gt;
+The factory-installed 256MB MDT DDR-400 CL3 ram module. 
+
+[[Image:J4350-5.jpg]]
+
+[[Image:J4350-6.jpg]]&lt;br&gt;
+4x GigE over copper. 
+
+[[Image:J4350-7.jpg]]&lt;br&gt;
+Console, Aux and 2x USB for mass storage. My trekstor 2GB USB-Stick was detected pretty well. Same for a pretec 1GB stick. 
+__NOTOC__
+
+
+[[Category:Hardware]]
+[[Category:J-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

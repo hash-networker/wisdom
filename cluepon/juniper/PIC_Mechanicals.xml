@@ -1,0 +1,51 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>PIC Mechanicals</title>
+    <ns>0</ns>
+    <id>1359</id>
+      <sha1>lky79fn2kfzrizbnsjoltmsqs9lkif0</sha1>
+    <revision>
+      <id>1729</id>
+      <timestamp>2005-08-20T22:03:26Z</timestamp>
+      <contributor>
+        <username>Search trie</username>
+        <id>2</id>
+      </contributor>
+      <comment>deplural</comment>
+      <text xml:space="preserve" bytes="467">Juniper PICs can be categorized into the following six (6) styles of mechanical interfaces. These mechanical interfaces are usually related to the specific product and type/bandwidth of the PIC, but sometimes span multiple products and FPC types.
+
+* [[P-Style PIC|P]] (M20/M40)
+* [[I-Style PIC|I]] (M20/M40)
+* [[PE-Style PIC|PE]] (M5/M10/M7i/M10i)
+* [[PB-Style PIC|PB]] (M40e/M160/M320/T-series)
+* [[IB-Style PIC|IB]] (M40e/M160)
+* [[PC-Style PIC|PC]] (M320/T-series)</text>
+    </revision>
+  </page>
+</mediawiki>

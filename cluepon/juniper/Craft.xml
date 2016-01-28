@@ -1,0 +1,53 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Craft</title>
+    <ns>0</ns>
+    <id>1460</id>
+      <sha1>tm7mbwx5wzctylgsoy7f7i9ol1plbfl</sha1>
+    <revision>
+      <id>2093</id>
+      <timestamp>2005-08-23T17:34:57Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>cat image needed</comment>
+      <text xml:space="preserve" bytes="941">[[Image:Craft_Front.jpg|thumb|right|Craft Interface]]
+
+The Craft interface is a small panel which provides a physical and visual interface to the router, primarily featuring the [[Serial console]] ports, and [[fxp0|Management Ethernet]] ports, LED indicators, and [[Alarm]] indicators. Depending upon the router model, the Craft interface may also have an LCD screen which can display information about the status of the router.
+
+Alarm LEDs indicate the level of an alarm if one has occurred. The Craft interface also has two alarm relay contacts, which can be used to trigger an external alarm in the event of a Yellow or Red router [[Alarm]]. Red alarms indicate a serious condition in which service interruption could occur, such as a critical component failure. Yellow alarms indicate recoverable errors, maintenance alerts, or failures of non-critical components.
+
+[[Category:Hardware]]
+[[Category:Components]]
+[[Category:Image needed]]</text>
+    </revision>
+  </page>
+</mediawiki>

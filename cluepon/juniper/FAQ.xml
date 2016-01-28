@@ -1,0 +1,83 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>FAQ</title>
+    <ns>0</ns>
+    <id>1504</id>
+      <sha1>6qepnmm7xy52ym4ac06gd46rlo7pxfa</sha1>
+    <revision>
+      <id>4353</id>
+      <timestamp>2011-11-12T14:48:34Z</timestamp>
+      <contributor>
+        <username>VinaMore</username>
+        <id>1665</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="2427">* Q: I know nothing about JunOS. Can you recommend some introductory reference materials?
+* A: Try the [http://www.juniper.net/training/elearning/junos_cli/index.html instruction videos] on Juniper's site.
+
+
+* Q: Can I insert my M20 PIC into an M5, or vice versa?
+* A: [[PIC compatibility]]
+
+
+* Q: Can I buy 3rd party RAM to upgrade my routing engine without going broke?
+* A: [[Route Engine DRAM Compatibility]]
+
+
+* Q: Do I need an AS PIC to get flow stats from my router?
+* A: Not necessarily. You can sample and build flow records export base on RE. Unfortunately this method consumes RE CPU and competes with other RE tasks. So be careful when you choose the number of samples per second. Anyway there is a hard limit of a few 1000 of pps. Also the PFE CPU can be stressed by RE-based sampling and flow export. To be able to sample more pps you need AS-PIC or PM-PIC (monitoring PIC). Each of them has some limits, but they are much higher than is applicable for the RE.
+
+
+* Q: Where can I obtain SMB cables for the DS3 / CHDS3 PIC?
+* A: eBay, or any cable manufacturer can make them, or you can get BNC to SMB adapters
+
+
+* Q: I use common 735a cable and crimper die already.  Who sells SMB connectors for 735a?
+* A: Trompeter/Semflex, but be prepared to pay $9/ea instead of $.90/ea for BNC connectors (Aside from being more expensive, these connectors are also much harder to put on 735a cable than BNC connectors.  Like anything else, once you get past the learning curve, it becomes much easier)
+
+
+* Q: Can I add a CF card to my M10i/M7i?  Can I upgrade my flash disks to support JunOS 8.5/9.0 requirements?
+* A: Juniper sells a flash kit, or see [[flash compatibility]].
+
+
+* Q: I am trying to upgrade from 8.2 (or below), but I'm told to upgrade to 8.3 or newer first, but the version I want isn't available and any newer code that is does not work, what do I do?
+* A: When upgrading from 8.2 or below you need to use the &lt;span class=&quot;plainlinks&quot;&gt;[http://www.marcdmanoff.com/ &lt;span style=&quot;color:black;font-weight:normal; text-decoration:none!important; background:none!important; text-decoration:none;&quot;&gt;marc manoff&lt;/span&gt;] &quot;no-validate&quot; option.
+
+==Questions from #juniper @ Freenode==
+
+
+* Q: How can I see my interface MAC address?
+* A: show interfaces '''''INTERFACE''''' extensive | match Hardware
+
+
+* Q: How do I show all routes originating from AS1234?
+* A: show route protocol bgp aspath-regex &quot;.* '''''1234'''''&quot;</text>
+    </revision>
+  </page>
+</mediawiki>

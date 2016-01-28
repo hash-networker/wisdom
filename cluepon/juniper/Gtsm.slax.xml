@@ -1,0 +1,89 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Gtsm.slax</title>
+    <ns>0</ns>
+    <id>1820</id>
+      <sha1>cm16crwop7ajgixipgg9f3sw82t46op</sha1>
+    <revision>
+      <id>3181</id>
+      <timestamp>2007-06-06T07:04:19Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1554"> version 1.0;
+ ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ import &quot;../import/junos.xsl&quot;;
+ 
+ match configuration {
+     /* Find all configured BGP Sessions with the ttl-security macro */
+     var $ttl = protocols/bgp/group/neighbor/apply-macro[name = 'ttl-security'];
+ 
+     /* Configure multihop with TTL 255 for the matched sessions */
+     for-each ($ttl) {
+         call jcs:emit-change($tag = 'transient-change', $dot = ..) {
+             with $content = {
+                 &lt;multihop&gt; {
+                     &lt;ttl&gt; 255;
+                 }
+             }
+         }
+     }
+ 
+     /* Build IPv4 and IPv6 prefix-lists of the GTSM neighbor addresses */
+     &lt;transient-change&gt; {
+         &lt;policy-options&gt; {
+             &lt;prefix-list replace=&quot;replace&quot;&gt; {
+                 &lt;name&gt; &quot;GTSM-IPV4-NEIGHBORS&quot;;
+                 for-each ($ttl) {
+                     if (contains(../name, &quot;.&quot;)) {
+                         &lt;prefix-list-item&gt; {
+                             &lt;name&gt; ../name;
+                         }
+                     }
+                 }
+             }
+             &lt;prefix-list replace=&quot;replace&quot;&gt; {
+                 &lt;name&gt; &quot;GTSM-IPV6-NEIGHBORS&quot;;
+                 for-each ($ttl) {
+                     if (contains(../name, &quot;:&quot;)) {
+                         &lt;prefix-list-item&gt; {
+                             &lt;name&gt; ../name;
+                         }
+                     }
+                 }
+             }
+         }
+     } 
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

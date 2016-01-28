@@ -1,0 +1,220 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Show-lsp-interface.xslt</title>
+    <ns>0</ns>
+    <id>1922</id>
+      <sha1>2k3242u5q1l3a2n3cu2bzfutomq3xwx</sha1>
+    <revision>
+      <id>3931</id>
+      <timestamp>2010-05-04T21:32:21Z</timestamp>
+      <contributor>
+        <username>Cougar</username>
+        <id>967</id>
+      </contributor>
+      <minor/>
+      <comment>! update xslt version of show-lsp-interface</comment>
+      <text xml:space="preserve" bytes="10468"> &lt;?xml version=&quot;1.0&quot; standalone=&quot;yes&quot;?&gt;
+ &lt;xsl:stylesheet xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot; xmlns:junos=&quot;http://xml.juniper.net/junos/*/junos&quot; xmlns:xnm=&quot;http://xml.juniper.net/xnm/1.1/xnm&quot; xmlns:jcs=&quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot; version=&quot;1.0&quot;&gt;
+   &lt;!-- 
+  * Copyright (c) 2007-2009 Cougar &lt;cougar@random.ee&gt;
+  *
+  * Permission to use, copy, modify, and distribute this software for any
+  * purpose with or without fee is hereby granted, provided that the above
+  * copyright notice and this permission notice appear in all copies.
+  *
+  * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+  * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+  * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  --&gt;
+   &lt;xsl:import href=&quot;../import/junos.xsl&quot;/&gt;
+   &lt;xsl:variable name=&quot;arguments&quot;&gt;
+     &lt;argument&gt;
+       &lt;name&gt;interface&lt;/name&gt;
+       &lt;description&gt;interface name&lt;/description&gt;
+     &lt;/argument&gt;
+     &lt;argument&gt;
+       &lt;name&gt;srcif&lt;/name&gt;
+       &lt;description&gt;source interface name&lt;/description&gt;
+     &lt;/argument&gt;
+     &lt;argument&gt;
+       &lt;name&gt;dstif&lt;/name&gt;
+       &lt;description&gt;destination interface name&lt;/description&gt;
+     &lt;/argument&gt;
+     &lt;argument&gt;
+       &lt;name&gt;showbypass&lt;/name&gt;
+       &lt;description&gt;1 = show Bypass LSPs also&lt;/description&gt;
+     &lt;/argument&gt;
+   &lt;/xsl:variable&gt;
+   &lt;xsl:param name=&quot;interface&quot;/&gt;
+   &lt;xsl:param name=&quot;srcif&quot;/&gt;
+   &lt;xsl:param name=&quot;dstif&quot;/&gt;
+   &lt;xsl:param name=&quot;showbypass&quot;/&gt;
+   &lt;xsl:template name=&quot;resolve_ifdescr&quot;&gt;
+     &lt;xsl:param name=&quot;ifdescrdb&quot;/&gt;
+     &lt;xsl:param name=&quot;if&quot;/&gt;
+     &lt;xsl:choose&gt;
+       &lt;xsl:when test=&quot;$if&quot;&gt;
+         &lt;xsl:choose&gt;
+           &lt;xsl:when test=&quot;$ifdescrdb/logical-interface[name = $if]/description&quot;&gt;
+             &lt;xsl:value-of select=&quot;$ifdescrdb/logical-interface[name = $if]/description&quot;/&gt;
+           &lt;/xsl:when&gt;
+           &lt;xsl:otherwise&gt;-&lt;!-- no descripion --&gt;&lt;/xsl:otherwise&gt;
+         &lt;/xsl:choose&gt;
+       &lt;/xsl:when&gt;
+       &lt;xsl:otherwise&gt;?&lt;!-- no next-hop interface (ASSERT ?) --&gt;&lt;/xsl:otherwise&gt;
+     &lt;/xsl:choose&gt;
+   &lt;/xsl:template&gt;
+   &lt;xsl:template name=&quot;resolve_nh_ifdescr&quot;&gt;
+     &lt;xsl:param name=&quot;ifdescrdb&quot;/&gt;
+     &lt;xsl:param name=&quot;nhif&quot;/&gt;
+     &lt;xsl:variable name=&quot;if&quot; select=&quot;$nhif&quot;/&gt;
+     &lt;xsl:call-template name=&quot;resolve_ifdescr&quot;&gt;
+       &lt;xsl:with-param name=&quot;ifdescrdb&quot; select=&quot;$ifdescrdb&quot;/&gt;
+       &lt;xsl:with-param name=&quot;if&quot; select=&quot;$if&quot;/&gt;
+     &lt;/xsl:call-template&gt;
+   &lt;/xsl:template&gt;
+   &lt;xsl:template name=&quot;resolve_ph_ifdescr&quot;&gt;
+     &lt;xsl:param name=&quot;ifdescrdb&quot;/&gt;
+     &lt;xsl:param name=&quot;phif&quot;/&gt;
+     &lt;xsl:variable name=&quot;if&quot; select=&quot;$phif&quot;/&gt;
+     &lt;xsl:call-template name=&quot;resolve_ifdescr&quot;&gt;
+       &lt;xsl:with-param name=&quot;ifdescrdb&quot; select=&quot;$ifdescrdb&quot;/&gt;
+       &lt;xsl:with-param name=&quot;if&quot; select=&quot;$if&quot;/&gt;
+     &lt;/xsl:call-template&gt;
+   &lt;/xsl:template&gt;
+   &lt;xsl:template name=&quot;show_lsp_list&quot;&gt;
+     &lt;xsl:variable name=&quot;q1&quot;&gt;
+       &lt;command&gt;show mpls lsp detail&lt;/command&gt;
+     &lt;/xsl:variable&gt;
+     &lt;xsl:variable name=&quot;lspdb&quot; select=&quot;jcs:invoke($q1)&quot;/&gt;
+     &lt;xsl:variable name=&quot;q2&quot;&gt;
+       &lt;command&gt;show interface descriptions&lt;/command&gt;
+     &lt;/xsl:variable&gt;
+     &lt;xsl:variable name=&quot;ifdescrdb&quot; select=&quot;jcs:invoke($q2)&quot;/&gt;
+     &lt;xsl:if test=&quot;$srcif = &amp;quot;&amp;quot;&quot;&gt;
+       &lt;xsl:value-of select=&quot;jcs:output(&amp;quot;------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&amp;quot;)&quot;/&gt;
+       &lt;xsl:value-of select=&quot;jcs:output(&amp;quot;t name                                                                                                                              dst             next-hop        dst-if        dst-ifdescr&amp;#10;&amp;quot;)&quot;/&gt;
+       &lt;xsl:for-each select=&quot;$lspdb/rsvp-session-data[session-type = &amp;quot;Ingress&amp;quot;]/rsvp-session/mpls-lsp[lsp-state = &amp;quot;Up&amp;quot;]&quot;&gt;
+         &lt;xsl:variable name=&quot;name&quot; select=&quot;name&quot;/&gt;
+         &lt;xsl:variable name=&quot;dst&quot; select=&quot;destination-address&quot;/&gt;
+         &lt;xsl:variable name=&quot;nhip&quot; select=&quot;substring-before(substring-after(mpls-lsp-path/explicit-route, &amp;quot;&amp;#10;&amp;quot;) , &amp;quot;&amp;#10;&amp;quot;)&quot;/&gt;
+         &lt;xsl:variable name=&quot;routequery&quot;&gt;
+           &lt;command&gt;
+             &lt;xsl:value-of select=&quot;concat(&amp;quot;show route table inet.0 protocol direct &amp;quot;, $nhip)&quot;/&gt;
+           &lt;/command&gt;
+         &lt;/xsl:variable&gt;
+         &lt;xsl:variable name=&quot;routeresult&quot; select=&quot;jcs:invoke($routequery)&quot;/&gt;
+         &lt;xsl:variable name=&quot;nhif&quot; select=&quot;$routeresult/route-table/rt/rt-entry/nh/via&quot;/&gt;
+         &lt;xsl:if test=&quot;(($interface = &amp;quot;&amp;quot;) and($dstif = &amp;quot;&amp;quot;)) or($interface = $nhif) or($dstif = $nhif)&quot;&gt;
+           &lt;xsl:variable name=&quot;ndescr&quot;&gt;
+             &lt;xsl:call-template name=&quot;resolve_nh_ifdescr&quot;&gt;
+               &lt;xsl:with-param name=&quot;ifdescrdb&quot; select=&quot;$ifdescrdb&quot;/&gt;
+               &lt;xsl:with-param name=&quot;nhif&quot; select=&quot;$nhif&quot;/&gt;
+             &lt;/xsl:call-template&gt;
+           &lt;/xsl:variable&gt;
+           &lt;xsl:variable name=&quot;outline&quot;&gt;
+             &lt;xsl:value-of select=&quot;jcs:printf(&amp;quot;I %-32s                                                                                                  %-15s %-15s %-13s %-50s&amp;#10;&amp;quot;, $name, $dst, $nhip, $nhif, $ndescr)&quot;/&gt;
+           &lt;/xsl:variable&gt;
+           &lt;xsl:value-of select=&quot;jcs:output($outline)&quot;/&gt;
+         &lt;/xsl:if&gt;
+       &lt;/xsl:for-each&gt;
+     &lt;/xsl:if&gt;
+     &lt;xsl:if test=&quot;$dstif = &amp;quot;&amp;quot;&quot;&gt;
+       &lt;xsl:value-of select=&quot;jcs:output(&amp;quot;------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&amp;quot;)&quot;/&gt;
+       &lt;xsl:value-of select=&quot;jcs:output(&amp;quot;t name                             src             prev-hop        src-if        src-ifdescr&amp;#10;&amp;quot;)&quot;/&gt;
+       &lt;xsl:for-each select=&quot;$lspdb/rsvp-session-data[session-type = &amp;quot;Egress&amp;quot;]/rsvp-session[lsp-state = &amp;quot;Up&amp;quot; and(not(starts-with(name, &amp;quot;Bypass&amp;quot;)) or($showbypass = 1))]&quot;&gt;
+         &lt;xsl:variable name=&quot;name&quot; select=&quot;name&quot;/&gt;
+         &lt;xsl:variable name=&quot;src&quot; select=&quot;source-address&quot;/&gt;
+         &lt;xsl:variable name=&quot;phip&quot; select=&quot;packet-information/previous-hop&quot;/&gt;
+         &lt;xsl:variable name=&quot;routequery&quot;&gt;
+           &lt;command&gt;
+             &lt;xsl:value-of select=&quot;concat(&amp;quot;show route table inet.0 protocol direct &amp;quot;, $phip)&quot;/&gt;
+           &lt;/command&gt;
+         &lt;/xsl:variable&gt;
+         &lt;xsl:variable name=&quot;routeresult&quot; select=&quot;jcs:invoke($routequery)&quot;/&gt;
+         &lt;xsl:variable name=&quot;phif&quot; select=&quot;$routeresult/route-table/rt/rt-entry/nh/via&quot;/&gt;
+         &lt;xsl:if test=&quot;(($interface = &amp;quot;&amp;quot;) and($srcif = &amp;quot;&amp;quot;)) or($interface = $phif) or($srcif = $phif)&quot;&gt;
+           &lt;xsl:variable name=&quot;pdescr&quot;&gt;
+             &lt;xsl:call-template name=&quot;resolve_ph_ifdescr&quot;&gt;
+               &lt;xsl:with-param name=&quot;ifdescrdb&quot; select=&quot;$ifdescrdb&quot;/&gt;
+               &lt;xsl:with-param name=&quot;phif&quot; select=&quot;$phif&quot;/&gt;
+             &lt;/xsl:call-template&gt;
+           &lt;/xsl:variable&gt;
+           &lt;xsl:variable name=&quot;outline&quot;&gt;
+             &lt;xsl:value-of select=&quot;jcs:printf(&amp;quot;E %-32s %-15s %-15s %-13s %-50s&amp;#10;&amp;quot;, $name, $src, $phip, $phif, $pdescr)&quot;/&gt;
+           &lt;/xsl:variable&gt;
+           &lt;xsl:value-of select=&quot;jcs:output($outline)&quot;/&gt;
+         &lt;/xsl:if&gt;
+       &lt;/xsl:for-each&gt;
+     &lt;/xsl:if&gt;
+     &lt;xsl:value-of select=&quot;jcs:output(&amp;quot;------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------&amp;quot;)&quot;/&gt;
+     &lt;xsl:value-of select=&quot;jcs:output(&amp;quot;t name                             src             prev-hop        src-if        src-ifdescr                                        dst             next-hop        dst-if        dst-ifdescr&amp;#10;&amp;quot;)&quot;/&gt;
+     &lt;xsl:for-each select=&quot;$lspdb/rsvp-session-data[session-type = &amp;quot;Transit&amp;quot;]/rsvp-session[lsp-state = &amp;quot;Up&amp;quot; and(not(starts-with(name, &amp;quot;Bypass&amp;quot;)) or($showbypass = 1))]&quot;&gt;
+       &lt;xsl:variable name=&quot;name&quot; select=&quot;name&quot;/&gt;
+       &lt;xsl:variable name=&quot;src&quot; select=&quot;source-address&quot;/&gt;
+       &lt;xsl:variable name=&quot;dst&quot; select=&quot;destination-address&quot;/&gt;
+       &lt;xsl:if test=&quot;packet-information[@heading = &amp;quot;  PATH&amp;quot;]/previous-hop&quot;&gt;
+         &lt;xsl:variable name=&quot;phip&quot; select=&quot;packet-information[@heading = &amp;quot;  PATH&amp;quot;]/previous-hop&quot;/&gt;
+         &lt;xsl:variable name=&quot;phif&quot; select=&quot;packet-information[previous-hop = $phip]/interface-name&quot;/&gt;
+         &lt;xsl:variable name=&quot;nhip&quot; select=&quot;packet-information[@heading = &amp;quot;  PATH&amp;quot;]/next-hop&quot;/&gt;
+         &lt;xsl:variable name=&quot;nhif&quot; select=&quot;packet-information[next-hop = $nhip]/interface-name&quot;/&gt;
+         &lt;xsl:if test=&quot;(($interface = &amp;quot;&amp;quot;) and($srcif = &amp;quot;&amp;quot;) and($dstif = &amp;quot;&amp;quot;)) or($interface = $phif) or($interface = $nhif) or(($srcif = $phif) and($dstif = &amp;quot;&amp;quot;)) or(($dstif = $nhif) and($srcif = &amp;quot;&amp;quot;)) or(($srcif = $phif) and($dstif = $nhif))&quot;&gt;
+           &lt;xsl:variable name=&quot;pdescr&quot;&gt;
+             &lt;xsl:call-template name=&quot;resolve_ph_ifdescr&quot;&gt;
+               &lt;xsl:with-param name=&quot;ifdescrdb&quot; select=&quot;$ifdescrdb&quot;/&gt;
+               &lt;xsl:with-param name=&quot;phif&quot; select=&quot;$phif&quot;/&gt;
+             &lt;/xsl:call-template&gt;
+           &lt;/xsl:variable&gt;
+           &lt;xsl:variable name=&quot;ndescr&quot;&gt;
+             &lt;xsl:call-template name=&quot;resolve_nh_ifdescr&quot;&gt;
+               &lt;xsl:with-param name=&quot;ifdescrdb&quot; select=&quot;$ifdescrdb&quot;/&gt;
+               &lt;xsl:with-param name=&quot;nhif&quot; select=&quot;$nhif&quot;/&gt;
+             &lt;/xsl:call-template&gt;
+           &lt;/xsl:variable&gt;
+           &lt;xsl:variable name=&quot;outline&quot;&gt;
+             &lt;xsl:value-of select=&quot;jcs:printf(&amp;quot;T %-32s %-15s %-15s %-13s %-50s %-15s %-15s %-13s %-50s&amp;#10;&amp;quot;, $name, $src, $phip, $phif, $pdescr, $dst, $nhip, $nhif, $ndescr)&quot;/&gt;
+           &lt;/xsl:variable&gt;
+           &lt;xsl:value-of select=&quot;jcs:output($outline)&quot;/&gt;
+         &lt;/xsl:if&gt;
+       &lt;/xsl:if&gt;
+     &lt;/xsl:for-each&gt;
+   &lt;/xsl:template&gt;
+   &lt;xsl:template match=&quot;/&quot;&gt;
+     &lt;op-script-results&gt;
+       &lt;xsl:call-template name=&quot;show_lsp_list&quot;/&gt;
+     &lt;/op-script-results&gt;
+   &lt;/xsl:template&gt;
+ &lt;/xsl:stylesheet&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

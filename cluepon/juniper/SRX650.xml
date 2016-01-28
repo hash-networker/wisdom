@@ -1,0 +1,101 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>SRX650</title>
+    <ns>0</ns>
+    <id>1989</id>
+      <sha1>mpoxlznw09hyr3h3sz4gi2ig4mo4fiq</sha1>
+    <revision>
+      <id>3957</id>
+      <timestamp>2010-06-21T14:13:04Z</timestamp>
+      <contributor>
+        <username>Funkboy</username>
+        <id>470</id>
+      </contributor>
+      <minor/>
+      <comment>release notes specifically state that SREs are not hot-swappable</comment>
+      <text xml:space="preserve" bytes="1776">{{Infobox_srxbranch | 
+  product_name = SRX650 Services Gateway |
+  product_image = [[Image:lbox-srx650-front.jpg‎|200px]] |
+  rackspace = 2 RU |
+  slots = 8 x GPIM or multiple GPIM and XPIM combinations |
+  bandwidth = 7 Gbps (large packets) 2,5 Gbps (IMIX),&lt;br&gt;IPS 900 Mbps, VPN 1,5 Gbps (JUNOS 10.0) | 
+  power =  100–240 VAC, Single 250 W or Dual 250 W |
+  cpu = Cavium Networks OCTEON CN5650 12 Core MIPS64 |
+  memory =  2 GB |
+  flash = 2 GB |
+}}
+
+([[codenames|Codename:]] ''Thor'')&lt;br&gt;
+The SRX650 is the top model of the SRX Series for the branch.
+It supports redundant power supplies and has 2 SRE (Service Routing Engine) slots which can be found on the rear, for routing-engine redundancy in a future release (not yet imlemented as of 10.2).&lt;br&gt;
+There is an external CF slot on the SRE for additional storage.&lt;br&gt;
+
+[[File:lbox-srx650-rear.jpg|200px]]&lt;br&gt;
+1 M BGP routes are supported.&lt;br&gt;
+
+Maximum power draw: 247 W redundant, or 494 W non-redundant&lt;br&gt;
+Average power consumption: 122 W
+
+more CPU info:&lt;br&gt;
+Cavium Networks OCTEON Plus CN5650 - Block Diagram &lt;br&gt;
+http://www.caviumnetworks.com/OCTEON-Plus_CN56XX.html
+
+
+'''Built-in Interfaces: '''
+
+4 x 10/100/1000BASE-T&lt;br&gt;
+On board GE interfaces on SRX650 do not support layer2 switching !
+
+
+'''Interface Modules: '''
+
+SRX-GP-16GE 	16-port 10/100/1000BASE-T XGPIM
+
+SRX-GP-16GE-POE 	16-port 10/100/1000BASE-T PoE XGPIM
+
+SRX-GP-24GE 	24-port 10/100/1000BASE-T XGPIM, includes 4 SFP slots
+
+SRX-GP-24GE-POE 	24-port 10/100/1000BASE-T PoE XGPIM, includes 4 SFP slots
+
+SRX-GP-DUAL-T1-E1 	Dual T1/E1 GPIM
+
+
+note:&lt;br&gt;
+All slots support GPIMs.
+*Slots 2 and 6 support XPIMs.
+*Slots 5 and 7 support SATA High-Disk (RAID).
+*Slots 2, 4, 6, and 8 support PoE.
+
+
+[[Category:Hardware]]
+[[Category:SRX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

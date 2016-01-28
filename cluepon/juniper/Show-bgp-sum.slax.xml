@@ -1,0 +1,141 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Show-bgp-sum.slax</title>
+    <ns>0</ns>
+    <id>2011</id>
+      <sha1>d4hoaaz7vy7bs2fs6v5tl0me9kgzo0b</sha1>
+    <revision>
+      <id>3932</id>
+      <timestamp>2010-05-12T11:49:08Z</timestamp>
+      <contributor>
+        <username>Gul</username>
+        <id>1464</id>
+      </contributor>
+      <comment>op script for &quot;show bgp sum&quot; in pretty format, with bgp groups and descriptions</comment>
+      <text xml:space="preserve" bytes="4980">&lt;pre&gt;
+/*
+ *  show_bgp_sum.slax
+ *
+ *  Author: Pavel Gulchouck &lt;gul@gul.kiev.ua&gt;
+ *
+ *  Version History
+ *  ===============
+ *  v0.1         Initial release.
+ *  v0.2         Process groups inheritance, support route-instances
+ *
+ */
+
+version 1.0;
+ 
+ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ 
+import &quot;../import/junos.xsl&quot;;
+
+match / {
+    &lt;op-script-results&gt; {
+
+        var $reqconf = &lt;get-configuration database=&quot;commited&quot; inherit=&quot;inherit&quot; format=&quot;xml&quot;&gt; {
+                                &lt;configuration&gt; {
+                                        &lt;protocols&gt; {
+                                                &lt;bgp&gt;;
+                                        }
+                                }
+                        }
+        var $bgpconf = jcs:invoke($reqconf);
+        var $reqinst = &lt;get-instance-information format=&quot;brief&quot;&gt;;
+        var $instres = jcs:invoke($reqinst);
+        var $bgpinstconf := {
+                for-each ($instres/instance-core) {
+                        if (not(jcs:regex(&quot;^__&quot;, instance-name)) and not(instance-name = &quot;master&quot;)) {
+                                var $reqinstconf = &lt;get-configuration database=&quot;commited&quot; inherit=&quot;inherit&quot; format=&quot;xml&quot;&gt; {
+                                        &lt;configuration&gt; {
+                                                &lt;routing-instances&gt; {
+                                                        &lt;instance&gt; {
+                                                                &lt;name&gt; instance-name;
+                                                                &lt;protocols&gt; {
+                                                                        &lt;bgp&gt;;
+                                                                }
+                                                        }
+                                                }
+                                        }
+                                }
+                                var $inst = jcs:invoke($reqinstconf)/routing-instances;
+                                if ($inst/instance/protocols/bgp/group/neighbor) {
+                                        &lt;instance&gt; {
+                                                &lt;name&gt; $inst/instance/name;
+                                                &lt;protocols&gt; {
+                                                        &lt;bgp&gt; {
+                                                                for-each ($inst/instance/protocols/bgp/group) {
+                                                                        &lt;group&gt; {
+                                                                                &lt;name&gt; name;
+                                                                                for-each (neighbor) {
+                                                                                        &lt;neighbor&gt; {
+                                                                                                &lt;name&gt; name;
+                                                                                        }
+                                                                                }
+                                                                        }
+                                                                }
+                                                        }
+                                                }
+                                        }
+                                }
+                        }
+                }
+        }
+        var $req = &lt;get-bgp-summary-information format=&quot;brief&quot;&gt;;
+        var $results = jcs:invoke($req);
+ 
+        &lt;output&gt; jcs:printf(&quot;%-22s %-7s %11s %-6s %-20s %-12s %s&quot;, &quot;   Peer&quot;, &quot;    AS&quot;, &quot;Last Up/Dwn&quot;, &quot;State&quot;, &quot;       Act/Rcv/Acc&quot;, &quot;[Inst/]Group&quot;, &quot; Descr&quot;);
+        for-each ($results/bgp-peer) {
+                var $state = jcs:regex(&quot;.....?.?&quot;, peer-state);
+                var $prefixes = {
+                        if ($state[1] = &quot;Establ&quot;) {
+                                expr jcs:printf(&quot;%d/%d/%d&quot;, bgp-rib/active-prefix-count, bgp-rib/received-prefix-count, bgp-rib/accepted-prefix-count);
+                        }
+                }
+                var $peer = peer-address;
+                var $group = $bgpconf/protocols/bgp/group[not(@inactive) and neighbor[not(@inactive)]/name=$peer]/name;
+                var $grname = {
+                        if ($group) {
+                                copy-of $group;
+                        } else {
+                                var $inst = $bgpinstconf/instance/protocols/bgp/group[not(@inactive) and neighbor[not(@inactive)]/name=$peer];
+                                expr jcs:printf(&quot;%s/%s&quot;, $inst/../../../name, $inst/name);
+                        }
+                }
+                &lt;output&gt; jcs:printf(&quot;%-22s %7s %11s %-6s %20s %-12s %s&quot;, $peer, peer-as, elapsed-time, $state[1], $prefixes, $grname, description);
+        }
+    }
+}
+&lt;/pre&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

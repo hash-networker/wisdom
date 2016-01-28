@@ -1,0 +1,53 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>TX Matrix</title>
+    <ns>0</ns>
+    <id>1300</id>
+      <sha1>bxnueq4xemjy1iwjr48k0rvy21jxf2t</sha1>
+    <revision>
+      <id>3893</id>
+      <timestamp>2010-03-01T05:23:48Z</timestamp>
+      <contributor>
+        <username>Ckt2packet</username>
+        <id>1443</id>
+      </contributor>
+      <text xml:space="preserve" bytes="900">[[Image:TXMatrix_Front.jpg|thumb|right|Juniper TX Matrix]]
+
+Juniper TX Matrix is the name for the fabric shelf that can interconnect up to four [[T640]] routers into a cluster. A system connecting two routers is called TX2; a system connecting four routers is called TX4. Juniper shipped first TX Matrix systems in 2004.
+
+Multichassis system operation requires the fabric planes in the constituent routers ([[SIB]]s) to be externalized and replaced with optical versions featuring multiple lanes of surface lasers (VCSELs). When a T-series router is plugged into TX Matrix, fabric switching happens inside the Matrix shelf, which also runs a centralized control plane for the cluster. 
+
+Due to cost implications of using the optical backplane, router clusters are mostly popular with Tier 1 operators and high-end enterprise customers.  
+
+[[Category:Hardware]]
+[[Category:T-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

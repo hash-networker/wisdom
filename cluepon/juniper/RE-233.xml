@@ -1,0 +1,57 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>RE-233</title>
+    <ns>0</ns>
+    <id>1311</id>
+      <sha1>ssgjzcumcqek8g101gs4d224uez7xu9</sha1>
+    <revision>
+      <id>3714</id>
+      <timestamp>2009-04-23T15:39:44Z</timestamp>
+      <contributor>
+        <username>Trbooth</username>
+        <id>1274</id>
+      </contributor>
+      <text xml:space="preserve" bytes="962">{{Infobox_RE | 
+re_name            = RE-1.0 / RE-233 |
+picture            = [[Image:RE-1.jpg|thumb]] |
+processor          = Pentium II 233MHz |
+dram_min           = 256MB |
+dram_max           = 256MB |
+launch_platform    = M40 |
+available_platform = [[M40]] |
+}}
+
+The RE-1.0 was featured only in the M40, and will not function in any other Juniper router. It consists of a Motorola CPV-5000 CompactPCI blade with a Pentium II 233 MHz processor and 256 MB of 72-pin EDO RAM. The Motorola board has a single on-board Ethernet interface. Juniper added a CompactPCI Fast Ethernet card since a second Ethernet interface was required (one to the PFE and one to the Craft Interface).
+
+The routing engines of an M40 are always found mated to a &quot;routing engine housing&quot; designed to support it. Since the RE-1.0 is supported on the M40 only, you will always find it in this configuration.
+
+[[Image:RE-1-M40-Back-Card.jpg|400px|Routing Engine 1.0 Mated to a M40 Back Card]]</text>
+    </revision>
+  </page>
+</mediawiki>

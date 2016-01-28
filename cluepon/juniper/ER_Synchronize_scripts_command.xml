@@ -1,0 +1,96 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Synchronize scripts command</title>
+    <ns>0</ns>
+    <id>1800</id>
+      <sha1>kdfjtdkqqc1aoc7ua0l6slnqr0qj7du</sha1>
+    <revision>
+      <id>3084</id>
+      <timestamp>2007-04-12T05:58:12Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1798">== Problem ==
+Currently, [[JUNOS]] has a mechanism to manually update commit, op, and event scripts (XSLT/SLAX files) from a specified source:
+
+ [edit]
+ user@router# show system scripts commit 
+ allow-transients;
+ file example.slax {
+     source &quot;http://www.example.com/example.slax&quot;;
+ }
+ 
+ [edit]
+ user@router# set system scripts commit refresh 
+ refreshing 'example.slax' from 'http://www.example.com/example.slax'
+ /var/home/remote/...transferring.file.........lxODvZ/example.slax100% of 8468  B 4674 kBps
+
+However, there is no mechanism to synchronize these files between the primary and backup Routing Engines. If you do not have an IP address configured and accessable for both Routing Engines, you may not be able to update the backup RE at all. Further, if you make a configuration change which affects these scripts and &quot;commit synchronize&quot;, the configuration is copied to the backup RE but the new scripts are not, potentially resulting in an error which corrupts the backup configuration or prevents the commit from occuring.
+
+The current solution requires you to manually synchronize the files after every update, like this:
+
+ [edit]
+ user@router# run copy file /var/db/scripts/commit/example.slax re1:/var/db/scripts/commit
+
+== Solution ==
+
+Add a command to automatically synchronize the script files between routing engines. For example:
+
+
+Allow the SNMP configuration to reference prefix-lists, as well as manually entered IP prefixes.
+
+For example:
+
+ [edit]
+ user@router# commit synchronize scripts
+
+ [edit]
+ user@router# commit synchronize scripts commit
+
+And automatic synchronization support:
+
+ system {
+     commit {
+         synchronize {
+             scripts {
+                 commit;
+             }
+         }
+     }
+ }
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

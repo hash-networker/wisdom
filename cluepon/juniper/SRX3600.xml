@@ -1,0 +1,109 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>SRX3600</title>
+    <ns>0</ns>
+    <id>1960</id>
+      <sha1>7vnghqbuj3ufe795n0i4d6lhwc8lvaa</sha1>
+    <revision>
+      <id>4180</id>
+      <timestamp>2011-05-12T15:54:32Z</timestamp>
+      <contributor>
+        <username>Arditsaliu</username>
+        <id>1558</id>
+      </contributor>
+      <comment>/* Routing Engine */</comment>
+      <text xml:space="preserve" bytes="2375">{{Infobox_srx | 
+  product_name = Juniper SRX3600 |
+  product_image = [[Image:SRX3600_Front.jpg|200px]] |
+  slots = 12 CFM (6 IOC/3 NPC/12 SPC) |
+  bandwidth = TBD | 
+  ru = 5U (8.75&quot;) |
+  power = TBD |
+  date = TBD  | 
+}}
+= Common Form-factor Modules =
+Common form-factor modules are a standard type of module for the SRX3000 series which can be a combination of IOC/NPC/SPC cards.
+
+IOCs can only be in CFM slots 1 through 6
+NPCs can only be in CFM slots 10 through 12
+SPCs can be in any CFM slot
+
+
+== Routing Engine==
+&lt;pre&gt;
+root@Core-FW&gt; show chassis routing-engine       
+Routing Engine status:
+  Slot 0:
+    Current state                  Master
+    Election priority              Master (default)
+    DRAM                      1023 MB
+    Memory utilization          36 percent
+    CPU utilization:
+      User                       0 percent
+      Background                 0 percent
+      Kernel                     4 percent
+      Interrupt                  0 percent
+      Idle                      96 percent
+    Model                          RE-PPC-1200-A
+    Start time                     2011-05-03 11:37:20 UTC
+    Uptime                         9 days, 3 hours, 11 minutes, 17 seconds
+    Last reboot reason             Router rebooted after a normal shutdown.
+    Load averages:                 1 minute   5 minute  15 minute
+                                       0.01       0.06       0.03
+&lt;/pre&gt;
+
+== Switch Fabric Board (SFB)==
+
+== Network Processing Cards==
+
+
+== Security Processing Cards == 
+The Security Processing Card is where stateful firewall, IPSec and IDP processing is done
+
+== Input/Output Cards ==
+Input/Output Card (IOC) contain the physical interfaces on them.
+
+The SRX-3600 supports the same IOCs as the SRX-3400
+&lt;pre&gt;
+root@Core-FW&gt; show chassis ioc-npc-connectivity 
+IOC  IOC type    IOC state      Connected NPC  NPC state      Link status
+0    SFB 12GE    Online         10             Online         Up         
+4    2x10GE XFP  Online         11             Online         Up         
+5    2x10GE XFP  Online         10             Online         Up     
+&lt;/pre&gt;
+* A 16-port Gigabit Ethernet IOC with SFP connectors (1000 Mbit copper and fiber only)
+* A 16-port 10/100/1000 Copper Ethernet IOC with RJ-45 connectors
+* A 2-port 10-Gigabit Ethernet IOC with XFP connectors
+
+[[Category:Hardware]]
+[[Category:SRX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

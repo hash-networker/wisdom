@@ -1,0 +1,91 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Automatic policer burst sizes</title>
+    <ns>0</ns>
+    <id>1498</id>
+      <sha1>0ischdg55p49a3fjfibx14bg3ybnzvf</sha1>
+    <revision>
+      <id>3074</id>
+      <timestamp>2007-03-10T14:18:39Z</timestamp>
+      <contributor>
+        <username>Funkboy</username>
+        <id>470</id>
+      </contributor>
+      <minor/>
+      <comment>temporal</comment>
+      <text xml:space="preserve" bytes="1257">== Problem ==
+Currently, [[JunOS]] policers require users to manually set the burst-size. For example:
+
+ firewall {
+     policer example {
+         if-exceeding {
+             bandwidth-limit 50m;
+             burst-size-limit 1m;
+         }
+         then discard;
+     }
+ }
+
+Juniper has a formula for recommended values based on the the bandwidth limit and properties of the interface (such as MTU), but unfortunately many users are not able to find or accurately calculate these values.
+
+== Solution ==
+
+Add an automatic calculation of the burst-size-limit based on recommended values, but allowing that value to be overridden for specific purposes.
+
+This could be implemented by either not requiring the &quot;burst-size-limit&quot; directive at all:
+
+ firewall {
+     policer example {
+         if-exceeding {
+             bandwidth-limit 50m;
+         }
+         then discard;
+     }
+ }
+
+Or by adding a new option keyword &quot;auto&quot;:
+
+ firewall {
+     policer example {
+         if-exceeding {
+             bandwidth-limit 50m;
+             burst-size-limit auto;
+         }
+         then discard;
+     }
+ }
+
+== Status ==
+
+Unknown.  A temporal policy buffer attribute does exist to set the buffer size in microseconds instead of bytes.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

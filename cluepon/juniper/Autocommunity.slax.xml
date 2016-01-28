@@ -1,0 +1,254 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Autocommunity.slax</title>
+    <ns>0</ns>
+    <id>1842</id>
+      <sha1>k2s0kn2gjupc2fx6uaucqmedmpjpkj0</sha1>
+    <revision>
+      <id>3253</id>
+      <timestamp>2007-06-08T00:46:17Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="7862"> version 1.0;
+ ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ import &quot;../import/junos.xsl&quot;;
+ 
+ template comm_action($asn, $name, $continent, $region, $city)
+ {
+     var $reg_c    = &quot;(0&quot; _ $continent _ &quot;0)&quot;;
+     var $reg_cr   = &quot;(0&quot; _ $continent _ $region _ &quot;)&quot;;
+     var $reg_city = &quot;(1&quot; _ $city _ &quot;)&quot;;
+     var $regexp   = &quot;((000)|&quot; _ $reg_c _ &quot;|&quot; _ $reg_cr _ &quot;|&quot; _ $reg_city _ &quot;)$&quot;;
+ 
+     &lt;transient-change&gt; {
+         &lt;policy-options&gt; {
+             /* Generate Communities */
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_ONE&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:1&quot; _ $regexp;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_TWO&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:2&quot; _ $regexp;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_THREE&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:3&quot; _ $regexp;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_FOUR&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:4&quot; _ $regexp;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_MED_ZERO&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:5&quot; _ $regexp;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_DENY_EXPORT&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:6&quot; _ $regexp;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_FORCE_EXPORT&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:7&quot; _ $regexp;
+             }
+             if ($name == &quot;GLOBAL&quot;) {
+                 &lt;community&gt; {
+                     &lt;name&gt; &quot;MATCH_&quot; _ $name _ &quot;_DENY_IMPORT&quot;;
+                     &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:8&quot; _ $regexp;
+                 }
+             }
+ 
+             /* Generate Policies referencing Communities */
+             &lt;policy-statement&gt; {
+                 &lt;name&gt; &quot;AUTO-COMMUNITY-&quot; _ $name _ &quot;-IN&quot;;
+                 &lt;then&gt; {
+                     &lt;next&gt; &quot;policy&quot;;
+                 }
+             }
+             &lt;policy-statement&gt; {
+                 &lt;name&gt; &quot;AUTO-COMMUNITY-&quot; _ $name _ &quot;-OUT&quot;;
+                 &lt;term&gt; {
+                     &lt;name&gt; &quot;PREPEND_ONE&quot;;
+                     &lt;from&gt; {
+                         &lt;community&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_ONE&quot;;
+                     }
+                     &lt;then&gt; {
+                         &lt;as-path-prepend&gt; &quot;1234&quot;;
+                     }
+                 }
+                 &lt;term&gt; {
+                     &lt;name&gt; &quot;PREPEND_TWO&quot;;
+                     &lt;from&gt; {
+                         &lt;community&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_TWO&quot;;
+                     }
+                     &lt;then&gt; {
+                         &lt;as-path-prepend&gt; &quot;1234 1234&quot;;
+                     }
+                 }
+                 &lt;term&gt; {
+                     &lt;name&gt; &quot;PREPEND_THREE&quot;;
+                     &lt;from&gt; {
+                         &lt;community&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_THREE&quot;;
+                     }
+                     &lt;then&gt; {
+                         &lt;as-path-prepend&gt; &quot;1234 1234 1234&quot;;
+                     }
+                 }
+                 &lt;term&gt; {
+                     &lt;name&gt; &quot;PREPEND_FOUR&quot;;
+                     &lt;from&gt; {
+                         &lt;community&gt; &quot;MATCH_&quot; _ $name _ &quot;_PREPEND_FOUR&quot;;
+                     }
+                     &lt;then&gt; {
+                         &lt;as-path-prepend&gt; &quot;1234 1234 1234 1234&quot;;
+                     }
+                 }
+                 &lt;term&gt; {
+                     &lt;name&gt; &quot;MED_ZERO&quot;;
+                     &lt;from&gt; {
+                         &lt;community&gt; &quot;MATCH_&quot; _ $name _ &quot;_MED_ZERO&quot;;
+                     }
+                     &lt;then&gt; {
+                         &lt;metric&gt; {
+                             &lt;metric&gt; &quot;0&quot;;
+                         }
+                     }
+                 }
+                 &lt;term&gt; {
+                     &lt;name&gt; &quot;DENY_EXPORT&quot;;
+                     &lt;from&gt; {
+                         &lt;community&gt; &quot;MATCH_&quot; _ $name _ &quot;_DENY_EXPORT&quot;;
+                     }
+                     &lt;then&gt; {
+                         &lt;default-action&gt; &quot;reject&quot;;
+                     }
+                 }
+                 &lt;term&gt; {
+                     &lt;name&gt; &quot;FORCE_EXPORT&quot;;
+                     &lt;from&gt; {
+                         &lt;community&gt; &quot;MATCH_&quot; _ $name _ &quot;_FORCE_EXPORT&quot;;
+                     }
+                     &lt;then&gt; {
+                         &lt;default-action&gt; &quot;accept&quot;;
+                     }
+                 }
+                 &lt;then&gt; {
+                     &lt;next&gt; &quot;policy&quot;;
+                 }
+             }
+         }
+     }
+ }
+ 
+ template comm_info($asn, $continent, $region, $city)
+ {
+     &lt;transient-change&gt; {
+         &lt;policy-options&gt; {
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_CURRENT_CITY&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:...&quot; _ $city _ &quot;$&quot;;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;MATCH_CURRENT_REGION&quot;;
+                 &lt;members&gt; &quot;^&quot; _ $asn _ &quot;:.&quot; _ $continent _ $region _ &quot;..$&quot;;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;TAG_TRANSIT&quot;;
+                 &lt;members&gt; $asn _ &quot;:1&quot; _ $continent _ $region _ $city;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;TAG_PUBPEER&quot;;
+                 &lt;members&gt; $asn _ &quot;:2&quot; _ $continent _ $region _ $city;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;TAG_PRIVPEER&quot;;
+                 &lt;members&gt; $asn _ &quot;:3&quot; _ $continent _ $region _ $city;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;TAG_CUSTOMER&quot;;
+                 &lt;members&gt; $asn _ &quot;:4&quot; _ $continent _ $region _ $city;
+             }
+             &lt;community&gt; {
+                 &lt;name&gt; &quot;TAG_INTERNAL&quot;;
+                 &lt;members&gt; $asn _ &quot;:5&quot; _ $continent _ $region _ $city;
+             }
+         }
+     }
+ }
+ 
+ match configuration {
+     var $path = /commit-script-input/configuration/policy-options;
+     var $local-as = routing-options/autonomous-system/as-number;
+     var $location = system/location/apply-macro[name = 'bgp'];
+     var $continent = $location/data[name = 'continent']/value;
+     var $region = $location/data[name = 'region']/value;
+     var $city = $location/data[name = 'city']/value;
+ 
+     /* Generate Information Communities */
+     call comm_info($asn = $local-as, $continent, $region, $city);
+ 
+     /* Generate Global Action Communities */
+     call comm_action($asn = $local-as, $name = &quot;GLOBAL&quot;, $continent, $region, $city);
+     call comm_action($asn = &quot;65001&quot;, $name = &quot;TRANSIT&quot;, $continent, $region, $city);
+     call comm_action($asn = &quot;65002&quot;, $name = &quot;PEER&quot;, $continent, $region, $city);
+     call comm_action($asn = &quot;65003&quot;, $name = &quot;CUST&quot;, $continent, $region, $city);
+ 
+     /* Generate Per-ASN Action Communities from configured BGP neighbors */
+     for-each (protocols/bgp/group/neighbor[peer-as != $local-as]) {
+         call comm_action($asn = peer-as, $name = peer-as, $continent, $region, $city);
+ 
+         /* Insert into second position within import/export chain */
+         var $import = jcs:first-of(import, ../import, ../../import);
+         var $export = jcs:first-of(export, ../export, ../../export);
+         var $community_import = &quot;AUTO-COMMUNITY-&quot; _ peer-as _ &quot;-IN&quot;;
+         var $community_export = &quot;AUTO-COMMUNITY-&quot; _ peer-as _ &quot;-OUT&quot;;
+ 
+         call jcs:emit-change($tag = 'transient-change') {
+             with $content = {
+                 for-each ($import) {
+                     &lt;import&gt; .;
+                 }
+ 
+                 for-each ($export) {
+                     &lt;export&gt; .;
+                 }
+ 
+                 &lt;import insert=&quot;after&quot; name=$import[1]&gt; $community_import;
+                 &lt;export insert=&quot;after&quot; name=$export[1]&gt; $community_export;
+             }
+         }
+     }
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,69 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Warn before commit confirmed rollback</title>
+    <ns>0</ns>
+    <id>1802</id>
+      <sha1>a6b0sphzdvcwcjq59tzpxgzegflaxsv</sha1>
+    <revision>
+      <id>4191</id>
+      <timestamp>2011-06-06T19:41:54Z</timestamp>
+      <contributor>
+        <username>Jeffsw6</username>
+        <id>1205</id>
+      </contributor>
+      <comment>/* Status */</comment>
+      <text xml:space="preserve" bytes="773">== Problem ==
+
+Currently, no warning is provided on the console before a &quot;commit confirmed&quot; rollback occurs. Busy users may accidentally forget to re-commit their configuration, resulting in an unnecessary configuration rollback.
+
+== Solution ==
+
+ [edit]
+ user@router# commit confirmed 5
+ 
+ Message from mgd@router on ttyp0 at 05:02 ...
+ Warning - Automatic rollback in 1 minute unless configuration is confirmed
+ 
+ Message from mgd@router on ttyp0 at 05:03 ...
+ Warning - Automatic rollback in 30 seconds unless configuration is confirmed
+ 
+ Message from mgd@router on ttyp0 at 05:03 ...
+ Warning - Automatic rollback in 10 seconds unless configuration is confirmed
+ 
+ [edit]
+ user@router# commit
+
+== Status ==
+
+Implemented in JUNOS ... 8.x?
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

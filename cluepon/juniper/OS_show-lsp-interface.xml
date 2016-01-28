@@ -1,0 +1,88 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>OS show-lsp-interface</title>
+    <ns>0</ns>
+    <id>1924</id>
+      <sha1>mzcpn3it37vlnyixceuaupz1jy8j0mv</sha1>
+    <revision>
+      <id>3930</id>
+      <timestamp>2010-05-04T21:30:30Z</timestamp>
+      <contributor>
+        <username>Cougar</username>
+        <id>967</id>
+      </contributor>
+      <comment>+ interface, srcif, dstif and showbypass arguments, much better printf() based output format</comment>
+      <text xml:space="preserve" bytes="3708">{{Infobox_script | 
+  name = Show LSPs with interface information |
+  type = Op |
+  author = Cougar | 
+  version = 1.2 |
+  min_junos = All Versions |
+  slax = [[show-lsp-interface.slax]] |
+  xslt = [[show-lsp-interface.xslt]] |
+}}
+
+== Information ==
+
+This Op Script lists LSPs like &quot;'''show mpls lsp'''&quot; does but also adds ingress and/or egress interface information (interface name, description and next-hop IP address). Using this command together with &quot;'''match'''&quot; filter makes it easy to find out all LSPs that go through specific interface for example.
+
+Now it is also possible to limit LSPs which use certain interfaces by different arguments using &quot;'''interface'''&quot;, &quot;'''srcif'''&quot; or &quot;'''dstif'''&quot;
+
+Up to date information is always avaliable at http://wiki.version6.net/juniper page.
+
+== Usage ==
+&lt;pre&gt;
+cougar@router1&gt; op show-lsp-interface interface ae4.1
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+t name                                                                                                                              dst             next-hop        dst-if        dst-ifdescr
+I router1-&gt;router2                                                                                                                  203.0.113.1     203.0.113.192   ae4.1         -&gt; router2 ae4.1
+I router1-&gt;router5                                                                                                                  203.0.113.2     203.0.113.192   ae4.1         -&gt; router2 ae4.1
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+t name                             src             prev-hop        src-if        src-ifdescr
+E router5-&gt;router1                 203.0.113.2     203.0.113.192   ae4.1         -&gt; router2 ae4.1
+E router2-&gt;router1                 203.0.113.1     203.0.113.192   ae4.1         -&gt; router2 ae4.1
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+t name                             src             prev-hop        src-if        src-ifdescr                                        dst             next-hop        dst-if        dst-ifdescr
+T router5-&gt;router3                 203.0.113.2     203.0.113.192   ae4.1         -&gt; router2 ae4.1                                   203.0.113.10    203.0.113.121   ae5.1         -&gt; router3 ae5.1
+T router3-&gt;router2                 203.0.113.10    203.0.113.121   ae5.1         -&gt; router3 ae5.1                                   203.0.113.1     203.0.113.192   ae4.1         -&gt; router2 ae4.1
+T router3-&gt;router5                 203.0.113.10    203.0.113.121   ae5.1         -&gt; router3 ae5.1                                   203.0.113.2     203.0.113.192   ae4.1         -&gt; router2 ae4.1
+&lt;/pre&gt;
+
+== Bugs ==
+
+This script doesn't list fast-reroute ''detour'' LSPs. It is quite complicated to add fast-reroute detour LSPs because there can be either more than one detour LSP (easy case) or normal LSP with detour information which is much more complicated to parse.
+
+== ChangeLog ==
+
+* 1.2 - interface, srcif, dstif and showbypass arguments, much better printf() based output format
+* 1.1 - only one invoke of &quot;'''show interfaces descriptions'''&quot; which makes it many times faster
+* 1.0 - Initial Version</text>
+    </revision>
+  </page>
+</mediawiki>

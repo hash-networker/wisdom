@@ -1,0 +1,47 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Damaged Hardware</title>
+    <ns>0</ns>
+    <id>1583</id>
+      <sha1>kcnmyngv2ri7zul4dtk3qdutiwtss01</sha1>
+    <revision>
+      <id>2608</id>
+      <timestamp>2006-04-06T06:49:53Z</timestamp>
+      <contributor>
+        <username>Toasty</username>
+        <id>146</id>
+      </contributor>
+      <text xml:space="preserve" bytes="212">A collection of damaged hardware pictures.
+
+*[[Damage_M160-FPC|Fedex destroys a Juniper FPC for M160]]
+*[[Damage_M5_Backplane|Bent pins in every PIC slot of an M5]]
+*[[Damage_GE_PIC|Inductor ripped off a GE PIC]]</text>
+    </revision>
+  </page>
+</mediawiki>

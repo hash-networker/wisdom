@@ -1,0 +1,97 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Gtsm.xslt</title>
+    <ns>0</ns>
+    <id>1822</id>
+      <sha1>si91y10t8675wrr5ydt6jhoj5d0ytuk</sha1>
+    <revision>
+      <id>3210</id>
+      <timestamp>2007-06-07T04:45:04Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2166"> &lt;?xml version=&quot;1.0&quot; standalone=&quot;yes&quot;?&gt;
+ &lt;xsl:stylesheet version=&quot;1.0&quot;
+   xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+   xmlns:junos=&quot;http://xml.juniper.net/junos/*/junos&quot;
+   xmlns:xnm=&quot;http://xml.juniper.net/xnm/1.1/xnm&quot;
+   xmlns:jcs=&quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;&gt;
+   &lt;xsl:import href=&quot;../import/junos.xsl&quot;/&gt;
+   &lt;xsl:template match=&quot;configuration&quot;&gt;
+     &lt;!-- Find all configured BGP Sessions with the ttl-security macro --&gt;
+     &lt;xsl:variable name=&quot;ttl&quot; select=&quot;protocols/bgp/group/neighbor/apply-macro[name = &amp;quot;ttl-security&amp;quot;]&quot;/&gt;
+     &lt;!-- Configure multihop with TTL 255 for the matched sessions --&gt;
+     &lt;xsl:for-each select=&quot;$ttl&quot;&gt;
+       &lt;xsl:call-template name=&quot;jcs:emit-change&quot;&gt;
+         &lt;xsl:with-param name=&quot;tag&quot; select=&quot;&amp;quot;transient-change&amp;quot;&quot;/&gt;
+         &lt;xsl:with-param name=&quot;dot&quot; select=&quot;..&quot;/&gt;
+         &lt;xsl:with-param name=&quot;content&quot;&gt;
+           &lt;multihop&gt;
+             &lt;ttl&gt;
+               &lt;xsl:value-of select=&quot;255&quot;/&gt;
+             &lt;/ttl&gt;
+           &lt;/multihop&gt;
+         &lt;/xsl:with-param&gt;
+       &lt;/xsl:call-template&gt;
+     &lt;/xsl:for-each&gt;
+     &lt;!-- Build IPv4 and IPv6 prefix-lists of the GTSM neighbor addresses --&gt;
+     &lt;transient-change&gt;
+       &lt;policy-options&gt;
+         &lt;prefix-list replace=&quot;replace&quot;&gt;
+           &lt;name&gt;GTSM-IPV4-NEIGHBORS&lt;/name&gt;
+           &lt;xsl:for-each select=&quot;$ttl&quot;&gt;
+             &lt;xsl:if test=&quot;contains(../name, &amp;quot;.&amp;quot;)&quot;&gt;
+               &lt;prefix-list-item&gt;
+                 &lt;name&gt;
+                   &lt;xsl:value-of select=&quot;../name&quot;/&gt;
+                 &lt;/name&gt;
+               &lt;/prefix-list-item&gt;
+             &lt;/xsl:if&gt;
+           &lt;/xsl:for-each&gt;
+         &lt;/prefix-list&gt;
+         &lt;prefix-list replace=&quot;replace&quot;&gt;
+           &lt;name&gt;GTSM-IPV6-NEIGHBORS&lt;/name&gt;
+           &lt;xsl:for-each select=&quot;$ttl&quot;&gt;
+             &lt;xsl:if test=&quot;contains(../name, &amp;quot;:&amp;quot;)&quot;&gt;
+               &lt;prefix-list-item&gt;
+                 &lt;name&gt;
+                   &lt;xsl:value-of select=&quot;../name&quot;/&gt;
+                 &lt;/name&gt;
+               &lt;/prefix-list-item&gt;
+             &lt;/xsl:if&gt;
+           &lt;/xsl:for-each&gt;
+         &lt;/prefix-list&gt;
+       &lt;/policy-options&gt;
+     &lt;/transient-change&gt;
+   &lt;/xsl:template&gt;
+ &lt;/xsl:stylesheet&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

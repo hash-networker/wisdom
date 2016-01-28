@@ -1,0 +1,180 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Show version and haiku</title>
+    <ns>0</ns>
+    <id>1414</id>
+      <sha1>b6rrvtfbr2cqtpogyc3766gmcvr4cvk</sha1>
+    <revision>
+      <id>4162</id>
+      <timestamp>2011-03-04T13:54:21Z</timestamp>
+      <contributor>
+        <username>Anuragkothari</username>
+        <id>1548</id>
+      </contributor>
+      <comment>Added more Haikus from &quot;show version and haiku&quot;</comment>
+      <text xml:space="preserve" bytes="3237">== Examples ==
+
+        A little lightning
+        A fiber-seeking back-hoe
+        There goes my weekend
+
+        TTL down one
+        the end nearer with each hop
+        little packet, poof.
+
+        'show version and blame'
+        Gave away too many names
+        Now you get haiku
+
+        Just like mosquitoes
+        Bugs pepper all my source code
+        Keeps me off the streets
+
+        Shiny leather pants
+        Why don't they squeak when they kick?
+        Is _that_ the secret?
+
+        Economy stinks
+        Stock price hits another low
+        Stay laser focused
+
+        gdb and me
+        joyfully watching bugs flee
+        working happily
+
+        New router: 'Type-R.'
+        Chrome faceplate and neon lights!
+        Needs a big bat wing.
+
+        Haiku springs from life
+        Like worms spring from fresh roadkill
+        Well, maybe not quite
+
+        Rest now, triumphant
+        Ye are more than Conquerors
+        Rest, unforgotten
+
+        Stevie Ray plays on
+        The crushing weight of the blues
+        Claims another soul
+
+        One fish in the tank
+        Will he last another week
+        Poor little mutant
+
+        A fine spray of snow
+        Try to make that perfect stop
+        Hey! Didn't fall down!
+
+        Help me, Obi-Wan
+        I just saw Episode Two
+        You're my only hope
+
+        IS-IS screams,
+        BGP peers are flapping:
+        I want my mommy!
+
+        IS-IS sleeps.
+        BGP peers are quiet.
+        Something must be wrong.
+
+        Look, mama, no hands!
+        Only one finger typing.
+        Easy: commit scripts.
+
+        Weeks of studying,
+        Days of lab exercises:
+        JNCIE.
+
+        Not just the blue sky
+        Nor the mountains, nor the sea
+        Lucky live N.C.
+
+        Glorious morning
+        Well beyond what I deserve
+        Stretch myself and grow
+
+        Blessed are the meek:
+        They shall inherit the earth.
+        Can I have the moon?
+
+        Another day dies
+        More joy than I can fathom
+        Yet more tomorrow
+
+        Amazing photons
+        Carry our data worldwide
+        Never seem to stop
+
+        Holiday spirit
+        Christmas comes but once a year
+        Keep it shining bright
+
+        My session is dead:
+        Forgot to commit confirm.
+        Where are my car keys?
+
+        ... hush puppies.... good beer ...
+        ... the sea just before sunset ...
+        ... living like a king ...
+
+        Nothing feels as good
+        Arms filled with wiggling children
+        So much hope and love
+
+        Fish don't like the cold
+        Even stupid birds head south
+        I agree with them
+
+        Now that Zion's safe,
+        can they find a better place
+        to get some sweaters?
+
+        3am; darkness;
+        Maintenance window closing.
+        Safety net: rollback.
+
+        Juniper babies
+        The next generation starts
+        Gotta get more sleep
+
+        They now make a soap
+        With caffeine infused in it
+        'A truly clean buzz'
+
+        An ache you can taste
+        Be sore as heck tomorrow
+        One more shot on goal
+
+== History ==
+
+The command &quot;show version and haiku&quot; is an [[easter egg]] intended to replace the old &quot;[[show version and blame]]&quot;.</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,88 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Unnamed AS-PATH and Community references</title>
+    <ns>0</ns>
+    <id>1497</id>
+      <sha1>jdk6ylv2h5vc42zlbnc5g1bi24flly4</sha1>
+    <revision>
+      <id>3203</id>
+      <timestamp>2007-06-07T04:35:44Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>[[ER Numeric AS SET use]] moved to [[ER Unnamed AS-PATH and Community references]]</comment>
+      <text xml:space="preserve" bytes="1515">== Problem ==
+Currently, [[JUNOS]] requires that AS-PATH and BGP Community definitions be named, and that you reference those elements by name within policy-statements. While this makes sense for many configurations where you want to re-use the AS-PATH or Community definitions, it doesn't make sense for every configuration. When the element is referenced only once, for example in its use as a &quot;quick hack&quot;, creating a named element clutters the configuration and adds unnecessary steps across multiple configuration levels.
+
+For example:
+
+ policy-option {
+     policy-statement example {
+         term example {
+             from {
+                 as-path aspath_name;
+                 community community_match_name;
+             }
+             then community add community_add_name;
+             ...
+         }
+     }
+     as-path aspath_name &quot;.*1234.*&quot;;
+     community match_name members 1234:[12345]...;
+     community add_name members 1234:1111;
+ }
+
+== Solution ==
+
+Allow users to directly configure simple AS-PATH and BGP Community elements without creating and naming them under the policy-options level. The implementation is fairly straight forward, functioning similarly to &quot;compiler generated variable names&quot;.
+
+For example:
+
+ policy-option {
+     policy-statement example {
+         term example {
+             from {
+                 as-path &quot;.*1234.*&quot;;
+                 community 1234:1111;
+             }
+             ...
+         }
+     }
+ }
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

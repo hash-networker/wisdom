@@ -1,0 +1,60 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>PIC compatibility</title>
+    <ns>0</ns>
+    <id>1566</id>
+      <sha1>kkh9bkud07eijko18sgzc8yk7cam445</sha1>
+    <revision>
+      <id>3895</id>
+      <timestamp>2010-03-03T22:27:07Z</timestamp>
+      <contributor>
+        <username>SiD3WiNDR</username>
+        <id>17</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="1015">{{danger}}
+
+P- Style pics are officially made for the M20 and M40 series, they also work in the M40e, M160, M320 when using a FPC1.
+Unofficially these pics also work with the M5 and M10 routers, however without any eject handle its very hard to get the pics removed. There are several hacks: [[M20_PIC_hotswapping]] to partially solve this.
+
+PE- Style pics are officially made for the M5(i)/M7i/M10(i) series.
+Unofficially they also work in the M40e, M160, M320 when using a FPC1 as well as M20/M40. 
+
+PC- Style pics are made for the M320/T320/T640 series.
+
+PD- Style pics are made for the T640 and offer 40G throughput.
+
+PB- Style pics are made for the M40e/M160/T320/T640 series. Some PB pics (type 1) can be used in the lower M-series (5/10/20 etc) when the faceplate is removed. 
+
+I- Style pics are quad wide (including full FPC) pics for the M20/M40 series. (e.g. OC48 Interfaces, Quad SX Gigabit Interfaces)
+
+IB- Style pics are quad wide  (including full FPC) pics for the M160 series. (e.g. OC192 interfaces)</text>
+    </revision>
+  </page>
+</mediawiki>

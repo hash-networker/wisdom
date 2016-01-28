@@ -1,0 +1,139 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>JunOS 7.3 kldstat</title>
+    <ns>0</ns>
+    <id>1503</id>
+      <sha1>1mdtoivy8o5d2i5tscoaphcx1g62n07</sha1>
+    <revision>
+      <id>2028</id>
+      <timestamp>2005-08-22T20:45:14Z</timestamp>
+      <contributor>
+        <username>Ras</username>
+        <id>3</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2738"> Id Refs Address    Size     Name
+ 1    3 0xc0100000 52af34   kernel
+        Contains modules:
+                Id Name
+                 1 rootbus
+                 2 pcic/pccard
+                 3 isa/isahint
+                 4 isa/orm
+                 5 isa/pnp
+                 6 mecia/pccard
+                 7 scterm-sc
+                 8 scrndr-vga
+                 9 vn
+                10 pci/pcic
+                11 pcib/pci
+                12 pci/pcib
+                13 pci/isab
+                14 pci/chip
+                15 pci/ign
+                16 atapci/ata
+                17 root/nexus
+                18 isa/ata
+                19 isa/pcic
+                20 isa/fdc
+                21 pccard/fdc
+                22 fdc/fd
+                23 nexus/npx
+                24 nexus/pcib
+                25 atkbdc/atkbd
+                26 pccard/ata
+                27 isa/atkbdc
+                28 atkbdc/psm
+                29 isa/sio
+                30 pccard/sio
+                31 pci/sio
+                32 isa/sc
+                33 isa/vga
+                34 pci/atapci
+                35 isab/isa
+                36 nexus/isa
+                37 pci/scs
+                38 em_pci
+                39 ichsmb_pci
+                40 mcs
+                41 cb
+                42 smb
+                43 fxp_pci
+                44 b5700_pci
+                45 bcm56xx_pci
+                46 null
+                47 cd9660
+                48 procfs
+                49 mfs
+                50 nfs
+                51 devfs
+                52 ufs
+                53 msdos
+                54 if_vpn_tun
+                55 if_ae
+                56 if_pfe_atm
+                57 if_pfe_ctlr
+                58 if_pfe_ds0
+                59 if_pfe_ds1
+                60 if_pfe_ds3
+                61 if_pfe_eia530
+                62 if_pfe_es
+                63 ipsec_sadb
+                64 if_pfe_ge
+                65 if_pfe_ggsn
+                66 if_pfe_monitor
+                67 if_pfe_services
+                68 if_pfe_pppoe
+                69 if_pfe_ml
+                70 if_pfe_ls
+                71 if_pfe_pos
+                72 if_pfe_sonet
+                73 if_sa
+                74 if_pfe_tap
+                75 if_dsc
+                76 if_gre
+                77 resync_re
+                78 resync_pfe
+                79 peer_init
+                80 rt_pfe
+                81 peer_pic
+                82 if_ipip
+                83 if_pfe_isdn
+                84 if_pfe_dialer
+                85 if_loop
+                86 if_lsi
+                87 if_pime
+                88 if_pimd
+                89 if_mt
+                90 if_lt
+                91 elf
+                92 shell
+ 2    1 0xc68a1000 16000    ipsec.ko</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,109 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Converted jnpr xml conf to simple data struct</title>
+    <ns>0</ns>
+    <id>2149</id>
+      <sha1>8blh0jt5zbj5f8epgo7g5dxuig60zq5</sha1>
+    <revision>
+      <id>4341</id>
+      <timestamp>2011-10-23T19:32:07Z</timestamp>
+      <contributor>
+        <username>Jollyjoob</username>
+        <id>1662</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2836">Here is a quick demo of a simple way to build python data structures from Junos xml format config. Most of the code in the xml2data module is taken and adpated from the python activestate recipe site. The pastebin link includes the xml2data module imported in the example. Obviously pythonic ninjas will be comfortable with the full complex power of xml and python. The below is intended as a helpfule hint for network engineers capable of reading and writing pigeon python and looking to make quick, dirty and useful script for configuration parsing. :-)
+http://pastebin.com/9Q32HU2Q
+ &lt;br&gt;
+ joob-mac:Desktop Phill$ python
+ Python 2.7.1 (r271:86832, Jun 16 2011, 16:59:05) 
+ [GCC 4.2.1 (Based on Apple Inc. build 5658) (LLVM build 2335.15.00)] on darwin
+ Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+ &gt;&gt;&gt;
+ 
+ # Make sure you have the xml module install and the xml2data module in
+ # your python path. You can check you python path like this.
+ 
+ &gt;&gt;&gt; import sys
+ &gt;&gt;&gt; sys.path
+ 
+ 
+ # if all is good import the xml2data module
+ 
+ &gt;&gt;&gt; import xml2data
+ 
+ # path to the xml format file. You should trim the file so the outermost tags
+ # is &lt;configuration&gt; &lt;\configuration&gt;. So basically remove the rpc tags.
+ # might be best to create this with 'show conf | disp inher | disp xml'
+ 
+ &gt;&gt;&gt; cfg_file = '/Users/Phill/Dev/tools/some_rtrs_jnpr_cfg.xml'
+ &gt;&gt;&gt; 
+ 
+ # pass the xml file to the xml_jcfg2data method.
+ 
+ &gt;&gt;&gt; jcfg_data = xml2data.xml_jcfg2data(cfg_file)
+ &gt;&gt;&gt; 
+ 
+ # jcfg_data is an object containing the cfg as a data structure. You can access
+ # it with OOB syntax. For example jcfg_data.bridge_domains.domain would return
+ # an array for all bridge-domains.
+ #
+ # More useful might be a for loop like 'for bd in bridge_domains.domain'
+ # This would make a bd object for each iteration in the loop.
+ # Each step of the loop is an individual bridge domains object.
+ # We could then do something like 'print bd.name' in the loop to print each
+ # bridge domains name.
+ #
+ # for for bd in bridge_domains.domain:
+ #    print bd.name
+ #
+ 
+ # Here we can do something similar for interfaces but only for one element in
+ # an array of interfaces
+ 
+ &gt;&gt;&gt; jcfg_data.interfaces.interface[0]
+ {apply_groups:u'MTU-GROUP', description:u'linknet ae1-RFAD07_43-RFAD06_43 GEF1',
+ gigether_options:{ieee_802_3ad:{bundle:u'ae1'}, no_auto_negotiation:''},
+ name:u'ge-0/0/0'}
+ &gt;&gt;&gt; 
+ 
+ # if we omitted the [0], element index, it would return a whole mess of
+ # interfaces. the entire array
+ 
+ # for ifd in jcfg_data.interfaces.interface:
+ #    if 'description' is in ifd:
+ #        print '%s has description %s' % (ifd.name, ifd.description)
+ #    else:
+ #        print 'WTF? %s has no description' % ifd.name
+ 
+ # The above would print the description of a major interface if it has one,
+ # or complain if it doesn't have one.
+ &lt;/nowiki&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

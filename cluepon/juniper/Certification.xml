@@ -1,0 +1,95 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Certification</title>
+    <ns>0</ns>
+    <id>1304</id>
+      <sha1>a408f3wdwie7r89ej26f5qmxgsoqk8c</sha1>
+    <revision>
+      <id>4080</id>
+      <timestamp>2010-11-18T10:37:26Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4043 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]]) (vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="1720">Juniper has a certification program called the Juniper Networks Technical Certification Program (JNTCP). The program is broken down into two tracks: One focused towards service provider environments and a second focused towards enterprise environments. Several certifications are available within each track customized to particular hardware platforms. 
+The four primary certifications available from Juniper in order of difficulty are as follows:
+
+* Juniper Networks Certified Internet Associate ([[JNCIA]])
+* Juniper Networks Certified Internet Specialist ([[JNCIS]])
+* Juniper Networks Certified Internet Professional ([[JNCIP]])
+* Juniper Networks Certified Internet Expert ([[JNCIE]])
+
+Due to the wide array of hardware platforms available from Juniper Networks, not every certification is available for every platform or track. Certification availability is as follows:
+
+ Service Provider Track:
+
+M/T Series
+* [[JNCIA-M]]
+* [[JNCIS-M]]
+* [[JNCIP-M]]
+* [[JNCIE-M]]
+
+[[E series]]
+* JNCIA-E
+* JNCIS-E
+* JNCIP-E
+
+ Enterprise Routing Track:
+
+Enterprise Routing (Formerly [[J Series]])
+* [[JNCIA-ER]]
+* JNCIS-ER
+* JNCIE-ER
+
+Firewall/VPN
+* JNCIA-FWV
+* [[JNCIS-FWV]]
+
+Intrusion Detection &amp; Prevention
+* JNCIA-IDP
+
+SSL
+* JNCIA-SSL
+
+WAN Acceleration
+* JNCIA-WX
+
+Application Acceleration
+* JNCIA-DX
+
+== External Links ==
+* [http://www.juniper.net/training/certification/ Juniper's certification page]
+
+* [http://www.juniper.net/training/technical_education/ ] Learning Management System
+Course registration form with a complete Learning Management System (L5). You will now be able to track your learning progress, create learning plans, search and register for available class offerings, and more through the new online EMS!</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,49 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>E series</title>
+    <ns>0</ns>
+    <id>1804</id>
+      <sha1>l0p0qgi1jkfdu2cyits284s19uiebye</sha1>
+    <revision>
+      <id>3106</id>
+      <timestamp>2007-04-18T16:54:23Z</timestamp>
+      <contributor>
+        <username>Atstester</username>
+        <id>498</id>
+      </contributor>
+      <comment>Priviledged exec mode password discussion</comment>
+      <text xml:space="preserve" bytes="250">How do you set a Privileged Exec password of test in an ERX?
+We had a discussion with some of the colleagues and according
+to me it is &quot;enable password 10 test&quot; but some of my colleagues
+go for &quot;enable password 0 mypassword&quot;
+
+What would you recommend</text>
+    </revision>
+  </page>
+</mediawiki>

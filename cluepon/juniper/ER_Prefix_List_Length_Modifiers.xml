@@ -1,0 +1,124 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Prefix List Length Modifiers</title>
+    <ns>0</ns>
+    <id>1354</id>
+      <sha1>dl2m88ohqjca30v9s44jy5p3ho72si3</sha1>
+    <revision>
+      <id>2500</id>
+      <timestamp>2005-11-12T23:41:18Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3236">== Problem ==
+
+Currently, a [[JunOS]] &quot;prefix-list&quot; is simply a list of prefixes, with no entry &quot;modifiers&quot; that allow matching of more-specific or less-specific routes, such as &quot;upto /24&quot; and &quot;orlonger&quot;. This is very different from the way that [[Cisco]] handles prefix-lists. [[Cisco]] allows each prefix-list entry to be tagged with &quot;modifiers&quot; such as &quot;le&quot; and &quot;ge&quot;.
+
+Unfortunately, this lack of modifiers prohibits the use of prefix-lists in many prefix filtering roles, such as restricting the announcements of a BGP speaking customer to a known/registered set of prefixes. To achieve the modifier functionality, a unique policy-statement must be written, such as:
+
+ policy-statement CUSTOMER:AS1234 {
+     term routes {
+         from {
+             route-filter 1.2.0.0/16 upto /24;
+             route-filter 2.3.0.0/19 upto /24;
+             route-filter 3.4.0.0/18 upto /24;
+             ...
+         }
+         then next policy;
+     }
+     then reject;
+ }
+
+However, prefix-lists do have other valuable uses. One area where they have exceptional functionality is in packet filtering. You may not be able to apply [[RPF]] strict-mode on a BGP speaking customer due to possible asynchronous routing, but it may be much more feasible to filter their packets to only source addresses which have been registered for BGP announcement. This would be configured as:
+
+
+ policy-options {
+     prefix-list CUSTOMER:AS1234 {
+         1.2.0.0/16;
+         2.3.0.0/19;
+         3.4.0.0/18;
+         ...
+     }
+ }
+ firewall {
+     filter CUSTOMER:AS1234 {
+         term RPF-allow {
+             from {
+                 source-prefix-list CUSTOMER:AS1234;
+             }
+             then accept;
+         }
+         term RPF-deny {
+             then discard;
+         }
+     }
+ }
+
+Unfortunately, the above solution requires unnecessarily duplicating the customer's prefix list multiple times, in different sections of the configuration.
+
+== Potential Solution #1 ==
+
+Allow users to specify prefix modifiers inside the prefix-list, similar to [[Cisco]]'s configuration style.
+
+For example:
+
+ policy-options {
+     prefix-list CUSTOMER:AS1234 {
+         1.2.0.0/16 upto /24;
+         2.3.0.0/19 upto /24;
+         3.4.0.0/18 upto /24;
+         ...
+     }
+ }
+
+== Potential Solution #2 ==
+
+Allow users to apply a prefix-list modifier at the root level of the invocation, which would be applied to all prefixes within the list. This is powerful functionality, though ultimately not as flexible as Potential Solution #1. An example includes:
+
+ policy-statement CUSTOMER:AS1234 {
+     term routes {
+         from {
+             prefix-list CUSTOMER:AS1234 upto /24;
+         }
+         then next policy;
+     }
+     then reject;
+ }
+
+The two solutions can also complement each other nicely, with an option for the invocation modifier to override or not-override the prefix-list defined modifiers. This functionality would prove to be useful when implementing separate policies for normal Internet routing (where upto /24 is normal) and customer driven BGP blackholes (where upto /32 is desired, but only within the local network).
+
+== Status ==
+
+A partial implementation of Solution #2 is implemented in [[JunOS]] 7.4.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

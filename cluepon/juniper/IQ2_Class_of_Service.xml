@@ -1,0 +1,49 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>IQ2 Class of Service</title>
+    <ns>0</ns>
+    <id>1921</id>
+      <sha1>hygdlajhcy9rcdcg6omx2imxos0675n</sha1>
+    <revision>
+      <id>3492</id>
+      <timestamp>2008-05-29T15:23:45Z</timestamp>
+      <contributor>
+        <username>Alastair</username>
+        <id>223</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1612">IQ2 PIC Class of Service (CoS, aka Quality of Service, QoS) is a bit of a dark art due to gaps in the documentation.  This page aims to document things that are not in the Juniper documentation or are but are written ambiguously.
+
+* Multi-field classification with regular firewall filters happens '''after''' ingress scheduling.  Simple filters allow classification before ingress scheduling but cannot match on DSCP values, although the [http://www.juniper.net/techpubs/software/junos/junos91/swconfig-policy/configuring-simple-filters.html JUNOS documentation] does not mention this.
+
+* A &lt;code&gt;high&lt;/code&gt; priority queue is always implemented as &lt;code&gt;strict-high&lt;/code&gt;, although the documentation reads as if a &lt;code&gt;high&lt;/code&gt; priority queue is implemented as &lt;code&gt;strict-high&lt;/code&gt; '''only''' when more than one &lt;code&gt;medium-high&lt;/code&gt;, &lt;code&gt;high&lt;/code&gt;, or &lt;code&gt;strict-high&lt;/code&gt; scheduler is configured in a scheduler-map: 
+ 
+&lt;blockquote&gt;Gigabit Ethernet IQ2 PICs support only one queue in the scheduler map with medium-high, high, or strict-high priority. If more than one queue is configured with high or strict-high priority, the one that appears first in the configuration is implemented as strict-high priority. This queue receives unlimited transmission bandwidth. The remaining queues are implemented as low priority, which means they might be starved.  (From [http://www.juniper.net/techpubs/software/junos/junos91/swconfig-cos/differences-between-gigabit-ethernet-iq-and-gigabit-ethernetiq2-pics.html Differences Between Gigabit Ethernet IQ and Gigabit Ethernet IQ2 PICs].)&lt;/blockquote&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

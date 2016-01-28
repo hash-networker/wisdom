@@ -1,0 +1,109 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER channelized parent config</title>
+    <ns>0</ns>
+    <id>1564</id>
+      <sha1>2fqtnzptq9bly9toupztcmgd36jyms7</sha1>
+    <revision>
+      <id>2457</id>
+      <timestamp>2005-10-25T16:49:20Z</timestamp>
+      <contributor>
+        <username>Bleearg</username>
+        <id>141</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1667">== Problem ==
+
+Configurations for the parent channelized device must be configured in the first channel:
+
+
+ interfaces {
+     t1-2/1/0:0 {
+         t3-options {
+             no-cbit-parity;
+         }
+     }
+     ...
+     t1-2/1/1:0 {
+         t3-options {
+             no-cbit-parity;
+         }
+     }
+     ...
+     t1-2/1/2:0 {
+         t3-options {
+             no-cbit-parity;
+         }
+     }
+ }
+
+If a circuit is configured on the first channel, then de-provisioned, the config for the parent device is also removed.  This has the effect of causing all circuits on the parent device to go down.
+
+== Workaround ==
+
+A workaround is to configure the channelized device with a 'group' and always make sure that the first channel is always configured (how to do this is up in the air - possibly with a config-check script which can run prior to a commit?):
+
+ t3-configs {
+     interfaces {
+         &lt;t1-*/*/*:0&gt; {
+             t3-options {
+                 no-cbit-parity;
+             }
+         }
+     }
+ }
+ interfaces {
+     apply-groups t3-configs;
+     t1-2/1/0:0 {
+         disable;
+     }
+ }
+
+== Solution ==
+
+Configuration of the parent channelized device should be done separately from the first channel:
+
+ interfaces {
+      ct3-2/1/0 {
+           no-cbit-parity;
+      }
+      t1-2/1/0:1 {
+           description Circuit B;
+           unit 0 {
+                family inet {
+                     address 192.2.0.1/30;
+                }
+           }
+      }
+ }
+
+== Status ==
+A solution can be achieved with Junos 7.4 using a [http://www.juniper.net/techpubs/software/junos/junos74/swconfig74-scripts/html/commit-scripts-overview.html#1033561 Commit Script].</text>
+    </revision>
+  </page>
+</mediawiki>

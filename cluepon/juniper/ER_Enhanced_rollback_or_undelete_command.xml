@@ -1,0 +1,125 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Enhanced rollback or undelete command</title>
+    <ns>0</ns>
+    <id>1795</id>
+      <sha1>d7lpsg1t2q8nirzxaisy30s2j0vjvsl</sha1>
+    <revision>
+      <id>3063</id>
+      <timestamp>2007-02-19T05:39:41Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <minor/>
+      <comment>[[ER Configuration undelete command]] moved to [[ER Enhanced rollback or undelete command]]</comment>
+      <text xml:space="preserve" bytes="2892">== Problem ==
+JUNOS software provides an extremely powerful set of commands to manage configuration changes, and to manage reverting to previous configurations when necessary. However, one area which is missing is that of a partial rollback, or &quot;undelete&quot; command.
+
+Currently, if you delete a portion of your configuration (such as when doing a cleanup of a router configuration) and later discover that you would like to restore that portion of the configuration, you must either abandon the current candidate configuration completely (rollback) and start over, or attempt to locate the specific configuration which has been changed and re-apply it. An example of the commands necessary to do this is:
+
+ [edit]
+ user@router# commit check 
+ [edit]
+   'policy-options'
+     Policy error: EXAMPLE prefix-list referenced (in term example) but not defined
+ 
+ [edit]
+ user@router# edit policy-options 
+ 
+ [edit policy-options]
+ user@router# show | compare rollback 0
+ ...
+ -  prefix-list EXAMPLE {
+ -      1.2.3.0/24;
+ -      2.3.4.0/24;
+ -      3.4.0.0/18;
+ -  }
+ ...
+ 
+ [edit policy-options]
+ user@router# load merge terminal relative
+   prefix-list EXAMPLE {
+       1.2.3.0/24;
+       2.3.4.0/24;
+       3.4.0.0/18;
+   }
+
+This process can be time-consuming in the event of a large set of changes in your candidate configuration, and requires that you place the subsection of configuration into an external text editor to remove the leading &quot;-&quot; character from the compare diff.
+
+
+== Solution 1 ==
+
+Implement a command which allows users to directly recover portions of the configuration from the previous version (or an arbitary version). An example of such a command to restore whole configuration blocks might be an &quot;undelete&quot; command.
+
+For example, to restore portions of the candidate configuration from the previously committed version:
+
+ [edit policy-options]
+ user@router# undelete prefix-list EXAMPLE
+
+Another example may be to restore portions of the candidate configuration from any arbitrary configuration version:
+
+ [edit policy-options]
+ user@router# undelete rollback 1 prefix-list EXAMPLE
+
+== Solution 2 ==
+
+Extend the &quot;rollback&quot; command to work with sub-sections of the configuration. For example:
+
+ [edit policy-options]
+ user@router# rollback 0 prefix-list EXAMPLE
+
+ [edit policy-options]
+ user@router# rollback 0 prefix-list EXAMPLE
+
+ [edit]
+ user@router# rollback 1 policy-options
+
+== Other Enhancements ==
+
+* An optional &quot;detail&quot; command which displays the diff of what changes have occured in the rollback.
+* Displaying which sub-sections of the configuration have changes with a &quot;?&quot; command in the CLI.
+
+For example:
+
+ [edit policy-options]
+ user@router# rollback 0 ?
+ Possible completions:
+   &lt;[Enter]&gt;            Execute this command
+   prefix-list EXAMPLE  Changed at 2007-02-18 22:58:43 EST by user via cli
+   ...
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

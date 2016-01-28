@@ -1,0 +1,112 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>SCB</title>
+    <ns>0</ns>
+    <id>1323</id>
+      <sha1>b22kbijhrlmsl79azk229bc4zos5jx0</sha1>
+    <revision>
+      <id>2192</id>
+      <timestamp>2005-08-23T18:41:59Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>[[Category:Image needed]] [[Category:Stub]]</comment>
+      <text xml:space="preserve" bytes="2107">[[Image:SCB_Front.jpg|thumb|right|System Control Board (SCB)]]
+
+More stuff here.
+
+[[Category:Hardware]]
+[[Category:Components]]
+[[Category:Switch Boards]]
+
+
+&lt;graphviz&gt;
+graph G {
+label = &quot;M40 SCB&quot;;
+size= &quot;10,16&quot;;
+fontsize=&quot;10&quot;;
+node [fontsize = &quot;6&quot;];
+edge [fontsize = &quot;4&quot;];
+         subgraph cluster_0 {
+                label = &quot;CPU Complex&quot;;
+		&quot;603e&quot; -- &quot;Motorola MPC106&quot; [ label = &quot;Data&quot; ];
+                &quot;603e&quot; -- &quot;Motorola MPC106&quot; [ label = &quot;Addr&quot; ];
+                &quot;603e&quot; -- &quot;Motorola MPC106&quot; [ label = &quot;Ctl&quot; ];
+                &quot;Motorola MPC106&quot; -- DRAM;
+                &quot;Motorola MPC106&quot; -- DUART;
+                &quot;603e&quot; -- &quot;L2 Cache 256k&quot; [ label = &quot;Data&quot; ];
+                &quot;603e&quot; -- &quot;L2 Cache 256k&quot; [ label = &quot;Addr&quot; ];
+                &quot;603e&quot; -- &quot;L2 Cache 256k&quot; [ label = &quot;Ctl&quot; ];
+                &quot;Motorola MPC106&quot; -- &quot;PCI Bus&quot;;
+                &quot;603e&quot; -- DRAM;
+                &quot;603e&quot; -- DUART;
+               
+                DUART -- &quot;RS-232 interface&quot;;
+       }
+
+        subgraph cluster_1 {
+        label = &quot;Backplane&quot;;
+        &quot;Host Interface&quot;;
+        &quot;Link to A1/A2&quot;;
+        &quot;CPU I2C Bus&quot;;
+        &quot;Link to N1&quot;;
+        &quot;SRAM I2C Bus&quot;;
+        &quot;SONET Clock out&quot;;
+        &quot;Primary I2C Bus&quot;;
+        &quot;I2C Control&quot;;
+        &quot;From SONET ref&quot;;
+        &quot;125mHz clock Bus&quot;;
+        &quot;JTAG Bus&quot;;      
+        }
+DRAM -- &quot;CPU I2C Bus&quot;;
+&quot;PCI Bus&quot; -- &quot;100mbit interface&quot; -- &quot;Host Interface&quot;;
+&quot;PCI Bus&quot; -- &quot;C Chip&quot; -- &quot;Link to A1/A2&quot;;
+&quot;C Chip&quot; -- &quot;Routing table SRAM&quot;;
+&quot;C Chip&quot; [URL=&quot;C Chip&quot;];
+&quot;Routing table SRAM&quot; -- &quot;SRAM I2C Bus&quot;;
+&quot;PCI Bus&quot; -- &quot;PCI bridge FPGA&quot; -- &quot;ISA Bus&quot;;
+&quot;ISA Bus&quot; -- &quot;I2C controller&quot; -- &quot;Primary I2C Bus&quot;;
+&quot;ISA Bus&quot; -- &quot;Hub Controller&quot; -- &quot;10mbit hub&quot;;
+&quot;10mbit hub&quot; -- &quot;Link to N1&quot; [ label = &quot;8 links&quot; ];
+&quot;PCI Bus&quot; -- &quot;10mbit interface AMD&quot; -- &quot;10mbit hub&quot;;
+&quot;PCI Bus&quot; -- &quot;JTAG Interface&quot; -- &quot;JTAG Bus&quot;;
+&quot;ISA Bus&quot; -- &quot;Other FPGA&quot; -- &quot;I2C Control&quot;;
+&quot;Other FPGA&quot; -- &quot;125mHz clock&quot; -- &quot;125mHz clock Bus&quot;;
+&quot;Other FPGA&quot; -- &quot;Led&quot;;
+&quot;Other FPGA&quot; -- &quot;SONET Clock&quot;;
+&quot;From SONET ref&quot; -- &quot;SONET Clock&quot; -- &quot;SONET Clock out&quot;;
+       } 
+}
+&lt;/graphviz&gt;
+[[Category:Image needed]] [[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

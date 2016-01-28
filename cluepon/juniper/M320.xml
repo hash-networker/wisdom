@@ -1,0 +1,70 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>M320</title>
+    <ns>0</ns>
+    <id>1290</id>
+      <sha1>glw9cgsqenj4h79cp60tz8i1x4tximx</sha1>
+    <revision>
+      <id>3066</id>
+      <timestamp>2007-02-21T08:58:21Z</timestamp>
+      <contributor>
+        <username>Bvark</username>
+        <id>464</id>
+      </contributor>
+      <minor/>
+      <comment>M320 has only 4 SIBs and needs all four for full redundancy when the box is full of FPC3s.</comment>
+      <text xml:space="preserve" bytes="1567">{{Infobox_router | 
+  product_name = Juniper M320 Router |
+  product_image = [[Image:M320_Front.jpg|200px]] |
+  slots = 8 FPC, 32 PIC |
+  bandwidth = 320 Gbit/s | 
+  fpc = [[type-1]] [[type-2]] [[type-3]] |
+  style = [[PB-Style_PIC|PB-style]] [[PC-Style_PIC|PC-style]]|
+  power = 4 (3+1 redundant) |
+  switch = [[SIB]] 4 (96.25Mpps each)| 
+  date = February 14, 2004 | 
+}}
+
+The [[M320]] ([[codenames|Codename:]] ''Sinatra'') is a member of the [[M-series]] line, but is really just a physically larger version of the [[T320]] internally. This gives it the ability to utilize a greater number of ports, particularly existing [[type-1]] and [[type-2]] ports, but the same [[FPC (generic)]] [[type-3]] and bandwith density as the T320. It is based on the [[gibson architecture]], but is not upgradable to multichassis operation.
+
+The M320's release as a replacement for the older technology of the M160 is very similar to the M40e's release as a replacement for the older technology of the M40. The bandwidth capacity is doubled over the M160 ([[FPC type-3|type-3]] FPCs for the M320 support 2 PICs instead of only 1), preventing this router from being the M160e.
+
+== Innovations ==
+
+The M320 router was the first to ship with the [[RE-4.0]] (1.6GHz) Routing Engine. This Routing Engine was later made available for the [[T-series]] line as well. The M320 is also the first router to with four (4) power supplies, enabling it to use AC power where previous routers of this size could not.
+
+More stuff here.
+
+
+[[Category:Hardware]]
+[[Category:M-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

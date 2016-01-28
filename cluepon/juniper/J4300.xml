@@ -1,0 +1,109 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>J4300</title>
+    <ns>0</ns>
+    <id>2067</id>
+      <sha1>8t48e3ia6psca4777din93akl0cwkhx</sha1>
+    <revision>
+      <id>2892</id>
+      <timestamp>2006-05-03T07:56:08Z</timestamp>
+      <contributor>
+        <username>Bwg</username>
+        <id>70</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1548">{{Infobox_jseries | 
+  product_name = J4300 Router |
+  product_image = [[Image:J4300_Front.jpg|200px|]] |
+  rackspace = 2U |
+  slots = 6 Wan |
+  bandwidth = 16 Mbit/s 80 kpps| 
+  power =  Non-redundant|
+  memory =  256/512MB |
+  flash = 128MB/256MB/512MB/1GB |
+}}
+
+==== Some throughput test results:  ====
+
+Test 1: Full traffic mesh between all 14 ports:
+
+                4300                  
+               Mb/s        PPS          
+       ------------------------ 
+    64b        33.62      65670    
+    128b       48.93      47785   
+    256b       95.40      46582  
+    512b      172.69      42161   
+    1028b     193.75      23559 
+    1280b     195.29      19071 
+    1580b     194.86      15416 
+    64-1514   187.97      29810
+
+
+Test 2: In/Out same PIM for all 14 ports:
+
+                4300                          
+               Mb/s        PPS           
+     ------------------------ 
+   64b        21.92      42813     
+   128b       44.22      43179     
+   256b       86.53      42249     
+   512b      164.17      40080     
+   1028b     224.83      27338    
+   1280b     226.79      22147    
+   1580b     226.19      17895   
+   64-1514   216.42      35213  
+
+
+Detailed Pictures of the J4300:
+
+-------------------------------
+
+Rear-View
+[[Image:J4300_back.jpg]]
+
+Front-View (incl. E1 Card)
+[[Image:J4300_front_incl-E1.jpg]]
+
+Inside the J4300
+[[Image:J4300_inside.jpg]]
+
+[[Image:J4300_inside_main.jpg]]
+
+Inside - RAM
+[[Image:J4300_inside_RAM.jpg]]
+
+__NOTOC__
+
+
+[[Category:Hardware]]
+[[Category:J-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,52 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Op Scripts</title>
+    <ns>0</ns>
+    <id>1823</id>
+      <sha1>jhxon7l0nwyl3pz00mgqctrhp3hd1o3</sha1>
+    <revision>
+      <id>4350</id>
+      <timestamp>2011-11-11T13:50:11Z</timestamp>
+      <contributor>
+        <username>Yeled</username>
+        <id>1068</id>
+      </contributor>
+      <comment>add github link</comment>
+      <text xml:space="preserve" bytes="575">* [[OS_Auto_Tuning_Prefix_Limits|Auto-Tuning Prefix Limits]]
+* [[OS_Peerdown]]
+* [[OS_show-lsp-interface|Show LSPs with interface information]]
+* [[OS_Show_neighbors_prefix_advertised_to|Show BGP neighbors a prefix is advertised to]]
+* [[OS_shbgpsum|Restrict show bgp summary to a single ASN or peer name and by state]]
+* [[Using_OP_Scripts|Using Op Scripts from a Web Server]]
+* [[OS_dom|Make a table out of show interface diagnostic optics]]
+* [[OS_Show_bgp_sum|Show bgp summary with peer groups and descriptions]]
+* [https://github.com/yeled/check-vc EX VCP SNMP graphing]</text>
+    </revision>
+  </page>
+</mediawiki>

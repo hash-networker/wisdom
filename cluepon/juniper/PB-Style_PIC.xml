@@ -1,0 +1,60 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>PB-Style PIC</title>
+    <ns>0</ns>
+    <id>1369</id>
+      <sha1>22z4rpyuu48wnzfelkz46uja3un76w0</sha1>
+    <revision>
+      <id>2175</id>
+      <timestamp>2005-08-23T18:35:58Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>[[Category:Image needed]] [[Category:Stub]]
+[[Category:Image needed]] [[Category:Stub]]</comment>
+      <text xml:space="preserve" bytes="1012">[[Image:PB-PIC_Front.jpg|thumb|right|PB-Style PIC]]
+
+The PB-Style [[PIC]] was the second style introduced by Juniper, originally for the [[M160]] platform. The PB style was later adopted for the [[M40e]] and [[M320]], and continues to be used for [[type-1]] and [[type-2]] [[PIC]]s on the [[T-series]] platforms.
+
+The PB-Style PICs are used for both [[type-1]] and [[type-2]] interfaces. When used for [[type-1]], plastic &quot;rails&quot; as used as spacers to expand the width of the card to fit the PB faceplate, when used for [[type-2]], the PIC electronics are physically wider than the [[type-1]]. The [[type-1]] electronics are the same as the [[P-Style PIC]] and [[PE-Style PIC]], only the faceplate and plastic rails differ.
+
+PB-Style PICs use two large thumbscrews handle insertion and removal of the PIC within the FPC.
+
+[[Image:PB-PIC-type1.jpg|400px|left|Type-1 PB PIC]]
+[[Image:PB-PIC-type2.jpg|400px|right|Type-2 PB PIC]]
+
+
+[[Category:Hardware]]
+[[Category:PICs]]
+[[Category:Image needed]] [[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

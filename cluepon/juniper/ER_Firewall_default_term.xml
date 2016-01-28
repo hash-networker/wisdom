@@ -1,0 +1,113 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Firewall default term</title>
+    <ns>0</ns>
+    <id>1476</id>
+      <sha1>ee1tt3poy8uas81225509r3xdtbrcha</sha1>
+    <revision>
+      <id>3039</id>
+      <timestamp>2007-02-10T20:20:31Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2202">== Problem ==
+
+Often, a firewall filter will be configured with a default action, such as &quot;accept&quot; or &quot;discard&quot;, for packets which do not match any previous terms. A way to express a &quot;default term&quot; or &quot;default action&quot; which always remains at the end of the ruleset when adding new terms is considered very convenient. Juniper implements this concept under its &quot;policy-statement&quot; syntax, with a &quot;from&quot; and &quot;then&quot; statement outside of any term:
+
+ policy-options {
+     policy-statement foo {
+         term term_a {
+             from match_criteria;
+             then match_action;
+         }
+         term term_b {
+             from match_criteria;
+             then match_action;
+         }
+         ...
+         then {
+             default_actions;
+         }
+     }
+ }
+
+However, Juniper's firewall syntax lacks this concept. Currently the only way to implement this is:
+
+ firewall {
+     filter example {
+          term term_a {
+              from match_criteria;
+              then match_action;
+          }
+          term term_b {
+              from match_criteria;
+              then match_action;
+          }
+          ...
+          term default {
+              then discard;
+          }
+     }
+ }
+
+Under this system, when a user adds a new term the term is automatically inserted at the end, requiring the user to do:
+ edit firewall filter example
+ set term new_term ...
+ insert term new_term before term default
+
+== Solutions ==
+
+By adding this concept, in the same way that it is implemented under &quot;policy-statement&quot;, users would be able to explicitly set a &quot;default action&quot; which they know will always stay at the bottom of the filter as the &quot;final term&quot;. This would simplify the use of firewalls, make their use more consistent with other portions of JUNOS, and prevent accidental misconfiguration of firewall filters.
+
+ firewall {
+     filter example {
+          term term_a {
+              from match_criteria;
+              then match_action;
+          }
+          term term_b {
+              from match_criteria;
+              then match_action;
+          }
+          ...
+          then {
+              discard;
+          }
+     }
+ }
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

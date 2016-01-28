@@ -1,0 +1,62 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Using a USB drive to transfer files between router and PC</title>
+    <ns>0</ns>
+    <id>2105</id>
+      <sha1>fvptcmylvvzjkioevi36qp2gqs49puy</sha1>
+    <revision>
+      <id>4227</id>
+      <timestamp>2011-09-01T16:16:21Z</timestamp>
+      <contributor>
+        <username>Jrogers</username>
+        <id>1128</id>
+      </contributor>
+      <comment>''NOTE: /dev/da0s1 is the device name when using a MX series router.  You may find different device name is correct on other series.''</comment>
+      <text xml:space="preserve" bytes="915">By default, USB thumb drives formated in your windows PC, are not readable on your Juniper router.  To mount a FAT/VFAT formatted USB drive on your Juniper router to copy files to/from a router, follow these steps:
+
+&lt;pre&gt;
+user@router&gt; start shell
+% sudo
+Password:
+root@router% mkdir -p /mnt/usb
+root@router% mount_msdosfs /dev/da0s1 /mnt/usb/
+root@router% cp /mnt/usb/jinstall-10.4R3.4-domestic-signed.tgz /var/tmp
+root@router% cp /var/log/messages /mnt/usb/
+root@router% umount /mnt/usb
+root@router% exit
+% exit
+user@router&gt;
+&lt;/pre&gt;
+
+''NOTE: /dev/da0s1 is the device name when using a MX series router.  You may find different device name is correct on other series.''
+
+Here we have created an empty directory in /mnt/usb which can serve as a mount point for the drive, then used mount_msdosfs to mount the drive, then copied a copy files to and from the usb drive, then unmounted the drive so it is safe to remove.</text>
+    </revision>
+  </page>
+</mediawiki>

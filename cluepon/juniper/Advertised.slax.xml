@@ -1,0 +1,85 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Advertised.slax</title>
+    <ns>0</ns>
+    <id>1954</id>
+      <sha1>belpo9mie006yh8xh3prqq5mku8x7j6</sha1>
+    <revision>
+      <id>3643</id>
+      <timestamp>2008-11-21T20:04:14Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <comment>New page:  version 1.0;    ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;  ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;  ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;    import &quot;...</comment>
+      <text xml:space="preserve" bytes="1171"> version 1.0;
+ 
+ ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ 
+ import &quot;../import/junos.xsl&quot;;
+ 
+ var $arguments = {
+     &lt;argument&gt; {
+         &lt;name&gt; &quot;prefix&quot;;
+         &lt;description&gt; &quot;Prefix to examine&quot;;
+     }
+ }
+ 
+ param $prefix;
+ 
+ match / {
+     var $neighbors = jcs:invoke('get-bgp-summary-information');
+ 
+     &lt;op-script-results&gt; {
+         &lt;output&gt; &quot;Prefix &quot; _ $prefix _ &quot; is advertised to the following BGP neighbors:&quot;;
+ 
+         for-each ($neighbors/bgp-peer[peer-state == 'Established']) {
+             var $show_advertised = {
+                 &lt;get-route-information&gt; {
+                     &lt;advertising-protocol-name&gt; &quot;bgp&quot;;
+                     &lt;neighbor&gt; peer-address;
+                     &lt;destination&gt; $prefix;
+                     &lt;terse&gt;;
+                     &lt;exact&gt;;
+                 }
+             };
+ 
+             var $results = jcs:invoke($show_advertised);
+ 
+             if ($results/route-table/rt/rt-destination) {
+                 &lt;output&gt; &quot; * &quot; _ peer-address _ &quot; (&quot; _ description _ &quot;)&quot;;
+             }
+         }
+     }
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

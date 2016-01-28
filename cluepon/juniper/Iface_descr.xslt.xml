@@ -1,0 +1,104 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Iface descr.xslt</title>
+    <ns>0</ns>
+    <id>1832</id>
+      <sha1>ra4n7itvsenws12s8qo69591vzt8s4x</sha1>
+    <revision>
+      <id>3223</id>
+      <timestamp>2007-06-07T06:24:59Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2772"> &lt;?xml version=&quot;1.0&quot; standalone=&quot;yes&quot;?&gt;
+ &lt;xsl:stylesheet version=&quot;1.0&quot;
+   xmlns:xsl=&quot;http://www.w3.org/1999/XSL/Transform&quot;
+   xmlns:junos=&quot;http://xml.juniper.net/junos/*/junos&quot;
+   xmlns:xnm=&quot;http://xml.juniper.net/xnm/1.1/xnm&quot;
+   xmlns:jcs=&quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;&gt;
+   &lt;xsl:import href=&quot;../import/junos.xsl&quot;/&gt;
+   &lt;xsl:template name=&quot;interface_comment&quot;&gt;
+     &lt;xsl:param name=&quot;iface&quot;/&gt;
+     &lt;xsl:param name=&quot;comment&quot;/&gt;
+     &lt;!-- Find all references to the interface name under &quot;protocols&quot; --&gt;
+     &lt;xsl:for-each select=&quot;//protocols//interface[name = $iface]&quot;&gt;
+       &lt;!-- &quot;annotate&quot; a comment onto the interface references --&gt;
+       &lt;xsl:call-template name=&quot;jcs:emit-change&quot;&gt;
+         &lt;xsl:with-param name=&quot;dot&quot; select=&quot;..&quot;/&gt;
+         &lt;xsl:with-param name=&quot;content&quot;&gt;
+           &lt;junos:comment replace=&quot;replace&quot;&gt;
+             &lt;xsl:value-of select=&quot;$comment&quot;/&gt;
+           &lt;/junos:comment&gt;
+           &lt;interface&gt;
+             &lt;name&gt;
+               &lt;xsl:value-of select=&quot;$iface&quot;/&gt;
+             &lt;/name&gt;
+           &lt;/interface&gt;
+         &lt;/xsl:with-param&gt;
+       &lt;/xsl:call-template&gt;
+     &lt;/xsl:for-each&gt;
+   &lt;/xsl:template&gt;
+   &lt;xsl:template match=&quot;configuration&quot;&gt;
+     &lt;!-- Scan interface configurations --&gt;
+     &lt;xsl:for-each select=&quot;interfaces/interface&quot;&gt;
+       &lt;xsl:variable name=&quot;int_comment&quot; select=&quot;jcs:first-of(description, &amp;quot;No Description&amp;quot;)&quot;/&gt;
+       &lt;!-- Comment on Physical Interface references --&gt;
+       &lt;xsl:call-template name=&quot;interface_comment&quot;&gt;
+         &lt;xsl:with-param name=&quot;iface&quot; select=&quot;name&quot;/&gt;
+         &lt;xsl:with-param name=&quot;comment&quot; select=&quot;$int_comment&quot;/&gt;
+       &lt;/xsl:call-template&gt;
+       &lt;!-- Comment on Subinterface references --&gt;
+       &lt;xsl:for-each select=&quot;unit&quot;&gt;
+         &lt;xsl:variable name=&quot;iface&quot; select=&quot;concat(../name, &amp;quot;.&amp;quot;, name)&quot;/&gt;
+         &lt;xsl:variable name=&quot;comment&quot; select=&quot;jcs:first-of(description, ../description)&quot;/&gt;
+         &lt;xsl:choose&gt;
+           &lt;xsl:when test=&quot;string-length($comment)&quot;&gt;
+             &lt;xsl:call-template name=&quot;interface_comment&quot;&gt;
+               &lt;xsl:with-param name=&quot;iface&quot; select=&quot;$iface&quot;/&gt;
+               &lt;xsl:with-param name=&quot;comment&quot; select=&quot;$comment&quot;/&gt;
+             &lt;/xsl:call-template&gt;
+           &lt;/xsl:when&gt;
+           &lt;xsl:otherwise&gt;
+             &lt;xsl:if test=&quot;name != &amp;quot;0&amp;quot;&quot;&gt;
+               &lt;!-- If subint isn't 0, set a &quot;No Description&quot; description --&gt;
+               &lt;xsl:call-template name=&quot;interface_comment&quot;&gt;
+                 &lt;xsl:with-param name=&quot;iface&quot; select=&quot;$iface&quot;/&gt;
+                 &lt;xsl:with-param name=&quot;comment&quot; select=&quot;&amp;quot;No Description&amp;quot;&quot;/&gt;
+               &lt;/xsl:call-template&gt;
+             &lt;/xsl:if&gt;
+           &lt;/xsl:otherwise&gt;
+         &lt;/xsl:choose&gt;
+       &lt;/xsl:for-each&gt;
+     &lt;/xsl:for-each&gt;
+   &lt;/xsl:template&gt;
+ &lt;/xsl:stylesheet&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

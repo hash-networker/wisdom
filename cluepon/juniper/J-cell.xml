@@ -1,0 +1,62 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>J-cell</title>
+    <ns>0</ns>
+    <id>1352</id>
+      <sha1>a310ywiugxirfaa9jn7q188tvapmclq</sha1>
+    <revision>
+      <id>4069</id>
+      <timestamp>2010-11-18T09:42:22Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4062 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]]) (vandalism)</comment>
+      <text xml:space="preserve" bytes="1043">This page needs to be expanded
+
+...
+
+== J-Cells and Bandwidth ==
+
+On [[Martini architecture]] routers, per-FPC bandwidth limitation comes from the [[B-Chip]] to [[A-Chip|A1-Chip]] link, which has a raw bandwidth of 4 Gigabits/sec in each direction. Each J-Cell has an overhead of 16 bytes per 64 bytes of payload, leaving only 3.2 Gigabits/sec for J-Cell payload. Thus each FPC can switch at most in each direction:
+
+&lt;math&gt;\left(\frac{\mbox{4 Gigabits/second}}{\frac{\left((\mbox{64 bytes} \times \frac{\mbox{8 bits}}{\mbox{1 byte}})+(\mbox{16 bytes} \times \frac{\mbox{8 bits}}{\mbox{1 byte}})\right)}{\mbox{J-cell}}}\right) = \mbox{6.25 Megacells/sec}&lt;/math&gt;
+
+It is a common misconception that the limit comes from the SDRAM speed on the FPC, which is also 4 Gigabits/sec (64-bit data path at 125MHz). However, the packets sprayed across the FPCs SDRAM buffer memory are addresses by the [[B-Chip]] as 64-byte words, and do not have any J-Cell overhead.
+
+== See Also ==
+
+*[[FPC Bandwidth]]
+
+[[Category:Router Architecture]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,61 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>EX2500</title>
+    <ns>0</ns>
+    <id>1965</id>
+      <sha1>kxh16hclqvr67kmn1q03zto1f37lmkt</sha1>
+    <revision>
+      <id>3736</id>
+      <timestamp>2009-06-03T17:40:26Z</timestamp>
+      <contributor>
+        <username>Funkboy</username>
+        <id>470</id>
+      </contributor>
+      <minor/>
+      <comment>[[EX-2500]] moved to [[EX2500]]: no dash in product name</comment>
+      <text xml:space="preserve" bytes="834">{{Infobox_switch | 
+  product_name = Juniper EX2500 |
+  product_image = [[Image:EX2500_Front.png|200px]] |
+  type = Fixed (Top-of-rack) |
+  bandwidth = 240gbps | 
+  ru = 1U  |
+  power = 2 (1 + 1 AC) |
+  date = Q2 2009  | 
+}}
+
+To get a 10G ToR switch to market for demanding customers Juniper is OEMing the BNT 10G ToR switch which has identical stats (24 ports of GigE/10GE SFP/SFP+ or direct-attach cables).  Initially the switch runs BNT's IOS-like operating system.  It is unclear if Juniper will port JunOS to this platform or start work on it's own ToR 10G switch that will run JunOS.
+
+Documentation on this device can be found [http://www.juniper.net/techpubs/en_US/release-independent/junos/information-products/pathway-pages/ex-series/hardware/ex2500.html here].
+
+[[Category:Hardware]]
+[[Category:EX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

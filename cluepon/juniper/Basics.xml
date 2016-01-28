@@ -1,0 +1,104 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Basics</title>
+    <ns>0</ns>
+    <id>1305</id>
+      <sha1>fscjmc3gg3elu8vtms01b3gaedo7rq6</sha1>
+    <revision>
+      <id>4139</id>
+      <timestamp>2010-11-24T05:27:51Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1225">&lt;table border=&quot;0&quot; cellpadding=&quot;2&quot; cellspacing=&quot;0&quot; width=&quot;70%&quot;&gt;
+&lt;tr&gt;
+&lt;td width=&quot;40%&quot; valign=&quot;top&quot;&gt;
+*[[T-series]]
+**[[T4000]]
+**[[T1600]]
+**[[T640]]
+**[[T320]]
+**[[TX Matrix]]
+*[[M-series]]
+**[[M320]]
+**[[M120]]
+**[[M160]] ([[EOS]])
+**[[M120]]
+**[[M40e]]
+**[[M40]] ([[EOS]])
+**[[M20]]
+**[[M10i]]
+**[[M10]] ([[EOS]])
+**[[M7i]]
+**[[M5]] ([[EOS]])
+*[[MX-series]]
+**[[MX960]]
+**[[MX480]]
+**[[MX240]]
+**[[MX80]]
+*[[J-series]]
+**[[J6350]]
+**[[J6300]]
+**[[J4350]]
+**[[J4300]]
+**[[J2300]]
+*[[EX-series]]
+**[[EX-3200]]
+**[[EX-4200]]
+**[[EX-8200]]
+*[[FPC]]
+**[[type-1]]
+**[[type-2]]
+**[[type-3]]
+&lt;/td&gt;
+&lt;td width=&quot;60%&quot; valign=&quot;top&quot;&gt;
+*[[Routing Engine]]s
+**[[RE-233|RE-233/RE-1.0]] (Pentium 233MHz) ([[EOS]])
+**[[RE-333|RE-333/RE-2.0]] (Pentium II 333MHz) ([[EOS]])
+**[[RE-600|RE-600/RE-3.0]] (Pentium III 600MHz)
+**[[RE-1600|RE-1600/RE-4.0]] (Pentium IV 1600MHz)
+**[[RE-400|RE-400/RE-5.0]] (Pentium Celeron 400MHz)
+**[[RE-850|RE-850/RE-5.0+]] (Pentium Celeron 850MHz)
+**[[RE-1000]] (Pentium M 1000MHz)
+**[[RE-1300]] (Pentium M 1300MHz)
+**[[RE-2000]] (Pentium M 2000MHz)
+*[[Routing architecture]]s
+**[[Martini architecture]]
+**[[Calvin architecture]]
+**[[Gibson architecture]]
+**[[Trio architecture]]
+* PICs
+** [[IQ2]]
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

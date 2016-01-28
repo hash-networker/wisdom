@@ -1,0 +1,60 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Show bgp targets</title>
+    <ns>0</ns>
+    <id>1979</id>
+      <sha1>egincynu999t8lqn05d2w7bjbthsi8w</sha1>
+    <revision>
+      <id>11383</id>
+      <timestamp>2012-08-07T19:14:02Z</timestamp>
+      <contributor>
+        <username>Yeled</username>
+        <id>1068</id>
+      </contributor>
+      <comment>nowiki isnt a tag</comment>
+      <text xml:space="preserve" bytes="414">Displays route targets active on the router.
+
+== Examples ==
+
+&lt;pre&gt;user@juniper&gt; show bgp targets
+Target communities:
+100:1 :
+  Ribgroups:
+	vpn-unicast target:100:1	Family: l3vpn	Refcount: 1
+		Export RIB: l3vpn.0
+		Import RIB: bgp.l3vpn.0 Secondary: VPN-A.inet.0
+100:2 :
+  Ribgroups:
+	vpn-unicast target:100:2	Family: l3vpn	Refcount: 1
+		Export RIB: l3vpn.0
+		Import RIB: bgp.l3vpn.0 Secondary: VPN-B.inet.0
+&lt;/pre&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,100 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Juniper</title>
+    <ns>0</ns>
+    <id>1309</id>
+      <sha1>1rcdrerieqjbmd3fwc9qeirbq5j2btb</sha1>
+    <revision>
+      <id>3339</id>
+      <timestamp>2007-09-04T13:54:47Z</timestamp>
+      <contributor>
+        <username>Kwaheed</username>
+        <id>669</id>
+      </contributor>
+      <comment>Addition of MX</comment>
+      <text xml:space="preserve" bytes="3695">{{Infobox_Company | 
+  company_name   = Juniper Networks |
+  company_logo   = [[Image:JuniperNetworks.png]]|
+  company_type   = Public (((NASDAQ [http://quotes.nasdaq.com/asp/SummaryQuote.asp?symbol=JNPR&amp;selected=JNPR JNPR])) |
+  company_slogan = Juniper Your Net.|
+  foundation     = 1996 |
+  location       = Sunnyvale, California |
+  key_people     = CEO: [[Scott Kriens]]&lt;br \&gt;CTO: [[Pradeep Sindhu]]|
+  num_employees  = 3,400 (Q2 2005) | 
+  products       = [[Router]]s, [[Firewall (networking)|Firewalls]], [[Intrusion Detection]], [[Voip]], [[SSL VPN]]|
+  revenue        = [[USD]] 1.3 billion (2004)|
+  homepage       = [http://www.juniper.net www.juniper.net] |
+}}
+
+'''Juniper Networks''' is a telecommunications equipment company. It is a provider of IP networking and security solutions. Juniper partners with Ericsson, Alcatel-Lucent, and Nokia Siemens Networks to provide IP/MPLS network solutions to customers. As of August 1st, 2005, Juniper Networks had approximately 3,400 employees worldwide.
+
+== Products ==
+Juniper's router products include [[T-series]], [[M-series]], [[MX-series]], [[E-series]], and [[J-series]] families of [[router]]s, and the [[SDX]] service deployment system.
+
+* ''T-series'' routers are large [[core router]]s.
+* ''M-series'' routers are multiservice core/edge routers.
+* ''MX-series'' routers are ethernet services edge routers.
+* ''E-series'' routers are [[broadband]] [[edge router]]s.
+* ''J-Series'' routers are small premise routers.
+* ''NetScreen'' hardware [[Firewall (networking)|firewalls]].
+* ''Secure Access'' SSL VPN gateways.
+* ''IDP'' Intrusion detection and prevention appliances.
+* ''VF-series'' [[Session Border Controller]]s.
+
+The E series routers run the [[JUNOSe]] operating software. The E series was developed by Unisphere, which Juniper acquired in 2002 from Siemens.
+
+The J, M, MX, and T series routers are based on a common architecture and the Juniper operating system [[JUNOS]].
+
+While the E, M, and T series are all high speed devices capable of terminating multiple broadband optical connections, the J series is much lower in speed. Capable of terminating DS3 (45 Mbit/s) and slower lines, this product line is aimed at corporate branch offices and service provider premise equipment. With the J-series, Juniper extends its target market from service providers to the enterprise market.
+
+NetScreen firewalls provide wire speed firewall and [[VPN]] encryption service.
+
+Secure Access products provide SSL based VPN services to remote users without specialized clients. This product was originally designed by Neoteris. Netscreen acquired Neoteris prior to Juniper's acquisition of Netscreen.
+
+IDP products provide detection and interception of malicious network traffic via stateful analysis. 
+
+VF-series session border controllers provide scalability and security processing for VoIP traffic. The VF series was developed by Kagoor Networks which was acquired by Juniper in May of 2005.
+
+==History==
+Juniper was incorporated in February 1996 in California and was reincorporated in March 1998 in Delaware. Juniper went public on June 25, 1999.
+
+Juniper acquired NetScreen Technologies in April of 2004 for 3.4 billion dollars.
+
+Juniper acquired Kagoor in April of 2005 for 65.7 million dollars.
+
+==Financial Information==
+Juniper trades on the Nasdaq National Market with a ticker symbol of JNPR. As of February 28, 2005, there were approximately 544 million shares of common stock outstanding. Juniper announced a two-for-one stock split on April 13, 2000. Juniper announced a three-for-one stock split on November 16, 1999.
+
+== External links ==
+* [http://www.juniper.net Official website]
+
+{{wikipedia|Juniper Networks}}</text>
+    </revision>
+  </page>
+</mediawiki>

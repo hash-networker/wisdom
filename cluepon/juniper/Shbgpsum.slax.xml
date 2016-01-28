@@ -1,0 +1,187 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Shbgpsum.slax</title>
+    <ns>0</ns>
+    <id>1982</id>
+      <sha1>hc967m1y5scn4uzvoj8xei16d4hazhm</sha1>
+    <revision>
+      <id>4196</id>
+      <timestamp>2011-06-17T06:55:19Z</timestamp>
+      <contributor>
+        <username>Ik5pvx</username>
+        <id>1321</id>
+      </contributor>
+      <text xml:space="preserve" bytes="5411">&lt;pre&gt;
+/*                                                                                                      
+ * An op script to restrict &quot;show bgp summary&quot; to a single AS Number                                    
+ *                                                                                                      
+ * 2009.11.11 Pierfrancesco Caci                                                                        
+ * License: public domain                                                                               
+ *                                                                                                      
+ * Changelog:                                                                                           
+ * 2010.11.05 - Added the possibility to match the description in addition to the AS number             
+ *            - Added a match on peer-state                                                             
+ *            - Merged functionality of peerdown.slax                                                   
+ * 2011.06.17 - Make neighbor name match case insensitive                                               
+ *                                                                                                      
+ */
+version 1.0;
+
+
+ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+
+
+import &quot;../import/junos.xsl&quot;;
+
+/* FIXME: find a way to do the same without needing to write 'asn' */
+var $arguments = {
+  &lt;argument&gt; {
+    &lt;name&gt; &quot;asn&quot;;
+    &lt;description&gt; &quot;Autonomous System Number&quot;;
+  }
+  &lt;argument&gt; {
+    &lt;name&gt; &quot;name&quot;;
+    &lt;description&gt; &quot;Neighbor name (regexp against the description)&quot;;
+  }
+  &lt;argument&gt; {
+    &lt;name&gt; &quot;state&quot;;
+    &lt;description&gt; &quot;(up|down) Neighbor state (down matches anything other than Established)&quot;;
+  }
+}
+
+  param $asn;
+param $name;
+param $state;
+
+var $string = {
+  if ( $name ) {
+    expr translate($name,&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;,&quot;abcdefghijklmnopqrstuvwxyz&quot;);
+ } else {
+  expr &quot;^$&quot;;
+ }
+}
+
+var $status = {
+  if ( $state == &quot;up&quot; ) {
+    expr &quot;Established&quot;;
+  } else if ( $state == &quot;down&quot;) {
+    expr &quot;(Active|Connect|Idle)&quot;;
+  } else {
+    expr &quot;.*&quot;;
+  }
+}
+
+match / {
+
+  &lt;op-script-results&gt; {
+    var $as = jcs:regex(&quot;(^[0-9]+$)&quot;, $asn);
+    if ( ($as[1] &gt; 1 and $as[1] &lt; 4294967296) or $name ) {
+      var $rpc = &lt;get-bgp-summary-information&gt; {
+      }
+      var $bgpsumm = jcs:invoke($rpc);
+
+      &lt;output&gt; jcs:printf(&quot;Peer                     AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dw\
+n State|#Active/Received/Accepted/Damped...\n&quot;);
+
+      for-each ($bgpsumm/bgp-peer) {
+          /*&lt;output&gt; jcs:printf(&quot;[%s %s - %s %s - %s %s - %s]\n&quot;,$asn,peer-as,$string,description,$stat\
+e,peer-state,$status);*/
+
+          if ( (peer-as == $asn or
+                jcs:regex($string,translate(description,&quot;ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;,
+                                            &quot;abcdefghijklmnopqrstuvwxyz&quot;))) and
+               jcs:regex($status,peer-state) ) {
+            &lt;output&gt; jcs:printf(&quot;%s\n&quot;,description);
+            &lt;output&gt; jcs:printf(&quot;%-17s%10s%11s%11s%8s%8s%12s %s\n&quot;,
+                                peer-address,
+                                peer-as,
+                                input-messages,
+                                output-messages,
+                                route-queue-count,
+                                flap-count,
+                                elapsed-time,
+                                peer-state
+                                );
+
+
+            for-each (bgp-rib) {
+                &lt;output&gt; jcs:printf(&quot;  %s: %s/%s/%s/%s\n&quot;,
+                                    name,
+                                    active-prefix-count,
+                                    received-prefix-count,
+                                    accepted-prefix-count,
+                                    suppressed-prefix-count);
+
+              }
+
+            &lt;output&gt; jcs:printf(&quot;----------\n&quot;);
+
+          }
+
+        }
+    } else if ( $state ==&quot;down&quot; ) {
+      var $rpc = &lt;get-bgp-summary-information&gt; {
+      }
+      var $bgpsumm = jcs:invoke($rpc);
+
+      /* This portions is from peerdown.slax by Teun Vink */
+       &lt;output&gt; jcs:printf(&quot;%-34s %10s   %15s   %s&quot;, &quot;peer IP&quot;, &quot;peer ASN&quot;, &quot;downtime&quot;, &quot;peer descripti\
+on&quot;);
+       &lt;output&gt; jcs:printf(&quot;===========================================================================\
+=======&quot;);
+
+       /* search for the bgp information tag */
+       &lt;bgp-information&gt; {
+           /* print each peer which's state is not Established */
+           for-each($bgpsumm/bgp-peer[peer-state!='Established']) {
+                &lt;output&gt; jcs:printf(&quot;%-35s%10s   %15s   %s&quot;, peer-address, peer-as, elapsed-time, descr\
+iption);
+           }
+       }
+
+    } else {
+      &lt;xsl:message terminate=&quot;yes&quot;&gt; &quot;Usage:\n&quot; _
+        &quot;op shbgpsum asn &lt;AS Number in the range 1-4294967295&gt;\n\twill show only that ASN\n&quot; _
+        &quot;op shbgpsum name &lt;regular expression&gt;\n\twill show neighbors whose description matches\n&quot; _
+        &quot;op shbgpsum state down\n\twill show only neighbors not in Established state\n&quot; _
+        &quot;op shbgpsum asn &lt;AS Number&gt; name &lt;regex&gt;\n\twill match both conditions (logical or)\n&quot; _
+        &quot;op shbgpsum (asn &lt;AS Number&gt;|name &lt;regex&gt;) state (up|down)\n\twill show only selected peers th\
+at are either up or down\n&quot;;
+    }
+  }
+}
+
+
+
+&lt;/pre&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

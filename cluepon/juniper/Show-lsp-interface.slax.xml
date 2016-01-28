@@ -1,0 +1,188 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Show-lsp-interface.slax</title>
+    <ns>0</ns>
+    <id>1923</id>
+      <sha1>kpk58dvyxmsklbgt5pyvwatly8hfzz2</sha1>
+    <revision>
+      <id>3929</id>
+      <timestamp>2010-05-04T21:10:45Z</timestamp>
+      <contributor>
+        <username>Cougar</username>
+        <id>967</id>
+      </contributor>
+      <comment>+ argumets (interfaces can be limited), better output formatting with printf()</comment>
+      <text xml:space="preserve" bytes="7471"> /*
+  * Copyright (c) 2007-2009 Cougar &lt;cougar@random.ee&gt;
+  *
+  * Permission to use, copy, modify, and distribute this software for any
+  * purpose with or without fee is hereby granted, provided that the above
+  * copyright notice and this permission notice appear in all copies.
+  *
+  * THE SOFTWARE IS PROVIDED &quot;AS IS&quot; AND THE AUTHOR DISCLAIMS ALL WARRANTIES
+  * WITH REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF
+  * MERCHANTABILITY AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR
+  * ANY SPECIAL, DIRECT, INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+  * WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+  * ACTION OF CONTRACT, NEGLIGENCE OR OTHER TORTIOUS ACTION, ARISING OUT OF
+  * OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+  */
+ 
+ version 1.0;
+ 
+ ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ 
+ import &quot;../import/junos.xsl&quot;;
+ 
+ var $arguments = {
+        &lt;argument&gt; {
+                &lt;name&gt; &quot;interface&quot;;
+                &lt;description&gt; &quot;interface name&quot;;
+        }
+        &lt;argument&gt; {
+                &lt;name&gt; &quot;srcif&quot;;
+                &lt;description&gt; &quot;source interface name&quot;;
+        }
+        &lt;argument&gt; {
+                &lt;name&gt; &quot;dstif&quot;;
+                &lt;description&gt; &quot;destination interface name&quot;;
+        }
+        &lt;argument&gt; {
+                &lt;name&gt; &quot;showbypass&quot;;
+                &lt;description&gt; &quot;1 = show Bypass LSPs also&quot;;
+        }
+ }
+ 
+ param $interface;
+ param $srcif;
+ param $dstif;
+ param $showbypass;
+ 
+ template resolve_ifdescr($ifdescrdb, $if)
+ {
+        if ($if) {
+                if ($ifdescrdb/logical-interface[name == $if]/description) {
+                        expr $ifdescrdb/logical-interface[name == $if]/description;
+                } else {
+                        expr &quot;-&quot;;       /* no descripion */
+                }
+        } else {
+                expr &quot;?&quot;;               /* no next-hop interface (ASSERT ?)*/
+        }
+ }
+ 
+ template resolve_nh_ifdescr($ifdescrdb, $nhif)
+ {
+   var $if = $nhif;
+        call resolve_ifdescr($ifdescrdb, $if);
+ }
+ 
+ template resolve_ph_ifdescr($ifdescrdb, $phif)
+ {
+   var $if = $phif;
+        call resolve_ifdescr($ifdescrdb, $if);
+ }
+ 
+ template show_lsp_list()
+ {
+ 
+        var $q1 = { &lt;command&gt; 'show mpls lsp detail'; }
+        var $lspdb = jcs:invoke($q1);
+ 
+        var $q2 = { &lt;command&gt; 'show interface descriptions'; }
+        var $ifdescrdb = jcs:invoke($q2);
+ 
+ 
+ if ($srcif = '') {
+        expr jcs:output('------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+        expr jcs:output(&quot;t name                                                                                                                              dst             next-hop        dst-if        dst-ifdescr\n&quot;);
+        for-each($lspdb/rsvp-session-data[session-type == 'Ingress']/rsvp-session/mpls-lsp[lsp-state == 'Up']) {
+                var $name = name;
+                var $dst = destination-address;
+                var $nhip = substring-before(substring-after(mpls-lsp-path/explicit-route, &quot;\n&quot;), &quot;\n&quot;);
+                var $routequery = { &lt;command&gt; 'show route table inet.0 protocol direct ' _ $nhip; }
+                var $routeresult = jcs:invoke($routequery);
+                var $nhif = $routeresult/route-table/rt/rt-entry/nh/via;
+                if ((($interface == '') and ($dstif == '')) or ($interface == $nhif) or ($dstif == $nhif)) {
+                        var $ndescr = { call resolve_nh_ifdescr($ifdescrdb, $nhif); }
+                        var $outline = { expr jcs:printf(&quot;I %-32s                                                                                                  %-15s %-15s %-13s %-50s\n&quot;, $name, $dst, $nhip, $nhif, $ndescr); }
+                        expr jcs:output($outline);
+                }
+        }
+ }
+ 
+ if ($dstif = '') {
+        expr jcs:output('------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+        expr jcs:output(&quot;t name                             src             prev-hop        src-if        src-ifdescr\n&quot;);
+        for-each($lspdb/rsvp-session-data[session-type == 'Egress']/rsvp-session[lsp-state == 'Up' and (not(starts-with(name, 'Bypass')) or ($showbypass == 1))]) {
+                var $name = name;
+                var $src = source-address;
+                var $phip = packet-information/previous-hop;
+                var $routequery = { &lt;command&gt; 'show route table inet.0 protocol direct ' _ $phip; }
+                var $routeresult = jcs:invoke($routequery);
+                var $phif = $routeresult/route-table/rt/rt-entry/nh/via;
+                if ((($interface == '') and ($srcif == '')) or ($interface == $phif) or ($srcif == $phif)) {
+                        var $pdescr = { call resolve_ph_ifdescr($ifdescrdb, $phif); }
+                        var $outline = { expr jcs:printf(&quot;E %-32s %-15s %-15s %-13s %-50s\n&quot;, $name, $src, $phip, $phif, $pdescr); }
+                        expr jcs:output($outline);
+                }
+        }
+ }
+ 
+        expr jcs:output('------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+        expr jcs:output(&quot;t name                             src             prev-hop        src-if        src-ifdescr                                        dst             next-hop        dst-if        dst-ifdescr\n&quot;);
+        for-each($lspdb/rsvp-session-data[session-type == 'Transit']/rsvp-session[lsp-state == 'Up' and (not(starts-with(name, 'Bypass')) or ($showbypass == 1))]) {
+                var $name = name;
+                var $src = source-address;
+                var $dst = destination-address;
+                if (packet-information[@heading == &quot;  PATH&quot;]/previous-hop) {
+                        var $phip = packet-information[@heading == &quot;  PATH&quot;]/previous-hop;
+                        var $phif = packet-information[previous-hop == $phip]/interface-name;
+                        var $nhip = packet-information[@heading == &quot;  PATH&quot;]/next-hop;
+                        var $nhif = packet-information[next-hop == $nhip]/interface-name;
+                        if ((($interface == '') and ($srcif == '') and ($dstif == '')) or ($interface == $phif) or ($interface == $nhif) or (($srcif == $phif) and ($dstif == '')) or (($dstif == $nhif) and ($srcif == '')) or (($srcif == $phif) and ($dstif == $nhif))) {
+                                var $pdescr = { call resolve_ph_ifdescr($ifdescrdb, $phif); }
+                                var $ndescr = { call resolve_nh_ifdescr($ifdescrdb, $nhif); }
+                                var $outline  = { expr jcs:printf(&quot;T %-32s %-15s %-15s %-13s %-50s %-15s %-15s %-13s %-50s\n&quot;, $name, $src, $phip, $phif, $pdescr, $dst, $nhip, $nhif, $ndescr); }
+                                expr jcs:output($outline);
+                        }
+                }
+        }
+ }
+ 
+ match / {
+        &lt;op-script-results&gt; {
+                call show_lsp_list();
+        }
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

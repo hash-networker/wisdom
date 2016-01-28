@@ -1,0 +1,105 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>CS Descriptions for Interface References</title>
+    <ns>0</ns>
+    <id>1830</id>
+      <sha1>7kdqo1bg31krtk5q3gzwg6jsjvn61p2</sha1>
+    <revision>
+      <id>3256</id>
+      <timestamp>2007-06-08T01:05:32Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1732">{{Infobox_script | 
+  name = Iface Ref Commenter|
+  type = Commit |
+  author = Richard Steenbergen | 
+  version = 1.0 |
+  min_junos = All Versions |
+  slax = [[iface_descr.slax]] |
+  xslt = [[iface_descr.xslt]] |
+}}
+
+== Information ==
+
+This script searches for references to physical and logical interfaces under the &quot;protocols&quot; hierarchy and automatically copies the descriptions from the interface as &quot;annotate&quot; style comments.
+
+== Usage ==
+
+ interfaces {
+     xe-1/0/0 {
+         description &quot;This is an example&quot;;
+         unit 666 {
+             ....
+         }
+         unit 1234 {
+             description &quot;Yet another example&quot;;
+             ....
+         }
+     }
+ }
+ protocols {
+     isis {
+         interface xe-1/0/0.666;
+         interface xe-1/0/0.1234;
+     }
+     mpls {
+         interface xe-1/0/0.666;
+         interface xe-1/0/0.1234;
+     }
+ }
+
+Will automatically create:
+
+ protocols {
+     isis {
+         /* This is an example */
+         interface xe-1/0/0.666;
+         /* Yet another example */
+         interface xe-1/0/0.1234;
+     }
+     mpls {
+         /* This is an example */
+         interface xe-1/0/0.666;
+         /* Yet another example */
+         interface xe-1/0/0.1234;
+     }
+ }
+
+== Bugs ==
+
+Currently ignores references outside the scope of &quot;protocols&quot;, such as &quot;class-of-service&quot;. This version uses // to search for all references, but I don't currently have a way to exclude trying to set comments under the &quot;interfaces&quot; hierarchy where it copies the comments from. A quick workaround for this was to restrict it to the protocols hierarchy, but I'd really like to find a way to exclude the unwanted section rather than only look at part of the config.
+
+== ChangeLog ==
+
+1.0 - Initial Version</text>
+    </revision>
+  </page>
+</mediawiki>

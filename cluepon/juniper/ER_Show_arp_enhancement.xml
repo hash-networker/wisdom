@@ -1,0 +1,63 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Show arp enhancement</title>
+    <ns>0</ns>
+    <id>1496</id>
+      <sha1>4g4581aiusttbouucgcj223vc486wan</sha1>
+    <revision>
+      <id>3082</id>
+      <timestamp>2007-04-12T05:43:43Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="739">== Problem ==
+Currently, [[JunOS]] does not display the same amount of detail under the &quot;show arp&quot; command that other router vendors do.
+
+== Solution ==
+
+Display the age of the dynamically learned ARP cache entries, and entries which are being queried but which are still incomplete/unresolved.
+
+For example:
+
+ user@router&gt; show arp no-resolve    
+ MAC Address       Address         Interface     Flags   Age
+ 00:12:43:58:cd:80 1.2.3.4         ge-0/0/0.0    none    174s
+ 00:90:69:3c:7b:13 1.2.3.5         ge-0/0/0.0    none    400s
+ 00:0d:61:76:e8:90 1.2.3.6         ge-0/0/0.0    none    31s
+ 00:0d:61:9d:a2:8f 1.2.3.7         Incomplete    none 
+
+== Status ==
+
+show arp expiration-time added in JUNOS 8.1.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

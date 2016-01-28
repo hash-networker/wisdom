@@ -1,0 +1,102 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>M160</title>
+    <ns>0</ns>
+    <id>1302</id>
+      <sha1>hlcn4syk2guqu2noztfhotnki7vpgqe</sha1>
+    <revision>
+      <id>2993</id>
+      <timestamp>2006-11-17T21:34:42Z</timestamp>
+      <contributor>
+        <username>Daca</username>
+        <id>427</id>
+      </contributor>
+      <text xml:space="preserve" bytes="4361">{{Infobox_router | 
+  product_name = Juniper M160 Router |
+  product_image = [[Image:M160_Front.jpg|200px|]] |
+  slots = 8 FPC, 32 PIC |
+  bandwidth = 102.4 Gbit/s | 
+  fpc = [[type-1]] [[type-2]] | |
+  style = [[PB-Style_PIC|PB-style]] |
+  power = 2 (1+1) DC only |
+  switch = [[SFM]] (4) | 
+  date = March 28, 2000 | 
+}}
+
+[[Image:Manhattan_midplane.png|thumb|right|M160 Midplane Logo]]
+
+The [[M160]] ([[codenames|Codename:]] ''Manhattan'') was the third router released by Juniper in March 2000, following the release of the [[M20]]. Internally, it is implemented using four of the Packet Forwarding Engines of the [[M40]] in order to scale to 10 Gigabit per Slot speeds. The [[M160]] was introduced in March 2000.
+
+As of 2005, the Juniper M160 has reached [[EOS|End of Sale (EOS)]] status. The router is considered to have been effectively replaced with the [[M320]], which is based on the new [[Gibson architecture]], and which utilizes the same [[PIC]]s as the [[M160]]. However, the technology of the [[M160]] continues to be used in the [[M40e]], which is a scaled-down version of the [[M160]].
+
+__NOTOC__
+
+== Innovations ==
+
+The M160 was the first router to support OC-192c interfaces. It was also the first Juniper router to support hot-swapping of [[PIC]]s without disabling or removing the host [[FPC]].
+
+== Physical ==
+
+The M160 is a &quot;half rack&quot; chassis, 35 inches (20 RU) high, 29 inches deep, and 17.5 inches wide. The chassis has a fully loaded weight of 370.5 lbs (168kg), and can contain up to eight [[type-1]] or [[type-2]] [[FPC (generic)|FPCs]]. Each FPC can contain up to four [[PIC]]s with [[PB-Style_PIC|PB-style]] mechanicals. Alternatively a special [[IB-Style_PIC|IB-style]] [[PIC]] which fills an entire FPC slot is used for 10 Gigabit interfaces.
+
+=== Power === 
+
+Only DC [[power supplies]] are available for the M160. The system requires one power supply for operation, with a second for redundancy. When two power supplies are operating, the load is shared across both. The maximum system power draw for a fully loaded configuration is around 3000 watts, and supports input voltages in the range of -42 to -72 volts.
+
+=== Cooling ===
+
+The air intake vent is located at the bottom of the chassis front, below the cable management system. The air filter is removable and covers the air intake vent.  
+
+The front cooling subsystem cools the FPCs, PICs, and midplane.  It includes a fan tray located behind the cable management system and a large, central impeller behind the craft interface.
+
+The rear cooling subsystem cools the Switching and Forwarding Modules (SFMs), host module, Packet Forwarding Engine Clock Generator (PCGs), and power supplies.  It includes one impeller located at the upper right of the chassis rear and another at the lower left. The upper and lower impellers are not interchangeable.
+
+== Craft Interface == 
+
+The M160 provides a front panel [[Craft]] which contains an [[LCD]], [[Alarms|alarm]] lights, [[Routing Engine]], [[fxp0|Management Ethernet ports]], serial [[console port]]s, FPC status lights and FPC offline/online buttons.
+
+== Routing Engine ==
+
+The M160 originally shipped with the [[RE-2.0]] (P2 333mHz, 768MB), but later shipped with the [[RE-3.0]] (P3 600mHz, 2048MB).
+
+== Forwarding ==
+
+The M160 is a [[Martini architecture]] router, but differs from other martini architecture routers in that it has four instances of the martini PFE operating in parallel. Most of the PFEs are contained on the [[SFM]] cards, including the [[A-Chip|A]] and [[Internet Processor II|Cf]] chips, while the [[B-Chip]]s remain on the [[FPC]]s. There are multiple B-Chips per FPC to interconnect to the back-end part of the PFE on the SFMs.  The [[DX-Chip]] is a programmable packet switch that makes it possible for traffic from any of the PICs to be directed toward any of the B-Chips and thus any of the SFMs.
+
+Because in the martini architecture, no single SFM is able to handle more than 3.2gbit/sec from a FPC (see [[FPC Bandwidth]]), packets from a single [[OC-192c]] must be sprayed across multiple SFMs.  This leads to a risk of [[packet reordering]].
+
+== Hot Swapping ==
+
+All removable components (power supplies, routing engines, SSBs, FPC, PICs, and fans) are hot swappable. The M160 was the first Juniper router to support hot-swapping of a single PIC.
+
+[[Category:Hardware]]
+[[Category:M-series]]</text>
+    </revision>
+  </page>
+</mediawiki>

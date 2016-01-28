@@ -1,0 +1,79 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>References to upcoming products in JUNOS</title>
+    <ns>0</ns>
+    <id>1977</id>
+      <sha1>kr4fi5751wic1dpzifqm271p0kdlhuz</sha1>
+    <revision>
+      <id>3943</id>
+      <timestamp>2010-05-18T19:53:32Z</timestamp>
+      <contributor>
+        <username>Funkboy</username>
+        <id>470</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="1665">In JUNOS there are a couple of ways to find references to upcoming hardware releases.  The first is the &quot;display detail&quot; modifier.  For example, this is the output from JUNOS 10.1R2.8 running on an srx100:
+
+ admin@srx100.lab# show chassis | display detail 
+ ##
+ ## chassis: Chassis configuration
+ ## require: interface 
+ ##
+ ##
+ ## aggregated-devices: Aggregated devices configuration
+ ##
+ aggregated-devices {
+    ##
+    ## ethernet: Aggregated device options for Ethernet
+    ##
+    ethernet {
+        ##
+        ## device-count: Number of aggregated Ethernet devices
+        ## range: 1 .. 128
+        ##
+        device-count 5;
+        ##
+        ## lacp: Global Link Aggregation Control Protocol configuration
+        ## products: m5, m10, m20, m40, m160, t640, t320, m40e, TX Matrix, ggsn-c, m320, m7i, m10i, j2300, j4300,
+ j6300, m120, mx960, j4350, j6350, jsr2300, jsr4300, jsr6300, jsr4350, jsr6350, j2320, j2350, jsr2320, jsr2350, mx480,
+ sumatra, ex3200-24t, ex3200-24p, ex3200-48t, ex3200-48p, ex4200-24f, ex4200-24t, ex4200-24p, ex4200-48t, ex4200-48p,
+ ex8208, ex8216, mx240, txp, srx210-lm, srx210-hm, srx210-poe, srx210h-p-m, srx240-lm, srx240-hm, srx240-poe,
+ srx240h-p-m, srx630, srx650, srx680, srx100-lm, srx100-hm, srx100-wl-lm, srx100-wl-hm, srx100-vdsl-lm, srx100-vdsl-hm,
+ srx100-wl-vdsl-hm, ex2200-24t-4g, ex2200-24p-4g, ex2200-48t-4g, ex2200-48p-4g, ln1000-v, fx1600_48, fx2160_48
+        ##
+        lacp {
+            link-protection;
+        }
+    }
+ }
+
+You can see references to the as yet unreleased SRX630 and SRX680 models.  You can also see the [http://www.google.com/search?q=juniper+srx630 Google caches of their AV update pages].</text>
+    </revision>
+  </page>
+</mediawiki>

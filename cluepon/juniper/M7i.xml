@@ -1,0 +1,113 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>M7i</title>
+    <ns>0</ns>
+    <id>1298</id>
+      <sha1>rat3crmj6ooycivxnn9x1sw7z46x1hf</sha1>
+    <revision>
+      <id>4148</id>
+      <timestamp>2011-01-19T13:25:46Z</timestamp>
+      <contributor>
+        <username>Robl</username>
+        <id>1532</id>
+      </contributor>
+      <comment>add information re: PIC slots</comment>
+      <text xml:space="preserve" bytes="3323">{{Infobox_router | 
+  product_name = Juniper M7i Router |
+  product_image = [[Image:M7i_Front.gif|200px]] |
+  slots = 1 FPC, 4 PIC, 1 FIC |
+  bandwidth = 4.2 Gbit/s | 
+  fpc = [[Type-1]] |
+  style = [[PE-Style_PIC|PE-style]] |
+  power = 2 (1+1 redundant) |
+  switch = [[CFEB]] (non-redundant) | 
+  date = November 3, 2003 | 
+}}
+
+The [[Juniper]] [[M7i]] ([[codenames|Codename:]] ''Calvin'') router replaced Juniper's [[M5]] router. The M7i is a minor product refresh which decreased the cost of production and improved capacity (through the introduction of a [[FIC]]) and feature sets (through the introduction of onboard [[Tunnel PIC]] functionality and an optional onboard [[Adaptive Services module]]). The primary goal of the M7i development was to make Juniper's low- to mid-range platforms more price competitive with the [[Cisco]] 7200 series. 
+__NOTOC__
+
+== Innovations ==
+The M7i and [[M10i]] were the first routers released using the [[ABC-Chip]] chipset, and replaced the older [[Martini architecture]] based [[M5]] and [[M10]] respectively. The [[ABC-Chip]] reduced the cost of production significantly. The M7i also reduced the weight of the [[M5]] by about half.
+
+== Physical ==
+
+The M7i is 3.5&quot; (2U) high, 17.5&quot; wide (19&quot; with rack ears), 18&quot; deep, and weighs 36.5lbs when fully loaded.
+
+
+
+On the RE-850 Routing Engine, there is a built-in 1x G/E, 1000 BASE interface. This shows up as '''ge-1/3/0'''
+
+
+
+The PIC slots are then numbered dependent on hardware, ''type-FPC/SLOT/INTERFACE'' but if each PIC had a single ge interface:
+
+* ge-0/0/0
+* ge-0/1/0
+* ge-0/2/0
+* ge-0/3/0
+
+'''For those not so familiar with M-Series Juniper hardware, The PIC slots are numbered from RIGHT to LEFT''', so ge-0/0/0
+is the furthest RIGHT, with ge-0/3/0 being the first LEFT.
+
+
+A 4 x 10/100M PIC in the '''left-most''' PIC slot would look like:
+
+* fe-0/'''3'''/0
+* fe-0/3/1
+* fe-0/3/2
+* fe-0/3/3
+
+With interface x/x/0 being the '''right-most''' port, and x/x/3 being the '''left-most''' port.
+
+
+=== Power === 
+
+Both AC and DC [[power supplies]] are available for the M7i. The system requires one power supply for operation, with a second for redundancy. When two power supplies are operating, the load is shared across both. The maximum system power draw for a fully loaded configuration is around 274 watts. The AC supply supports input voltages in the range of 100-264 volts, while the DC supply supports from -36 to -72 volts.
+
+=== Cooling ===
+
+The M7i is cooled by 4 fans proving side to side cooling with airflow from left to right. The fans are field replaceable but the router should not be operated without fans for more than a moment. The cooling requirements are met by 3 operating fans.
+
+== Routing Engine ==
+
+The M7i originally shipped with [[RE-400|RE-5.0]] (Celeron 400MHz, 256MB/512MB/768MB DRAM), but now has the [[RE-850|RE-5.0+]] (Celeron 850MHz, 1536MB DRAM) available as an option.
+
+== Forwarding ==
+
+The M7i utilizes the [[Calvin architecture]] which is largely the same as the [[Martini architecture]]. The Calvin architecture does have somewhat lower performance than the Martini (16Mpps vs 40Mpps) but the M7i does not have sufficient [[PIC]] slot capacity to approach this reduced limit.
+
+== Hot Swapping ==
+PICs, Fans, and Power Supplies are hot swappable.
+
+[[Category:Hardware]]
+[[Category:M-series]]</text>
+    </revision>
+  </page>
+</mediawiki>

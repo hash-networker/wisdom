@@ -1,0 +1,81 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>CFEB</title>
+    <ns>0</ns>
+    <id>1343</id>
+      <sha1>1fhmvyld5uu73rumf4goh2criysh3wt</sha1>
+    <revision>
+      <id>12919</id>
+      <timestamp>2012-08-25T23:23:37Z</timestamp>
+      <contributor>
+        <username>Yeled</username>
+        <id>1068</id>
+      </contributor>
+      <comment>cfeb-e possible interesting info</comment>
+      <text xml:space="preserve" bytes="1737">[[Image:C-FEB_Front.jpg|thumb|right|Compact Forwarding Engine Board (C-FEB)]]
+
+
+== Capacity ==
+
+&lt;pre&gt;
+&gt; How many routes should cfeb support ?
+
+The standard CFEB can hold 450,000 forwarding entries in the 
+8MB SSRAM it has.
+
+The Enhanced CFEB has 2x 64MB RLDRAM's, which can hold 
+substantially more entries. I'm not exactly sure how many, 
+but basic research suggests it could be 2,000,000 FIB 
+entries per 64MB RLDRAM unit.
+&lt;/pre&gt;
+via [http://afnog.org/pipermail/afnog/2012-February/000161.html http://afnog.org/pipermail/afnog/2012-February/000161.html]
+
+
+== Functional Outline ==
+
+The CFEB or CFEB-E provides the following functions:
+
+* Route lookups: Performs route lookups using the forwarding table stored in the synchronous SRAM (SSRAM) on CFEBs or stored in the RLDRAM on CFEB-Es.
+
+* Management of shared memory: Uniformly allocates incoming data packets throughout the router's shared memory.
+
+* Transfer of outgoing data packets: Passes data packets to the destination FIC or PIC when the data is ready to be transmitted.
+
+* Transfer of exception and control packets: Passes exception packets to the microprocessor on the CFEB or CFEB-E, which processes almost all of them. The remainder are sent to the Routing Engine for further processing. Any errors originating in the Packet Forwarding Engine and detected by the CFEB or CFEB-E are sent to the Routing Engine using system log messages.
+
+via [http://www.juniper.net/techpubs/en_US/release-independent/junos/topics/concept/cfeb-m10i-description.html http://www.juniper.net/techpubs/en_US/release-independent/junos/topics/concept/cfeb-m10i-description.html]
+
+[[Category:Hardware]]
+[[Category:Components]]
+[[Category:Switch Boards]]
+[[Category:Stub]]
+[[Category:Image needed]]</text>
+    </revision>
+  </page>
+</mediawiki>

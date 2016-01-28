@@ -1,0 +1,88 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Configs</title>
+    <ns>0</ns>
+    <id>1538</id>
+      <sha1>qe5ml5d3xhhmvlyj0kjeore64i5mg9w</sha1>
+    <revision>
+      <id>4203</id>
+      <timestamp>2011-07-18T12:20:54Z</timestamp>
+      <contributor>
+        <username>Yeled</username>
+        <id>1068</id>
+      </contributor>
+      <minor/>
+      <comment>add DHCP link</comment>
+      <text xml:space="preserve" bytes="1040">This section covers donated example configurations and config techniques.
+
+XML/Automation Scripts:
+
+* [[Commit Scripts]]
+* [[Op Scripts]]
+* [[Event Scripts]]
+
+Protocol configurations:
+* [[MPLS]]: The Multiprotocol Label Switching basic configuration example.
+
+Layer 3 VPNs with MPLS
+* [[L3VPN]]: Layer 3 VPNs with MPLS
+
+Quality of Service:
+* [[L2TP QOS]]: Quality of Service for E-Series (JUNOSe) L2TP LNS
+
+
+LAN to WAN NAT and port forwarding
+* [http://remcobressers.nl/2008/07/configuring-nat-on-juniper-j-series/ NAT/PAT]: Configuring Network Address Translation and Port Translation on M and J-series.
+
+
+SNMP configurations:
+* [[ERX Subscriber Management]]: Managing subscribers using SNMP.
+
+
+cflowd / Netflow configurations:
+* [[cflowd configuration]]: How to setup cflowd/netflow exports on Juniper Routers
+
+Cluster configurations:
+* [[J series routing clusters]]
+
+Packet based forwarding vs. flow based forwarding:
+* [[enabling packet based forwarding]]
+
+Simple Policing:
+* [[simple policing]]
+
+DHCP:
+* [[DHCP]]
+
+
+syslog:
+* [[syslog]]</text>
+    </revision>
+  </page>
+</mediawiki>

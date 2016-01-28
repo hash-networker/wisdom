@@ -1,0 +1,73 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>J-series</title>
+    <ns>0</ns>
+    <id>1374</id>
+      <sha1>42t7gkktludx1zev26erjursr5rdn48</sha1>
+    <revision>
+      <id>4074</id>
+      <timestamp>2010-11-18T10:35:59Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4060 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]]) (vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="2516">[[Image:J-Series_Front.jpg|thumb|right|Older Juniper J-series Routers]]
+[[Image:New_J-Series.png|thumb|right|Newer Juniper J-Series Routers]]
+
+J-Series (internal codename Pepsi) is a line of low-end routers launched by Juniper during telecom recession period (2003-2004). It became the first Juniper product to feature forwarding plane with partial software assist. The idea behind J-Series was to utilize the rapidly improving performance of general-purpose x86 CPUs and commercial mainboard designs. Hardware packet forwarding assistance was provided by Intel IXP (and later Cavium) network processors, which allowed for considerable speed advances compared to &quot;traditional&quot; software-only routers based on RISC processors.
+
+J-series runs a &quot;diet&quot; (slightly cut-down) version of JunOS (missing a few features such as Logical Routers). All J-series systems have the ability to have recovery/upgrade images and configurations pulled off USB flash drives from front-mounted USB port.
+
+Earlier J-Series products had a complex licensing regime, where individual ports would be unlocked with a software license, and some features such as DLSw were add-on licenses. Changes in 2006 and 2007 have meant that only &quot;advanced BGP&quot; (route-reflector server) and J-Flow features still require licensing.
+
+Newer J-Series routers contain a TDM-backplane, and support a range of Avaya voice equipment, including a locally-survivable media gateway, ISDN BRI, T1 voice and FXO/FXS analogue voice ports. Currently these cards are managed with a local CLI, not via JUNOS, and they are only available from Avaya, not direct from Juniper.
+
+Newer J-Series routers also share common hardware platforms with the SSG series of UTM firewalls - J2320 is SSG320M, J2350 is SSG350M, J4350 is SSG520M and J6350 is SSG550M. A seperate license of the software image can be used to switch between the two operating systems.
+
+According to the marketing material Juniper says that the J-series routers support VLANs (Advanced Switching).  What they fail to tell you is that VLAN's are not supported on the onboard NIC, and you can only enable VLAN's on 1 uPIM module at a time.  This is because the Advanced Switching is done on the uPIM module, not on the router mainboard.
+
+Older J-Series Products (J4300 and J6300 are EOS)
+*[[J6300]]
+*[[J4300]]
+*[[J2300]]
+
+Newer J-Series Products
+*[[J6350]] -- October 2006
+*[[J4350]] -- October 2006
+*[[J2350]] -- August 2007
+*[[J2320]] -- August 2007
+
+[[Category:Hardware]]
+[[Category:J-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

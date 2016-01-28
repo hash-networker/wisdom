@@ -1,0 +1,51 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Outstanding Questions</title>
+    <ns>0</ns>
+    <id>1471</id>
+      <sha1>7w8lsvzk598oxm2ky1qco4x5om1thsi</sha1>
+    <revision>
+      <id>2470</id>
+      <timestamp>2005-10-26T09:40:14Z</timestamp>
+      <contributor>
+        <username>Sean1207</username>
+        <id>148</id>
+      </contributor>
+      <text xml:space="preserve" bytes="910">* On the M40, Juniper says that in order to upgrade the Routing Engine from 1.0 to 2.0 you need to replace the Routing Engine Housing. A visual inspection doesn't show any difference between these housings. Is this upgrade really &quot;required&quot;, or did Juniper just think it would be easier to have customers insert a new housing rather than futz with the innards?
+
+Some of the wiring is different .. in the original M40's have an RE different to the teknor RE and came in 2 bits. 
+The Teknor does not need the 2nd bit hence the difference in the housing (or &quot;hump&quot;)
+
+* What happens if you insert a M5 FEB into an M10 chassis? Is the M5 FEB the same electronics at the M10 FEB? Is this part number software locked to allow functionality on only the top FPC?
+[[Category:Stub]]
+
+The M10 becomes an M5 - the board is the same, just without the electronics to allow for &quot;FPC1&quot; .. i.e. all PIC's in slots 4-7 won't work</text>
+    </revision>
+  </page>
+</mediawiki>

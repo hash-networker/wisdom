@@ -1,0 +1,142 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>J series routing clusters</title>
+    <ns>0</ns>
+    <id>1975</id>
+      <sha1>aj67rik149zx4lgx33l54ulat85qnx4</sha1>
+    <revision>
+      <id>3748</id>
+      <timestamp>2009-06-13T20:32:35Z</timestamp>
+      <contributor>
+        <username>GavinWhite</username>
+        <id>1315</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3868">Aim:
+
+set up two clustered routers in active/standby mode, sharing a single routing engine, with redundant interfaces between the routers.
+
+Hardware:
+
+Any J series should do AFAIK. You will need additional interfaces in your routers, as clustering takes up three interfaces. In this example, I've used the onboard interfaces ge-0/0/1, 2 and 3 for the cluster links. These must be direct cables (crossover or straight both work for me), apparently clustering will not work with a switch in the way.
+
+
+Interfaces used:
+* Ge-0/0/3 will become fxp1 and used as the control link between the two routers 
+* Ge-0/0/2 will be used as fxp0 for individual management of each of the routers
+* Ge-0/0/1 will be used as the fab link (known as Ge-7/0/1 on the second node)
+
+
+Notes:
+* Individual routers are called nodes. 
+* A group of nodes is a cluster.
+* Physical interfaces are joined to form a redundant interface (reth)
+* Multiple reth's can be placed in a redundancy group
+* All reth's in a redundancy group fail over together
+* You can have more than one redundancy group in a cluster
+
+
+Initial preparation:
+
+On router 1:
+&lt;pre&gt;
+&gt; set chassis cluster cluster-id 1 node 0 reboot 
+&gt; configure 
+&lt;/pre&gt;
+&lt;pre&gt;
+# set system root-authentication plain-text-password #only needed if not yet set
+# set group node0 system host-name $hostname of first node
+# set group node1 system host-name $hostname of second node
+# set group node0 interfaces fxp0 unit 0 family inet address 10.0.0.1/30
+# set group node1 interfaces fxp0 unit 0 family inet address 10.0.0.2/30
+# set chassis cluster node 0 
+# set chassis cluster redundancy-group 1 node 0 priority 100 
+# set chassis cluster node 1 
+# set chassis cluster redundancy-group 1 node 1 priority 1 
+# set apply-groups &quot;${node}&quot;
+&lt;/pre&gt;
+On router 2:
+
+&lt;pre&gt;
+&gt; set chassis cluster cluster-id 1 node 1 reboot 
+&gt; configure
+# set system root-authentication plain-text-password #only needed if not yet set
+&lt;/pre&gt;
+NB. to remove clustering on a router, run:
+&lt;pre&gt;
+&gt; set chassis cluster cluster-id 0 node 0 reboot 
+&lt;/pre&gt;
+Create FAB links (data plane links for RTO sync, etc)
+
+On router 1:
+&lt;pre&gt;
+   # set interfaces fab0 fabric-options member-interfaces ge-0/0/1    #fab0 is node0 interface for the data link
+   # set interfaces fab1 fabric-options member-interfaces ge-7/0/1    #fab1 is node1 interface for the data link
+&lt;/pre&gt;
+
+Set up redundant interface on interfaces g1/0/0 and g8/0/0 (ie. the first port on the first PIM on a J4350): Note for a J2320 this would be g1/0/0 and g5/0/0
+
+on router 1:
+&lt;pre&gt;
+set chassis cluster reth-count 9 #or however many spare interfaces you want to use for clustering
+set interfaces reth0 redundant-ether-options redundancy-group 1
+set interfaces reth0 unit 0 family inet address 192.168.0.1/24
+set interfaces ge-1/0/0 gigether-options redundant-parent reth0
+set interfaces ge-8/0/0 gigether-options redundant-parent reth0
+set chassis cluster redundancy-group 1 interface-monitor ge-1/0/0 weight 255
+set chassis cluster redundancy-group 1 interface-monitor ge-8/0/0 weight 255
+set chassis cluster redundancy-group 1 preempt
+&lt;/pre&gt;
+Optional changes to heartbeating
+&lt;pre&gt;
+set chassis cluster heartbeat-interval 1000 #- minimum, milliseconds
+set chassis cluster heartbeat-threshold 1 #- minimum
+&lt;/pre&gt;
+
+Querying the cluster:
+&lt;pre&gt;
+   &gt; show chassis cluster status
+   &gt; show chassis cluster statistics
+   &gt; show chassis cluster interfaces
+&lt;/pre&gt;
+Forcing a failover:
+&lt;pre&gt;
+&gt;request chassis cluster failover node $number redundancy-group $number
+&lt;/pre&gt;
+
+
+References:
+
+Main documentation: http://www.juniper.net/techpubs/software/junos-security/junos-security95/junos-security-swconfig-security/cc-chapter.html#cc-chapter
+
+Howto: http://kb.juniper.net/index?page=content&amp;id=KB12397&amp;actp=search&amp;searchid=1243002411264
+
+Before you start: http://kb.juniper.net/index?page=content&amp;id=KB12819&amp;actp=search&amp;searchid=1239705554214</text>
+    </revision>
+  </page>
+</mediawiki>

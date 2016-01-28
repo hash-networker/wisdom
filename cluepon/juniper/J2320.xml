@@ -1,0 +1,98 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>J2320</title>
+    <ns>0</ns>
+    <id>1858</id>
+      <sha1>gxd417zra34hswwanhaq7fwx0gnlp9p</sha1>
+    <revision>
+      <id>4170</id>
+      <timestamp>2011-04-26T15:14:11Z</timestamp>
+      <contributor>
+        <username>Frank</username>
+        <id>1555</id>
+      </contributor>
+      <comment>it *does* work with 1GB modules (which is great because 512MB dimms are hard to get)</comment>
+      <text xml:space="preserve" bytes="1373">{{Infobox_jseries | 
+  product_name = J2320 Router |
+  product_image = [[Image:J2320.png|200px]] |
+  rackspace = 1RU |
+  slots = 3: 3 PIMs |
+  bandwidth = 600 MBit/s (large packets) 400MBit/s (IMIX) | 
+  power =  Single, AC-only|
+  memory =  256MB/2GB |
+  flash = 256MB/1GB |
+  cpu = Intel Celeron 2GHz SL6VR |
+}}
+
+Two models offered:  J2320-JH with hardware crypto, and J2320-JB-SC with software crypto, and only 256MB of RAM. 
+
+This model has interchangeable hardware with the SSG320, and a license option is available to change between JUNOS and ScreenOS.
+
+Unlike the J4350 and J6350, the J2320 contains no high-speed PCI-Express-based &quot;EPIM&quot; slots, only shared PCI-based &quot;PIM&quot; slots.
+
+This router was made available in JUNOS 8.4, in August 2007.
+
+Contrary to what this page used to claim, the motherboard *does* boot with 1GB dimms. At least the Kingston model KVR400X64C3A/1G (1GB PC3200 CL3 DIMM) dimms work.
+
+'''Built-in Interfaces: '''
+
+4 x 10/100/1000 Copper Ethernet
+
+'''LAN (uPIMs - support either PCI PIM or PCI-X EPIM slot)'''
+
+8 x 10/100/1000 Copper Ethernet
+
+16 x 10/100/1000 Copper Ethernet (Double-Height)
+
+6 x Gigabit Ethernet SFP
+
+'''WAN (PIMs - 4-6 supported):'''
+
+2xSerial
+
+2xT1/E1 
+
+1xDS3 
+
+1xE3 
+
+2xFE 
+
+4xISDN BRI (U or ST) 
+
+1xADSL2+ (Annex A and Annex B)
+
+2x2-wire or 1x4-wire G.SHDSL
+
+[[Category:Hardware]]
+[[Category:J-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

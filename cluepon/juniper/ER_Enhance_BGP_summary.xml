@@ -1,0 +1,93 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Enhance BGP summary</title>
+    <ns>0</ns>
+    <id>1570</id>
+      <sha1>cuu8gszhrkif03uqd3roim4gkhdxhn3</sha1>
+    <revision>
+      <id>2498</id>
+      <timestamp>2005-11-12T23:35:13Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1692">== Problem ==
+
+The output of the JUNOS command &quot;show bgp summary&quot;, which is the primary command for determining the status of a BGP session or sessions (including the current connection state, length of time up/down, and number of prefixes accepted/received), can be difficult to read on a router with many BGP sessions. When Multiprotocol BGP sessions are configured, the data is split onto multiple lines, making parsing through &quot;| match&quot; options even more difficult. An example of this type of output is:
+
+ 1.2.3.4          1234    1304483    2313874      18       6     9w5d20h Establ
+   inet.0: 10582/17068/0
+   inet.2: 1/1/0
+   inet6.0: 2/130/0
+   inet6.2: 0/0/0
+
+
+== Solutions ==
+
+The &quot;show bgp summary&quot; command could be greatly improved with the addition of new options to search and/or sort the output. Some possible useful options include:
+
+Show only BGP sessions configured to the remote-as &quot;1234&quot;:
+
+ user@router&gt; show bgp summary remote-as 1234
+
+Show only BGP sessions which are Established:
+
+ user@router&gt; show bgp summary state established
+
+Show only BGP sessions which are not Established:
+
+ user@router&gt; show bgp summary state not-established
+
+Show only BGP sessions which are exchanging &quot;inet6-unicast&quot; NLRIs:
+
+ user@router&gt; show bgp summary nlri inet6-unicast
+
+Sort output in order of the configured BGP neighbor IP:
+
+ user@router&gt; show bgp summary sort neighbor-ip
+
+Sort output in order of the configured BGP remote-as:
+
+ user@router&gt; show bgp summary sort remote-as
+
+Sort output in order of the session uptime/downtime:
+
+ user@router&gt; show bgp summary sort uptime
+
+
+Other useful search/sort options may exist as well.
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

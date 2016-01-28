@@ -1,0 +1,91 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER BGP Prefix limit enhancements</title>
+    <ns>0</ns>
+    <id>1790</id>
+      <sha1>5jyp266fdlztzebo0t71dlq9e3of6he</sha1>
+    <revision>
+      <id>3282</id>
+      <timestamp>2007-07-03T01:08:21Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3105">== Problem ==
+Currently, JUNOS supports a BGP prefix-limit command which limits the number of routes that can be received on a session. When the number of routes exceeds this configured limit, the session can be torn down until the remote side fixes their misconfiguration.
+
+ protocol bgp {
+     group customer {
+         family inet {
+             unicast {
+                 prefix-limit {
+                     maximum 500;
+                     teardown 80 idle-timeout 5;
+                 }
+             }
+         }
+     }
+ }
+
+However, this limit is applied to a session by counting all prefixes received, even prefixes which have been explicitly rejected by a policy-statement and can never be considered as feasible paths. Cisco on the other hand implements it prefix-limit based on the number of routes which pass filtering mechanisms such as prefix-list and as-path, and are eligible for selection as best path.
+
+The reality of the Internet is that customers, peers, etc do make configuration mistakes from time to time. A common example is a BGP speaking customer who is not intimately familiar with their router configurations accidentally leaking the full prefixes of one of their upstream providers to another non-customer network. Most sensible networks already take precautions to limit the prefixes that can be announced, via a prefix-list filter or as-path filter. Unfortunately, even if a leaking customer or peer is already covered by a more restrictive filter which prevents the leaking of inappropriate routes, Juniper routers will still drop the BGP session, preventing the use of a prefix-limit as a mechanism of last resort to catch configuration errors.
+
+A commonly given reason for why Juniper implements this behavior is to protect the router against memory exhaustion due to an errored BGP session which for example deaggregates the Internet into /24s. While catching this condition is a worthy goal, it does not align with the much more common practical use of a prefix-limit, as a policy control to prevent leaking of routes. Dropping the session unnecessarily is typically not a desired behavior, and is disruptive to a customer or peer session which otherwise could have continued to operate normally due to the presence of more restrictive filters.
+
+== Solution ==
+
+Implement a second type of prefix-limit variable which only counts prefixes eligible for installation as best path. The first prefix-limit can continue to act as a filter to protect the router from unchecked memory consumption, and the second prefix-limit can be used to provide policy protection against leaked routes without triggering unnecessary BGP shutdowns.
+
+For example:
+
+ protocol bgp {
+     group customer {
+         family inet {
+             unicast {
+                 prefix-limit {
+                     maximum 250000;
+                     maximum-feasible 500;
+                     teardown 80 idle-timeout 5;
+                 }
+             }
+         }
+     }
+ }
+
+This would be backwards compatible with existing configurations as well.
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

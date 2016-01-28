@@ -1,0 +1,133 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Tunepfxlimits.slax</title>
+    <ns>0</ns>
+    <id>1839</id>
+      <sha1>578rsc9s1600hrmf3im8taucv2vtv0t</sha1>
+    <revision>
+      <id>3241</id>
+      <timestamp>2007-06-08T00:23:20Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3242"> version 1.0;
+ ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ import &quot;../import/junos.xsl&quot;;
+ 
+ template tune_pfxlimits() {
+     var $get-config = {
+         &lt;get-config&gt; {
+             &lt;source&gt; {
+                 &lt;candidate&gt;;
+             }
+             &lt;filter&gt; {
+                 &lt;configuration&gt; {
+                     &lt;protocols&gt; {
+                         &lt;bgp&gt; {
+                         }
+                     }
+                 }
+             }
+         }
+     }
+ 
+     var $config = jcs:invoke($get-config)/configuration/protocols/bgp;
+     var $neighbors = jcs:invoke('get-bgp-summary-information');
+ 
+     for-each ($config/group[type = 'external']/neighbor[peer-as]) {
+         var $address = name;
+         var $neighbor = $neighbors/bgp-peer[peer-address == $address];
+         var $pfxlimit = apply-macro[name == 'inet']/data[name == 'prefix-limit'];
+         var $pfxrecv = $neighbor/bgp-rib[name == 'inet.0']/received-prefix-count;
+         var $rcvlimit = ceiling((($pfxrecv * 1.3) + 400) div 500) * 500;
+ 
+         var $newlimit = {
+             if (not($pfxlimit)) {
+                 expr $rcvlimit;
+             } else if (not($neighbor) || $neighbor[peer-state != 'Established']) {
+                 expr $pfxlimit/value;
+             } else {
+                 expr (ceiling((($pfxlimit/value * 3) + $rcvlimit) div 4) div 500) * 500;
+             }
+         }
+ 
+         if ($newlimit &amp;&amp; ($newlimit != $pfxlimit/value)) {
+             &lt;output&gt; &quot;Updated Prefix Limit - Neighbor: &quot; _ $address _ &quot; Old: &quot; _ $pfxlimit/value _ &quot; New: &quot; _ $newlimit;
+ 
+             var $update = {
+                 &lt;edit-config&gt; {
+                     &lt;target&gt; {
+                         &lt;candidate&gt;;
+                     }
+                     &lt;config&gt; {
+                         &lt;configuration&gt; {
+                             &lt;protocols&gt; {
+                                 &lt;bgp&gt; {
+                                     &lt;group&gt; {
+                                         &lt;name&gt; ../name;
+                                         &lt;neighbor&gt; {
+                                             &lt;name&gt; name;
+                                             &lt;apply-macro&gt; {
+                                                 &lt;name&gt; &quot;prefix-limit&quot;;
+                                                 &lt;data&gt; {
+                                                     &lt;name&gt; &quot;inet-unicast&quot;;
+                                                     &lt;value&gt; $newlimit;
+                                                 }
+                                             }
+                                         }
+                                     }
+                                 }
+                             }
+                         }
+                     }
+                 }
+             }
+ 
+             var $test_b = jcs:invoke($update);
+ /*
+             var $test_a = jcs:invoke('lock');
+             var $test_c = jcs:invoke('commit');
+             var $test_d = jcs:invoke('unlock');
+             var $test_e = jcs:invoke('discard-changes');
+ */
+         }
+     }
+ }
+ 
+ match / {
+     &lt;op-script-results&gt; {
+         call tune_pfxlimits();
+     }
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

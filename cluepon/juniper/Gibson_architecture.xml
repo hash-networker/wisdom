@@ -1,0 +1,185 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Gibson architecture</title>
+    <ns>0</ns>
+    <id>1381</id>
+      <sha1>16bvq1ftknxqj9z15ncg08gwrywopv4</sha1>
+    <revision>
+      <id>4092</id>
+      <timestamp>2010-11-18T10:41:04Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4026 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]])(vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="6444">The '''Gibson architecture''' was initially designed for the [[T640]], but has since been used in the [[T320]] and [[M320]] as well. It represents a departure from the flat shared memory model of the [[Martini architecture]] in that it utilizes multiple [[PFE|packet forwarding engines]] with their own buffering, interconnected by a crossbar ([[Clos]] in the case of multichassis) switching fabric. The Gibson architecture was designed to support improved port density and packet forwarding performance, and to support [[TX Matrix|multichassis]] operation for very high scalability.
+
+== Packet flow overview ==
+
+Packets enter a Gibson router via [[PIC]]s ([[type 1]], [[type 2]], or [[type 3]] PICs are supported depending on [[FPC]] type); on the FPC the PFE segments the packets into [[J-cell]]s, extracts a lookup key which it sends to the IP ASIC, and stores the cells in memory. The IP ASIC makes a routing decision and directs the cells to their egress PFE, where they are again stored in memory. A second route lookup is performed, and the cells are reassembled and directed to an outbound interface.
+
+For example, a packet flow from interface 0/0/0 to 1/1/0:
+
+&lt;graphviz&gt;
+graph gibsonoverall { 
+fontsize=10
+  &quot;PIC 0/0&quot; -- &quot;PFE 0&quot; [color=red,arrowhead=normal];
+  &quot;PIC 0/1&quot; -- &quot;PFE 0&quot;;
+  &quot;PIC 1/0&quot; -- &quot;PFE 1&quot;;
+  &quot;PIC 1/1&quot; -- &quot;PFE 1&quot; [color=red,arrowtail=normal];
+  &quot;PFE 0&quot; -- Switch [color=red,arrowhead=normal];
+  &quot;PFE 1&quot; -- Switch [color=red,arrowtail=normal];
+}
+&lt;/graphviz&gt;
+
+== Routing Engine (RE) ==
+
+The Gibson architecture uses a routing engine just like the [[Martini architecture]].
+
+== Packet Forwarding Engine (PFE) ==
+
+Each FPC contains one ([[M320]], [[T320]]) or two ([[T640]]) packet forwarding engines. The PFE, which consists of several custom ASICs and high speed memory, is the heart of the packet forwarding process.
+
+The Gibson architecture uses several ASICs:
+*L2/L3 Packet Processing ASIC
+*Switch Interface ASIC (SI)
+*Internet Processor ASIC (IP)
+*Queuing and Memory ASIC (Q&amp;M)
+*Fabric ASIC
+
+Several of these ASICs can operate in multiple modes, which enabled Juniper to use the same part in multiple places in their design.
+
+=== Detailed PFE packet flow ===
+
+An inbound packet first receives media specific handling on its ingress PIC. It is then passed to the L2/L3 ASIC which performs:
+*Control information extraction (protocol type)
+*Input accounting
+*L2 header removal
+*Segmentation into J-Cells (Jcell flows shown in blue below)
+
+The L2/L3 ASIC passes the cells to a Switch interface ASIC operating in network mode. While in network mode, the SI ASIC performs:
+*Routing lookup key extraction; the SI ASIC can be programmed to extract any needed information.
+*Sprays the cells to the Q&amp;M memory ASICs and collects the locations of the stored cells.
+*Combines the locations, the lookup key, and interface information into a [[notification]] (shown in red below). 
+*Sends notification to the IP ASIC.
+
+The IP ASIC used in the Gibson is a new design based on the [[IP2]]. It is able to perform 80 million packet forwarding operations per second. The ASIC uses the lookup key in the notification to determine the correct handling of the incoming packet. It then amends the notification with its routing decision, priority information, rewrite actions, etc, and passes the notification on to the Q&amp;M ASIC in queue mode.
+
+While in Queue mode, the Q&amp;M ASIC:
+*Queues notifications in 4 banks of DRAM (not shown in chart)
+*Performs priority queuing
+*Performs RED
+*Polices and rate-shapes traffic
+*Forwards a notification to the fabric mode of the switch interface ASIC when it is time to dequeue the packet
+
+After receiving a notification, the switch interface ASIC in fabric mode performs:
+*Fetches packet data from Q&amp;M memory using the addresses in the notification
+*Adds a header and CRC to each sell. The header contains the source and destination PFE, and a sequence number used to prevent cell reordering
+*Sends and receives flow control across the fabric
+*Transmits cells towards the fabric
+
+The egress PFE performs the reverse of the same operations.
+
+
+&lt;graphviz&gt;
+digraph gibsonPFE {
+     size=&quot;9.5,5.5&quot;
+     ratio=&quot;.75&quot;;
+     node [fontsize=4];
+
+    subgraph clusterA {
+       &quot;Type-3 PIC 0&quot; [URL=&quot;type-3&quot;];
+       &quot;Type-3 PIC 1&quot; [URL=&quot;type-3&quot;];
+     }
+
+ 
+     subgraph clusterB {
+       color=blue;
+
+       &quot;T-Series IP2&quot; [group=core,URL=&quot;IP2&quot;];
+       &quot;SI (fabric)&quot; [group=core];
+       &quot;Q&amp;M\n\n(Queue mode)&quot; [group=core];
+       &quot;SI (net)&quot; [group=core];
+
+       &quot;T-Series IP2&quot; -&gt; &quot;SRAM&quot; [arrowtail=normal,weight=5];
+        
+      
+       &quot;L2/L3 ASIC&quot;;
+       &quot;L2/L3 ASIC&quot;;
+
+       &quot;Type-3 PIC 0&quot; -&gt; &quot;L2/L3 ASIC&quot; [arrowtail=normal,color=green];
+       &quot;Type-3 PIC 1&quot; -&gt; &quot;L2/L3 ASIC&quot; [arrowtail=normal,color=green];
+       &quot;L2/L3 ASIC&quot; -&gt; &quot;SI (net)&quot; [arrowtail=normal,color=blue];
+
+       &quot;SI (net)&quot; -&gt; &quot;T-Series IP2&quot; [color=red,weigh=4];
+
+       &quot;T-Series IP2&quot; -&gt; &quot;Q&amp;M\n\n(Queue mode)&quot; [color=red,weigh=4];
+       &quot;Q&amp;M\n\n(Queue mode)&quot; -&gt; &quot;SI (fabric)&quot; [color=red,weight=5];
+       &quot;Q&amp;M\n\n(Queue mode)&quot; -&gt; &quot;SI (net)&quot; [color=red,weight=5];
+       &quot;SI (fabric)&quot; -&gt; &quot;T-Series IP2&quot; [color=red,weight=4];
+   
+       &quot;SI (fabric)&quot; -&gt; &quot;Q&amp;M(MM)0&quot; [arrowtail=normal,color=blue];
+       &quot;SI (fabric)&quot; -&gt; &quot;Q&amp;M(MM)1&quot; [arrowtail=normal,color=blue];
+       &quot;SI (fabric)&quot; -&gt; &quot;Q&amp;M(MM)2&quot; [arrowtail=normal,color=blue];
+       &quot;SI (fabric)&quot; -&gt; &quot;Q&amp;M(MM)3&quot; [arrowtail=normal,color=blue];
+       &quot;SI (net)&quot; -&gt; &quot;Q&amp;M(MM)0&quot; [arrowtail=normal,color=blue];
+       &quot;SI (net)&quot; -&gt; &quot;Q&amp;M(MM)1&quot; [arrowtail=normal,color=blue];
+       &quot;SI (net)&quot; -&gt; &quot;Q&amp;M(MM)2&quot; [arrowtail=normal,color=blue];
+       &quot;SI (net)&quot; -&gt; &quot;Q&amp;M(MM)3&quot; [arrowtail=normal,color=blue];
+
+
+       &quot;Q&amp;M(MM)0&quot; -&gt; &quot;Bank 0&quot; [arrowtail=normal,weight=5];
+       &quot;Q&amp;M(MM)1&quot; -&gt; &quot;Bank 1&quot; [arrowtail=normal,weight=5];
+       &quot;Q&amp;M(MM)2&quot; -&gt; &quot;Bank 2&quot; [arrowtail=normal,weight=5];
+       &quot;Q&amp;M(MM)3&quot; -&gt; &quot;Bank 3&quot; [arrowtail=normal,weight=5];
+       
+     }
+     subgraph clusterC {
+       &quot;Fabric\n\nASIC&quot;;
+       
+       &quot;SI (fabric)&quot; -&gt; &quot;Fabric\n\nASIC&quot; [arrowtail=normal,color=blue]; 
+     }
+     label=&quot;Gibson PFE&quot;;
+
+}
+&lt;/graphviz&gt;
+
+== Switch Fabric ==
+
+A switch fabric interconnects all the PFEs. The switch fabric consists of 4+1 'slices'. Cells are sprayed across the slices. With 4 slices operational a T640's fabric is nonblocking. The system can run with fewer slices operating but with degraded performance.
+
+=== Flow control ===
+*Requests
+*Grants
+
+[[Category:Router Architecture]]</text>
+    </revision>
+  </page>
+</mediawiki>

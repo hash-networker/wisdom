@@ -1,0 +1,80 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>T640</title>
+    <ns>0</ns>
+    <id>1286</id>
+      <sha1>bce9foqz6382t2rrvn6uzlz0mjv9psf</sha1>
+    <revision>
+      <id>4082</id>
+      <timestamp>2010-11-18T10:38:10Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4030 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]]) (vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="1517">{{Infobox_router | 
+  product_name = Juniper T640 Router |
+  product_image = [[Image:T640_Front.jpg|200px|]] |
+  slots = 8 FPC, 32 PIC |
+  bandwidth = 640 Gbit/s | 
+  fpc = [[type-1]] [[type-2]] [[type-3]] [[type-4]]|
+  style = [[PB-Style_PIC|PB-style]] [[PC-Style_PIC|PC-style]]|
+  power = 2 (1+1) DC Only |
+  switch = [[SIB]] (4+1 redundant) | 
+  date = April 23, 2002 | 
+}}
+The [[T640]] ([[codenames|Codename:]] ''Gibson'') is a member of the [[T-series]] line and was Juniper's top of the line router prior to the release of the T1600. It is based on the [[Gibson architecture]], and is upgradable to multichassis operation.
+
+== Innovations ==
+
+The T640 platform introduced the new [[Gibson architecture]], as well as the first 40 Gigabit/sec per slot router. The [[RE-3.0]] 600MHz Routing Engine was also released with the T-series, and later made available to all M-series routers except the [[M7i]] and [[M10i]].
+
+
+== T640-&gt;T1600 upgrade ==
+
+The T640 chassis can be upgraded to a T1600 chassis whilst fully operational in a process that is not service affecting. The following components are replaced:
+1. Power Entry Modules
+2. Switch Interface Boards
+3. Front Panel (re-badge from T640 to T1600)
+On certain older T640s the fan tray must also be replaced.
+The upgrade kit has the code &quot;T1600-2-80A-U&quot; and has a RRP of $275k
+
+More stuff here.
+
+== External links ==
+
+* [http://www.urbandictionary.com/define.php?term=Hack+the+Gibson Hack The Gibson]
+
+[[Category:Hardware]]
+[[Category:T-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

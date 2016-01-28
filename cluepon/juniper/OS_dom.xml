@@ -1,0 +1,91 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>OS dom</title>
+    <ns>0</ns>
+    <id>2004</id>
+      <sha1>gfxjjkk34x2fnz72uzutmsooautsp5y</sha1>
+    <revision>
+      <id>4077</id>
+      <timestamp>2010-11-18T10:36:45Z</timestamp>
+      <contributor>
+        <username>Eusahues</username>
+        <id>1518</id>
+      </contributor>
+      <minor/>
+      <comment>Undo revision 4050 by [[Special:Contributions/Umahymi|Umahymi]] ([[User talk:Umahymi|Talk]]) (vandalism/malicious link)</comment>
+      <text xml:space="preserve" bytes="1322">{{Infobox_script | 
+  name = Make a table out of &quot;show interface diagnostic optics&quot; |
+  type = Op |
+  author = ik5pvx | 
+  version = 20100408 |
+  min_junos = All Versions |
+  slax = [[dom.slax]] |
+}}
+
+== Information ==
+
+This little script will make an easy to read table of power measurements out of your DOM-supporting optics. 
+
+== Usage ==
+
+Config as:
+&lt;pre&gt;
+me@router-re0&gt; show configuration system scripts op 
+file dom.slax {
+    command dom;
+    description &quot;Show optical power levels in tabular form&quot;;
+}
+&lt;/pre&gt;
+
+Call it as:
+&lt;pre&gt;
+me@router-re0&gt; op dom
+Interface    In mW  In dBm Out mW Out dBm Temp C Description
+ge-3/0/3                   0.0000           36.0 
+xe-3/2/0     0.2559  -5.92 1.3310    1.24   33.3 some active link
+xe-3/3/0     0.0013 -28.86 0.0000           30.3 some link pending activation
+
+
+{master}
+
+&lt;/pre&gt;
+
+== Bugs ==
+
+&lt;del&gt;I assume the meaningful description is on unit 0, not on the physical interface. Easily tweakable to your needs, though.
+ge- interfaces return a different xml for rx power. &lt;/del&gt;
+
+== ChangeLog ==
+
+* 20100504 - Collect all interface descriptions with one command invoke and show physical interface description if unit 0 description does not exist - Cougar
+* 20100408 - Added check for different xml field for rx power returned by ge interfaces.
+* 20100312 - Initial Version</text>
+    </revision>
+  </page>
+</mediawiki>

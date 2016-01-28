@@ -1,0 +1,61 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MX960</title>
+    <ns>0</ns>
+    <id>1777</id>
+      <sha1>60parq9awh0hqg65pmo7lllyry55aac</sha1>
+    <revision>
+      <id>4099</id>
+      <timestamp>2010-11-22T02:25:33Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1839">{{Infobox_router | 
+  product_name = Juniper MX960 ESR |
+  product_image = [[Image:MX960_Front.jpg|200px]] |
+  slots = 12 DPC |
+  bandwidth = 480 Gbit/s | 
+  fpc = [[DPC]] |
+  style = [[DPC-Style]]|
+  power = 4 (2+2 DC, 3+1 AC) |
+  switch = [[SCB]] (2+1 for line rate) | 
+  date = February 2007 with JUNOS 8.2 | 
+}}
+
+The [[MX960]] ([[codenames|Codename:]] ''Harry'') marked Juniper's entrance into the ethernet based &quot;switch&quot; market. The MX960 was launched as ''Harry'', a full Layer 3 platform (MX-R), and later followed up with ''Triton'', a software-locked VPLS-centric box using the same hardware (MX-X). The entire [[MX-series]] platform is known as [[codenames|codename]] 'Atlas'. Technically the Juniper MX960 architecture does not resemble a traditional ethernet &quot;switch&quot; at all, but is instead implemented using the Juniper [[I-Chip]] 3.0 and other existing T-series hardware which has already been developed. Software changes allow the MX960 to function as a &quot;switch&quot;, and perform integrated bridging and routing functions.
+
+The MX960 has 14 vertical front-end slots, two (2) of which are reserved for [[switch control board]]s (with onboard [[RE-1300]] or [[RE-2000]] routing engines), and twelve (12) of which are available for physical interfaces or an additional SCB (for line-rate redundancy; only two routing engines are supported). The MX series eliminates the concept of FPC+PIC, and uses new full-height cards which combine FPC+PIC functionality (including Tunnel PIC), known as [[DPC]]s (Dense Port Concentrators). At initial launch, the only two DPCs are a 4-port 10GE XFP-based card (LAN/WAN PHY), and a 40-port 1GE SFP-based card. A 40-port 10/100/1000 DPC is expected shortly thereafter, to be followed by a 2-port 10GE XFP+20-port 1GE-SFP Combo card.
+
+[[Category:Hardware]]
+[[Category:MX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,87 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>S-Board</title>
+    <ns>0</ns>
+    <id>1999</id>
+      <sha1>rso6i4x2aenhesz6grqlacf7pixhdhp</sha1>
+    <revision>
+      <id>3881</id>
+      <timestamp>2010-03-01T04:30:24Z</timestamp>
+      <contributor>
+        <username>Ckt2packet</username>
+        <id>1443</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="1078">On Juniper M-series routers, packet forwarding functionality was implemented on the so-called S-boards which typically hosted L3 lookup ASIC, service processor and glue logic. Since different M-series platforms had different functionality, this led to an array of S-board names:
+
+{| class=&quot;wikitable&quot;
+|-
+! Platform
+! Name
+! Function
+! 
+|-
+| [[M40]]
+| [[SCB]]
+| L3 lookup
+| Originally shipped with [[Internet Processor]], later [[Internet Processor II]]
+|-
+| [[M20]]
+| [[SCB]]
+| L3 lookup
+| Extended M40 SCB design for &quot;cold spare&quot; redundancy of the forwarding plane
+|-
+| [[M160]]
+| [[SFM]]
+|  L3 lookup
+| Allowed for OC192 support via packet spraying across four [[PFE]]s
+|-
+| [[M40e]]
+| [[SFM]]
+|  L3 lookup
+| Utilizes M160-style packet distribution for [[PFE]] redundancy
+|-
+| [[M5]]/[[M10]]
+| [[FEB]]
+|  L2&amp;L3 lkp
+| Single board integrating all three ASICs of [[ABC chipset]] 
+|-
+| [[M7i]]/[[M10i]]
+| [[cFEB]]
+|  L2&amp;L3 lkp
+| Single board featuring single integrated ABC ASIC
+|-
+| [[M120]]
+| [[FEB]]
+|  L2&amp;L3 lkp
+| Next-gen distributed M-series linecard based on [[I-chip]]
+|}</text>
+    </revision>
+  </page>
+</mediawiki>

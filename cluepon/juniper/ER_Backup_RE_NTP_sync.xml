@@ -1,0 +1,68 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Backup RE NTP sync</title>
+    <ns>0</ns>
+    <id>1539</id>
+      <sha1>3ipil1i5rfulck16rbrc0nhed6x4os4</sha1>
+    <revision>
+      <id>2364</id>
+      <timestamp>2005-09-08T09:43:47Z</timestamp>
+      <contributor>
+        <username>Psavola</username>
+        <id>64</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1781">The clock in backup RE seems to stray a lot, which is causing a lot of
+problems.  We would like to use NTP to sync the clock on backup RE as
+well.  However, apparently this is very difficult to get to work properly
+unless you have separate infrastructure connecting fxp0's in all the
+routers.  We don't have this, and I believe there are a lot of networks in
+the similar situation.
+                                                                                                                        
+We also tried to hook up fxp0's in master and backup RE with a cross-over
+cable.  This either requires that &quot;default-address-selection&quot; is disabled
+(we have it enabled) because otherwise backup RE will use the same
+loopback address as RE0 as source for NTP packets, or we must manually
+configure the NTP source address.  The latter is unacceptable, because if
+the backup RE becomes active, NTP service ceases to work as a private
+address can not be used as a source address, and using a globally routable
+address for fxp0 is unacceptable.
+                                                                                                                        
+Therefore, there does not seem to be a good way to solve the clock sync
+problem at the moment with the following constraints:
+ 1) separate management infrastructure at fxp0 cannot be assumed,
+ 2) default-address-selection is used, and
+ 3) the router must be able act as a public NTP server even if backup RE
+    becomes the primary RE.
+                                                                                                                        
+Two ways how this _might_ work is to implement
+&quot;no-default-address-selection&quot; knob for NTP, or to use TNP through fxp1's
+to sync the clock.  There may be others.</text>
+    </revision>
+  </page>
+</mediawiki>

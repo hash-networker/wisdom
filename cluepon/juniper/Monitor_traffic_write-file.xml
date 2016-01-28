@@ -1,0 +1,67 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Monitor traffic write-file</title>
+    <ns>0</ns>
+    <id>1419</id>
+      <sha1>e9u376ny8kbfvzlvd9p289uhxl5e79e</sha1>
+    <revision>
+      <id>1710</id>
+      <timestamp>2005-08-20T21:15:42Z</timestamp>
+      <contributor>
+        <username>Ras</username>
+        <id>3</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1784">It is possible to record a [[tcpdump]]-format copy of packets monitored via the &quot;monitor traffic&quot; command, using the hidden command &quot;monitor traffic write-file &lt;filename&gt;&quot;. Conversely, existing files written this way can be replayed into [[tcpdump]] ASCII format using the command &quot;monitor traffic read-file &lt;filename&gt;&quot;.
+
+These commands are hidden due to concerns about users accidentally writing large files to the /var partition, causing a lack of disk space and potentially impairing the operation of the router.
+
+== Examples ==
+
+ user@juniper&gt; monitor traffic write-file testing interface ge-0/0/1   
+ Listening on ge-0/0/1, capture size 96 bytes
+ 
+ ^C
+ 107 packets received by filter
+ 0 packets dropped by kernel
+ 
+ user@juniper&gt; monitor traffic read-file testing 
+ 21:12:52.973693  In arp who-has Ash-Equinix-GigE.aleron.net tell equinix-ashburn.pch.net
+ 21:12:52.974310  In arp who-has Ash-Equinix-GigE.aleron.net tell equinix-ashburn.pch.net
+ 21:12:53.531134  In arp who-has exchange-cust1.ash.equinix.net tell g1-1.border1.eqx.iad.transedge.com
+ 21:12:53.532208  In arp who-has exchange-cust1.ash.equinix.net tell g1-1.border1.eqx.iad.transedge.com
+ 21:12:53.780775  In arp who-has Ash-Equinix-GigE.aleron.net tell ge2-5.fr1.iad.llnw.net
+ 21:12:53.781676  In arp who-has Ash-Equinix-GigE.aleron.net tell ge2-5.fr1.iad.llnw.net
+ 21:12:53.796944  In arp who-has 64.200.163.132 tell WASHDC5LCE1.3.0.wcg.net
+ 21:12:53.797166  In arp who-has 64.200.163.132 tell WASHDC5LCE1.3.0.wcg.net
+ 21:12:53.964604  In arp who-has equinix-peering.lumison.net tell equinixexchange.realconnect.com
+ 21:12:53.965656  In arp who-has equinix-ashburn.novia.net tell equinixexchange.realconnect.com
+ 21:12:54.531061  In arp who-has equinix-peering.lumison.net tell g1-1.border1.eqx.iad.transedge.com</text>
+    </revision>
+  </page>
+</mediawiki>

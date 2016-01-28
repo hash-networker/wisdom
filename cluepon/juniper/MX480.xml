@@ -1,0 +1,71 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MX480</title>
+    <ns>0</ns>
+    <id>1879</id>
+      <sha1>bd1bse783r2j4swyzu09o355tyf94p7</sha1>
+    <revision>
+      <id>4109</id>
+      <timestamp>2010-11-22T05:55:49Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1382">{{Infobox_router | 
+  product_name = Juniper MX480 ESR |
+  product_image = [[Image:MX480_Front.jpg|200px]] |
+  slots = 6 DPC |
+  bandwidth = 480 Gbit/s |
+  fpc = [[DPC]] |
+  style = [[DPC-Style]]|
+  power = 4 (2+2 DC, 2+2 AC) |
+  switch = [[SCB]] (1+1) | 
+  date = November 2007 with JunOS 8.4 | 
+}}
+
+The [[MX480]] ([[codenames|Codename:]] ''Calypso'') is the second member of the MX-Series family, and is designed as a competitor to the Cisco 6506/7606 and Alcatel 7750 SR7 routers. 
+
+The MX480 has 8 horizontal front-end slots, two (2) of which are reserved for [[switch control board]]s (with onboard [[RE-1300]] or [[RE-2000]] routing engines), and six (6) of which are available for physical interfaces. The MX480 is 8RU high, and under 800mm deep, with side-to-side airflow. 
+
+As is the case with other MX-series systems, MX480 chassis is upgradeable and supports 1st gen (40G/slot) DPC cards as well as 2nd gen (120G/slot) MPC cards.
+
+== Family information ==
+
+See flagship [[MX960]] page for description of common MX-series features
+
+== Tips ==
+
+It should be noted that the MX480 runs in &quot;Triton&quot; (i.e. layer-2-only) mode by default, regardless of the type of linecards installed.  &quot;set chassis network-services ip&quot; is required to change to normal &quot;ip&quot; mode in order to use the full capabilities of &quot;-R&quot; cards.
+
+[[Category:Hardware]]
+[[Category:MX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

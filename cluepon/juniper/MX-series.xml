@@ -1,0 +1,78 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MX-series</title>
+    <ns>0</ns>
+    <id>1876</id>
+      <sha1>l8e7rugfzyopxvps5je24mg6or7vhjv</sha1>
+    <revision>
+      <id>4158</id>
+      <timestamp>2011-02-14T21:28:16Z</timestamp>
+      <contributor>
+        <username>Rmaunier</username>
+        <id>1203</id>
+      </contributor>
+      <text xml:space="preserve" bytes="3021">[[Image:MX_family.jpg|thumb|right|Juniper MX-series Routers]]
+
+The MX-Series are a family of Carrier Ethernet Switch Routers (CESRs), originally launched in early 2007 with the MX960, and followed later with smaller MX480 and MX240 systems. 
+
+Second-gen MX-series (MX 3D) arrived late 2009 and included new chipset (&quot;Trio&quot;) with rich IP/MPLS processing and subscriber management capabilities, 120G/slot linecards and a new compact chassis (MX80).
+
+All of MX-Series chassis share common DPC and SCB components for interfaces and forwarding.
+MX-series sheet metal and some cards are also reused in [[SRX-series|SRX]] series high-end security applicances.
+
+
+[[Image:MX_Series_resume.jpg|thumb|right|Juniper MX-series Chart]]
+
+
+
+MX-series Products
+*[[MX960]]
+*[[MX480]]
+*[[MX240]]
+*[[MX80]]
+
+
+== First Generation ==
+
+The MX960 became Juniper's first ethernet-centric &quot;services switch&quot; product, and marked the introduction of the [[DPC]] interface card.  Interface cards are built around Juniper's proprietary full-duplex 10gbps NPU [[I-Chip]], which integrates the functionality of the [[Internet Processor II]] and several other chips on one die (including [[Tunnel PIC]] functionality).  Individual 10GE interfaces can be configured to provide tunnel services (the physical interface is not available for use).  On the 40xGigE DPC, a 1gbps &quot;11th PIC&quot; on each of the four I-Chips can be used for this purpose without impacting the 10 physical interfaces controlled by the chip. Initially, I-chip was developed for edge functionality similar to Juniper [[M-series]], so Juniper added EZChip NP-2 NPU for Ethernet-specific L2 functionality and (optional) rich queuing to MX linecards. This tandem of two highly integrated chips ensured speed and feature growth potential, with density sufficient to provide full-duplex 40G forwarding on one DPC card with four I-chip/EZ complexes. This design quickly gained market from service providers, who were pleased with rich IP/MPLS feature set and clear Ethernet focus of the device.
+
+== Second Generation (MX3D) ==
+
+The second generation of MX hardware was introduced by Juniper in 4Q2009 and is built around a brand-new &quot;Trio&quot; chipset. There are no 3rd party NPUs in the design. The new 30Gbps (full-duplex) NPU is the company's first chip oriented towards the &quot;common edge&quot; and integrating rich L2/L3 and broadband subscriber management functionality. The new network cards (MPC) employ a constellation of four &quot;Trio&quot; chips for full-duplex throughput of 120 Gbps per slot (with support for up to 16x10GE ports with 4:3 oversubscription ratio), though under some conditions users may be able to achieve better  [[Trio_oversubscription|oversubscription]].
+
+== Competition ==
+
+At launch, MX-series mainly competed with Cisco 7600 and Alcatel 7750.  The second generation of MX-series (MX3D) is now positioned against A7750 equipped with IOM3 hardware (50Gbps full-duplex per slot), and the Cisco ASR9000-series platform.
+
+[[Category:Hardware]]
+[[Category:MX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

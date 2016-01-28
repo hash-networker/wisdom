@@ -1,0 +1,84 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER BGP neighbor disable</title>
+    <ns>0</ns>
+    <id>1486</id>
+      <sha1>2m0yfbekcmu32pbc3pqtey3burdd5dn</sha1>
+    <revision>
+      <id>3107</id>
+      <timestamp>2007-04-19T22:39:09Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1803">== Problem ==
+
+JUNOS lacks a way to mark a BGP neighbor as configured but administratively down. The only way to disable a neighbor is to remove it from consideration in the configuration at the parser level, using the generic &quot;deactivate&quot; command:
+
+ protocols bgp {
+     group example {
+         inactive: neighbor 1.2.3.4 {
+             description &quot;Example Neighbor&quot;;
+             remote-as 1234;
+         }
+     }
+ }
+
+Unfortunately this prevents the system from knowing that there is a configured BGP neighbor here at all. It is not displayed in a &quot;show bgp summary&quot;, and connection attempts from the remote peer result in system logs appearing to be from unconfigured neighbors, rather than from administratively disabled neighbors. This is counter-intuitive to both users and monitoring software, which has no way to distinguish this from an unconfigured neighbor connection attempt.
+
+This also relates to [[ER_Empty_bgp_groups]], as the above example would generate warning (or error on code prior to 7.4) because the group has no configured neighbors. The only solution would be to completely deactivate the group as well, which is also counter-intuitive.
+
+== Solution ==
+
+Add a &quot;disable&quot; keyword to the BGP neighbor statement (and secondarily, to the BGP group statements) which places the neighbor in an administratively down state. For example:
+
+ protocols bgp {
+     group example {
+         neighbor 1.2.3.4 {
+             description &quot;Example Neighbor&quot;;
+             remote-as 1234;
+             disable;
+         }
+     }
+ }
+
+ user@router&gt; show bgp summary 
+ ...
+ Peer               AS      InPkt     OutPkt    OutQ   Flaps Last Up/Dwn  State...
+ ...
+ 1.2.3.4          1234      13395      13954       0       0 4d 15:33:31 AdminDown
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

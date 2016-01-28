@@ -1,0 +1,70 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Calvin architecture</title>
+    <ns>0</ns>
+    <id>1468</id>
+      <sha1>4n61gexn4pzbqdrttp2a6daqpb8hvoa</sha1>
+    <revision>
+      <id>2414</id>
+      <timestamp>2005-09-14T12:50:30Z</timestamp>
+      <contributor>
+        <username>Mfirth</username>
+        <id>104</id>
+      </contributor>
+      <minor/>
+      <comment>Changed 'Adaptive Services PIC' to 'Adaptive Services module - the M7i ASM is a cut down ASP</comment>
+      <text xml:space="preserve" bytes="1718">[[Image:ABC-Chip.jpg|thumb|right|Juniper ABC-Chip ASIC]]
+
+The '''Calvin architecture''' is a minimal respin of the [[Martini architecture]] created for the [[M7i]] ([[Codenames|Codename:]] ''Calvin'') and [[M10i]] ([[Codenames|Codename:]] ''Hobbes''). Its functionality is almost identical to [[Martini architecture|Martini]], the changes were primarily made to reduce costs.
+
+The [[Martini architecture]] consists of several discrete [[ASICs]]: Two [[A-Chip]]s, one [[B-Chip]] per FPC, and the [[Internet_Processor_II|CF-Chip]]. In Calvin these were combined into the ''ABC-Chip'' for a large cost reduction and lower power requirements.
+
+Other changes include: 
+
+*Improved silicon process.
+*Reduced board space.
+*Support for lower cost and denser external memory. including:
+**DDR SDRAM
+**ZBT SRAM
+*Only two banks of SRAM, rather than four.
+**This reduces lookup bandwidth, so the number of lookup processors in the CF were reduced as well.
+**As a result, ABC-Chip is only able to forward around 16Mpps vs [[Internet Processor II|CF-Chip's]] 40Mpps.
+*Only two banks of DDR SDRAM rather than four banks of EDO
+**Because of DDR, it provides the same bandwidth.
+*[[B-Chip]] component in ABC has double the microcode space from B-3.0.
+
+The forwarding engine board, the [[CFEB]], in Calvin architecture routers contains the entire PFE minus the PICs themselves. The CFEB used in the [[M7i]] and the [[M10i]] is the same part. Since the M7i only has four pic slots the second B-Chip is used to support the [[FIC|fixed PIC]], on-board [[Tunnel PIC|tunnel services]], and the optional on board [[Adaptive Services module]].
+
+[[Category:Router Architecture]]
+[[Category:Image needed]]
+[[Category:Hardware]]
+[[Category:ASICs]]</text>
+    </revision>
+  </page>
+</mediawiki>

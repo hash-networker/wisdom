@@ -1,0 +1,76 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Configuration audit command</title>
+    <ns>0</ns>
+    <id>1796</id>
+      <sha1>eplj29l9tnec7aad5q7adheovkfymea</sha1>
+    <revision>
+      <id>3061</id>
+      <timestamp>2007-02-19T05:33:02Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1527">== Problem ==
+New engineers are often forced to take over Juniper router configurations from a previous party, through company acquisitions or replacing previous employees. Sometimes these configurations have not been maintained as well as they should have been, and can contain large numbers of elements which are difficult to track down and remove.
+
+== Solution ==
+Implement an &quot;audit&quot; command, which counts or displays the locations in which portions of the configuration that can be referenced elsewhere are actually referenced. This includes policy-statements, prefix-lists, communities, as-path definitions, firewall filters, and groups.
+
+For example:
+
+ user@router&gt; request system configuration audit count
+ Policy Statements:
+    example-policy-statement-A             1
+    example-policy-statement-B             3
+    example-policy-statement-C             2
+    example-policy-statement-D             1
+    example-policy-statement-E             0
+    example-policy-statement-F             0
+    example-policy-statement-G             0
+    example-policy-statement-H             1
+ ...
+
+ user@router&gt; request system configuration audit prefix-list
+    example-prefix-list-A
+              [edit policy-options policy-statement EXAMPLE term example from]
+              [edit policy-options policy-statement EXAMPLE2 term anotherexample from]
+              [edit firewall filter EXAMPLE term example from]
+    example-prefix-list-B
+    example-prefix-list-C
+ ...
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

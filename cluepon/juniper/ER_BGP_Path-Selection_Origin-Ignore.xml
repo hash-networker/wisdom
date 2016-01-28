@@ -1,0 +1,62 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER BGP Path-Selection Origin-Ignore</title>
+    <ns>0</ns>
+    <id>2090</id>
+      <sha1>joo5tz93ja3m1tn0eyj76c0umxgnkcd</sha1>
+    <revision>
+      <id>4193</id>
+      <timestamp>2011-06-06T20:25:23Z</timestamp>
+      <contributor>
+        <username>Jeffsw6</username>
+        <id>1205</id>
+      </contributor>
+      <comment>/* Problem */</comment>
+      <text xml:space="preserve" bytes="546">== Problem ==
+
+JUNOS lacks a way to ignore the BGP Origin attribute in BGP bestpath selection.  As it is increasingly common for transit networks to reset the Origin attribute on some or all routes to &quot;I,&quot; an operator who wishes to be unaffected by this has no option on JUNOS other than to reset the attribute upon learning routes from all external BGP neighbors.
+
+== Solution ==
+
+JUNOS requires a feature:
+
+ protocols bgp {
+      path-selection {
+          origin-ignore;
+      }
+ } 
+
+== Status ==
+
+Not addressed.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

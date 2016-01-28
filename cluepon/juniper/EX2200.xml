@@ -1,0 +1,88 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>EX2200</title>
+    <ns>0</ns>
+    <id>2092</id>
+      <sha1>i0kaa5rvfgk6r9evtmw4n2pz19k1i3d</sha1>
+    <revision>
+      <id>4198</id>
+      <timestamp>2011-06-18T19:32:02Z</timestamp>
+      <contributor>
+        <username>Arditsaliu</username>
+        <id>1558</id>
+      </contributor>
+      <comment>Created page with &quot; '''EX2200-48T-4G'''  &lt;pre&gt; root&gt; show chassis hardware extensive                                                                              Hardware inventory: Item           ...&quot;</comment>
+      <text xml:space="preserve" bytes="1995">
+'''EX2200-48T-4G'''
+
+&lt;pre&gt;
+root&gt; show chassis hardware extensive                                                                             
+Hardware inventory:
+Item             Version  Part number  Serial number     Description
+Chassis                                CUxxxxxxxxxx      EX2200-48T-4G
+Routing Engine 0 REV 12   750-026325   CUxxxxxxxxxx      EX2200 48-Port
+FPC 0            REV 12   750-026325   CUxxxxxxxxxx      EX2200 48-Port
+  CPU                     BUILTIN      BUILTIN           FPC CPU
+  PIC 0                   BUILTIN      BUILTIN           48x 10/100/1000 Base-T
+  PIC 1          REV 12   750-026325   CUxxxxxxxxxx      4x GE SFP
+Power Supply 0                                           PS 100W AC
+Fan Tray                                                 Fan Tray
+
+root&gt; show chassis routing-engine 
+Routing Engine status:
+  Slot 0:
+    Current state                  Master
+    Election priority              Master (default)
+    Temperature                 35 degrees C / 95 degrees F
+    CPU temperature             35 degrees C / 95 degrees F
+    DRAM                       512 MB
+    Memory utilization          41 percent
+    CPU utilization:
+      User                       4 percent
+      Background                 0 percent
+      Kernel                     1 percent
+      Interrupt                  0 percent
+      Idle                      95 percent
+    Model                          EX2200 48-Port
+    Serial ID                      CUxxxxxxxxxx
+    Start time                     2010-06-09 14:40:38 UTC
+    Uptime                         1 day, 5 hours, 34 minutes, 40 seconds
+    Last reboot reason             Router rebooted after a normal shutdown.
+    Load averages:                 1 minute   5 minute  15 minute
+                                       0.12       0.10       0.03
+
+root&gt; show chassis fpc pic-status       
+Slot 0   Online       EX2200 48-Port
+  PIC 0  Online       48x 10/100/1000 Base-T
+  PIC 1  Online       4x GE SFP
+
+&lt;/pre&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

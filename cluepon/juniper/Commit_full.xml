@@ -1,0 +1,48 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Commit full</title>
+    <ns>0</ns>
+    <id>1418</id>
+      <sha1>khagva9jxs5wl3aw8hbc4ypmbljqxtj</sha1>
+    <revision>
+      <id>2302</id>
+      <timestamp>2005-08-25T21:40:56Z</timestamp>
+      <contributor>
+        <username>Anonymous</username>
+        <id>21</id>
+      </contributor>
+      <text xml:space="preserve" bytes="553">In [[JunOS]] version 5.1, Juniper introduced the concept of a partial commit. When a user executes the &quot;commit&quot; command, only the portions of the operating system affected by the changed configuration are updated.
+
+The partial commit process normally results in a much faster &quot;commit&quot;. However, sometimes a software bug can result in internal state inconsistencies. To force a &quot;full&quot; commit, where every configuration file is rebuilt, and every [[JunOS]] daemon is HUP'd, use the hidden command &quot;commit full&quot;.
+
+== Examples ==
+* user@juniper# commit full</text>
+    </revision>
+  </page>
+</mediawiki>

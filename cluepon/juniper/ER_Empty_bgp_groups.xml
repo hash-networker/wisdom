@@ -1,0 +1,79 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Empty bgp groups</title>
+    <ns>0</ns>
+    <id>1494</id>
+      <sha1>k1paoxi2wb05tpmc8wt5m9kqcdr6dly</sha1>
+    <revision>
+      <id>3940</id>
+      <timestamp>2010-05-17T15:46:02Z</timestamp>
+      <contributor>
+        <username>Funkboy</username>
+        <id>470</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1895">== Problem ==
+
+Currently, [[JunOS]] does not allow a BGP group to exist with no neighbors defined under it. This can be useful for catching simple misconfigurations where a group is created with no neighbors under it, but it is better implemented as a warning rather than a hard error. Unfortunately, users often pre-configure their router groups for certain roles, which may not immediately be used. Also, users who go to deactivate the last neighbor in a group find that the configuration will not commit without deactivating the entire group. The users must then remember to re-activate the group later.
+
+For example:
+
+ protocols bgp {
+     group example {
+         neighbor 1.2.3.4 {
+             description &quot;Example Neighbor&quot;;
+             remote-as 1234;
+         }
+     }
+ }
+ 
+ [edit protocols bgp group example]
+ user@router# deactivate neighbor 1.2.3.4 
+ 
+ user@router# commit check 
+ [edit protocols]
+   'bgp'
+     BGP group example must have either configured peers or an allow list
+ error: configuration check-out failed
+
+== Solution ==
+
+Allow BGP groups to exist with no neighbors defined. It may be reasonable to generate a warning, and to optimize away the group (automatically &quot;deactivating&quot; it internally) upon commit, but it should not be an error to have a group with no active neighbors.
+
+Another potential solution is to make this (and possibly other similar errors) configurable, to either generate hard errors, generate warnings, or ignore them completely. This way, routers could ship with hard errors enabled by default to help users catch errors, but could be easily ignored by power users.
+
+== Status ==
+
+This feature is available in JunOS 7.4.
+
+The release notes of JunOS 10.1 mentions the following:
+
+&quot;Removal of BGP warning message — If a BGP group is created without any defined peers, the warning message no longer appears when the configuration is committed.&quot;</text>
+    </revision>
+  </page>
+</mediawiki>

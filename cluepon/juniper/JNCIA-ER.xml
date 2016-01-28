@@ -1,0 +1,51 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>JNCIA-ER</title>
+    <ns>0</ns>
+    <id>1853</id>
+      <sha1>2gfzno7s4a8nd6j7n5iukbx6re58194</sha1>
+    <revision>
+      <id>3299</id>
+      <timestamp>2007-07-20T08:06:55Z</timestamp>
+      <contributor>
+        <username>Dfex</username>
+        <id>194</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1176">The Juniper Networks Certified Internet Associate certification is the first but optional step in the Enterprise Routing track of their program. 
+
+An individual can choose to bypass this step and proceed directly to the first required examination, the JNCIS-ER.
+
+The JNCIA-ER focuses predominantly on the operation and configuration of J-Series routers and JunOS, with a lesser focus on M7i/M10.  This knowledge establishes a decent baseline for any individual who intends to operate Juniper equipment.  The exam focusses on areas including basic operation of routing protocols (BGP, OSPF, RIP), route filtering, firewalls and the J-Web interface. While the exam does not get into complex configuration issues, it certainly requires the individual to have some level of operational experience with IP networking.
+
+This exam is not required, but is recommended for those who lack a familiarity with the Juniper enterprise product line but have some IP networking experience.
+
+While this exam may be compared to the Cisco CCNA, the JNCIA-ER exam focuses on current operational practices rather than concepts that are no longer used today (Example: CCNA covers classful routing).</text>
+    </revision>
+  </page>
+</mediawiki>

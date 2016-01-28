@@ -1,0 +1,148 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER BGP Default originate</title>
+    <ns>0</ns>
+    <id>1488</id>
+      <sha1>1gwwjatf863m6tvaivni1agy5x4a4l1</sha1>
+    <revision>
+      <id>2111</id>
+      <timestamp>2005-08-23T17:45:28Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>/* Solution */  sp</comment>
+      <text xml:space="preserve" bytes="2922">== Problem ==
+Currently, it is extremely difficult to originate a default route via BGP. Using a policy-statement is  overly complicated, and requires that a default route exist on the router. Even if a default route does exist, many users mark it &quot;no-readvertise&quot; so that it is not accidentally matched by other announcement/redistribution policies. This means that in order to advertise a default route to a specific BGP neighbor, you must have a static route capable of being readvertised, and make explicit exceptions for it in all other announcement/redistribution policies.
+
+An example of the configuration statements necessary to support originating a default route via BGP is:
+
+ routing-options {
+     static {
+         route 0.0.0.0/0 discard;
+     }
+ }
+ policy-options {
+     policy-statement igp-redistribute {
+         term exclude-default {
+             from {
+                 route-filter 0.0.0.0/0 exact;
+             }
+             then reject;
+         }
+         ...
+     }
+     ...potentially other redistribution policies...
+     policy-statement default-originate {
+         term default {
+             from {
+                 route-filter 0.0.0.0/0 exact;
+             }
+             then accept;
+         }
+         then next policy;
+     }
+ }
+ protocols {
+     bgp {
+         group example {
+             neighbor 1.2.3.4 {
+                 remote-as 1234;
+                 export [ bgp-originate other-export-policies ... ];
+             }
+         }
+     }
+ }
+
+Obviously, this is both complicated and more likely to result in accidental misconfigurations.
+
+== Solution ==
+Add a specific BGP neighbor flag that injects a default route, regardless of the existence of the default route on the router. This is also the way that [[Cisco]] and most other platforms handle this problem, which reduces the Juniper learning curve for other users.
+
+Minimal example:
+
+ protocols {
+     bgp {
+         group example {
+             neighbor 1.2.3.4 {
+                 remote-as 1234;
+                 default-originate;
+             }
+         }
+     }
+ }
+
+Potentially more complex example:
+
+ protocols {
+     bgp {
+         group example {
+             neighbor 1.2.3.4 {
+                 remote-as 1234;
+                 default-originate {
+                     metric 50;
+                     community 4321:1234;
+                     other BGP parameters;
+                 }
+             }
+         }
+     }
+ }
+
+Another potential solution:
+
+ policy-options {
+     policy-statement default-originate-params {
+         then {
+             metric 50;
+             community 4321:1234;
+             other BGP parameters;
+         }
+     }
+ }
+ protocols {
+     bgp {
+         group example {
+             neighbor 1.2.3.4 {
+                 remote-as 1234;
+                 default-originate default-originate-params;
+             }
+         }
+     }
+ }
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

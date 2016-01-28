@@ -1,0 +1,84 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Peerdown.slax</title>
+    <ns>0</ns>
+    <id>2005</id>
+      <sha1>ciyt5hiq9a03ruqaf0b00tyzq2a4olh</sha1>
+    <revision>
+      <id>3913</id>
+      <timestamp>2010-03-18T08:22:07Z</timestamp>
+      <contributor>
+        <username>Teunvink</username>
+        <id>562</id>
+      </contributor>
+      <minor/>
+      <comment>fix version</comment>
+      <text xml:space="preserve" bytes="1246"> version 1.1;
+ 
+ /* 
+  * $Id: peerdown.slax 994 2010-03-15 12:58:45Z teun $ 
+  * 
+  * This operation script shows information for all peerings
+  * which are down.
+  *
+  * Author: Teun Vink &lt;teun@bit.nl&gt;
+  * 
+  */
+ 
+ ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+ 
+ import &quot;../import/junos.xsl&quot;;
+ 
+ 
+ match / 
+ {
+     &lt;op-script-results&gt; 
+     {
+        /* execute the 'show bgp summary' command and store the result */
+        var $query = { &lt;command&gt; 'show bgp summary'; }
+        var $result = jcs:invoke($query);
+ 
+        /* print a header */
+        &lt;output&gt; jcs:printf(&quot;%-34s %10s   %15s   %s&quot;, &quot;peer IP&quot;, &quot;peer ASN&quot;, &quot;downtime&quot;, &quot;peer description&quot;);
+        &lt;output&gt; jcs:printf(&quot;==================================================================================&quot;);
+ 
+        /* search for the bgp information tag */
+        &lt;bgp-information&gt; {
+            /* print each peer which's state is not Established */
+            for-each($result/bgp-peer[peer-state!='Established']) {
+                 &lt;output&gt; jcs:printf(&quot;%-35s%10s   %15s   %s&quot;, peer-address, peer-as, elapsed-time, description);
+            }
+        }
+     }
+ }</text>
+    </revision>
+  </page>
+</mediawiki>

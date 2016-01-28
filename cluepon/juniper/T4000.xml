@@ -1,0 +1,57 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>T4000</title>
+    <ns>0</ns>
+    <id>2071</id>
+      <sha1>oithzgrnm3ugg1knosbmyhm3idu5fs7</sha1>
+    <revision>
+      <id>18726</id>
+      <timestamp>2013-05-06T07:48:44Z</timestamp>
+      <contributor>
+        <username>Larsr</username>
+        <id>2550</id>
+      </contributor>
+      <text xml:space="preserve" bytes="381">{{Infobox_router | 
+  product_name = Juniper T4000 Router |
+  product_image = [[Image:T4000_Front.jpg|200px|]] |
+  slots = 8 FPC, 32 PIC |
+  bandwidth = 4000 Gbit/s | 
+  fpc = [[type-1]] [[type-2]] [[type-3]] [[type-4]]|
+  style = |
+  power = 2 (1+1) DC Only |
+  switch = [[SIB]] (4+1 redundant) | 
+  date = 2010 | 
+}}
+
+[[Category:Hardware]]
+[[Category:T-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,54 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>JNCIA-M</title>
+    <ns>0</ns>
+    <id>1458</id>
+      <sha1>1hsj248jv2jmj9k46ie220t0i6f8au3</sha1>
+    <revision>
+      <id>2145</id>
+      <timestamp>2005-08-23T18:14:33Z</timestamp>
+      <contributor>
+        <username>Wikignome</username>
+        <id>12</id>
+      </contributor>
+      <minor/>
+      <comment>punctuation</comment>
+      <text xml:space="preserve" bytes="1074">The Juniper Networks Certified Internet Associate certification is the first but optional step in the M/T track of their program. 
+
+An individual can choose to bypass this step and proceed directly to the first required examination, the JNCIS-M.
+
+The JNCIA focuses on Juniper routers traditional architecture, components and JunOS.
+This knowledge establishes a decent baseline for any individual who intends to operate Juniper equipment. Additional areas of study include routing protocols (BGP, ISIS, OSPF), prefix-filtering, firewalls, Multicast and MPLS. While the exam does not get into complex configuration issues, it certainly requires the individual to have some level of operational experience with IP networking.
+
+This exam is not required, but is recommended for those who lack a familiarity with the Juniper product line but have some IP networking experience.
+
+While this exam may be compared to the Cisco CCNA, the JNCIA-M exam focuses on current operational practices rather than concepts that are no longer used today (Example: CCNA covers classful routing).</text>
+    </revision>
+  </page>
+</mediawiki>

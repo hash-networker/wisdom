@@ -1,0 +1,76 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Main Page</title>
+    <ns>0</ns>
+    <id>1</id>
+      <sha1>d30sxmva3n11xvbczqj7k1sshe9lo80</sha1>
+    <revision>
+      <id>9061</id>
+      <timestamp>2012-07-03T19:04:20Z</timestamp>
+      <contributor>
+        <username>Routlets</username>
+        <id>1614</id>
+      </contributor>
+      <minor/>
+      <comment>Remove spam</comment>
+      <text xml:space="preserve" bytes="1838">[[Image:M-Series_Front.jpg|thumb|right|Juniper M-series Routers]]
+Welcome to Juniper Clue.
+
+Have [[Juniper]] routers? Have clue or need clue? If so, '''this site is for you.'''
+
+Juniper Clue seeks to provide a compendium of useful knowledge, from the field, about Juniper products. This site is neither affiliated with nor endorsed by Juniper Networks. All users are encouraged to contribute by making edits to pages, see [[ Help:Editing]] for more information.
+
+If you're hungry, try some Juniper [[Cake]] or [http://www.steenbergs.co.uk/product/47/juniper-berries-organic/ Berries]. If you're angry, try the [[Juniper Repair Kit]].
+
+Browse by subject:
+* [[Basics]] covers component specs, and details of how Juniper routers work.
+* [[Tips and Tricks]] covers common pitfalls and interesting/exotic tricks.
+* [[Feature Requests]] provides a space to discuss desired features/enhancements.
+* [[Future Products]] discusses upcoming products (including some pure speculation).
+* [[Bugs]] discusses [[JunOS]] bugs.
+* [[Configs]] covers donated example configurations and config techniques.
+* [[JunosScripts]], contains information about [[Commit Scripts]], [[Op Scripts]], and [[Event Scripts]] as well as user contributed automation tools.
+* [[Stories]] contains interesting stories about Juniper routers and Juniper itself.
+* [[Certification]] discusses the Juniper certifications.
+* [[FAQ]] contains frequently asked questions, and pointers to the correct answers.
+* [[Misc Info]] contains misc information about Juniper and Juniper routers.
+* [[Other Resources]] contains links to other Juniper routers resources.
+
+Browse by category:
+*[[:Category:Hardware]]
+**[[:Category:M-series]]
+**[[:Category:T-series]]
+**[[:Category:J-series]]
+**[[:Category:E-series]]
+**[[:Category:MX-series]]
+**[[:Category:EX-series]]
+**[[:Category:SRX-series]]</text>
+    </revision>
+  </page>
+</mediawiki>

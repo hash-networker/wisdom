@@ -1,0 +1,92 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER Extended Community Enhancements</title>
+    <ns>0</ns>
+    <id>1844</id>
+      <sha1>trn3fiz74oiff9rrloo8ii1f27nlbgh</sha1>
+    <revision>
+      <id>3260</id>
+      <timestamp>2007-06-08T09:32:15Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2984">== Problem ==
+
+Juniper BGP Extended Communities implementation is currently missing two critical features necessary for adoption and widespread use as a replacement for classic 32-bit BGP communities.
+
+* Regular Expression support
+* A mechanism to copy data between regular and extended communities.
+
+Support for Regular Expressions is straightforward, and should be implemented immediately. It is clear that the existing implementation has not been targetting BGP Extended Communities as a replacement for regular communities, and this should be rectified.
+
+A mechanism to copy data between regular and extended communities is essential to promote compatibility between the two formats and facilitate the widespread deployment of Extended Communities on the Internet. The most important extended community types to support are the transitive two-octet AS specific Route Target and Route Origin types. When copying data from regular to extended, the first half of the regular community would be mapped to the administrator field, and the second half of the regular community would be mapped to the value field. When copying from extended to regular communities, the operation would function in reverse, with an additional step of truncating the 32-bit administrator field to the lower 16-bits before copying to the regular community.
+
+In addition to providing support for policy communities with 32-bit ASNs, this mapping system would effectively expand the policy functions of BGP communities by utilizing the target/origin distinguishers as defined by Extended Communities. Origin type communities could be used to provide information from a particular ASN and Target type communities could be used to apply actions to a particular ASN, without the risk of conflicting policy definitions. This problem is outlined in slide 28 of http://www.nanog.org/mtg-0706/Presentations/BGPcommunities.pdf.
+
+== Solutions ==
+
+A possible implementation mechanism could be:
+
+ policy-options {
+     policy-statement {
+         term copy-example {
+             from {
+                 optional match for specific routes and communities
+             }
+             then community convert regular-extended target;
+         }
+     }
+ }
+
+This policy would convert any existing communities on any routes matched in the from section into extended communities of type target. For example, a regular community &quot;1234:45678&quot; on a matched route would be converted to &quot;target:1234:45678&quot;.
+
+When going in the opposite direction:
+
+ policy-options {
+     policy-statement {
+         term copy-example {
+             from {
+                 optional match for specific routes and communities
+             }
+             then community convert extended-regular;
+         }
+     }
+ }
+
+The community target:1234:45678 would be converted back to 1234:45678. An optional command to delete or not delete the old community after the conversion would be helpful as well.
+
+== Status ==
+
+Unknown.
+
+[[Category:Feature Requests]]</text>
+    </revision>
+  </page>
+</mediawiki>

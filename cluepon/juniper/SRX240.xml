@@ -1,0 +1,96 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>SRX240</title>
+    <ns>0</ns>
+    <id>2009</id>
+      <sha1>m813vybgemfyoc7hgcuen8svt2v9mk8</sha1>
+    <revision>
+      <id>4147</id>
+      <timestamp>2011-01-11T10:56:04Z</timestamp>
+      <contributor>
+        <username>TimotiSt</username>
+        <id>1530</id>
+      </contributor>
+      <minor/>
+      <comment>added: SRX-MP-1SFP warning</comment>
+      <text xml:space="preserve" bytes="1374">{{Infobox_srxbranch | 
+  product_name = SRX240 Services Gateway |
+  product_image = [[Image:Lbox-srx240-front.jpg‎|200px]] |
+  rackspace = 1 RU |
+  slots = 4 Mini-PIM slot |
+  bandwidth = 1.5 Gbps (large packets) 500 Mbps (IMIX),&lt;br&gt;IPS 250 Mbps, VPN 250 Mbps (JUNOS 10.0) | 
+  power =  100–240 VAC, 150 W Non-PoE / 350 W PoE |
+  cpu = Cavium Networks OCTEON CN5230 Quad Core MIPS64 |
+  memory =  512 MB (LM) / 1 GB (HM) |
+  flash = 1 GB |
+}}
+
+([[codenames|Codename:]] ''Vidar'')&lt;br&gt;
+Three models offered: SRX240B with 512MB of RAM, SRX240H with 1GB of RAM and SRX240H-POE with 16 ports PoE (150 W).&lt;br&gt;
+
+
+Average power consumption: &lt;br&gt;
+61 W Low Memory (LM), &lt;br&gt;
+65 W High Memory (HM), 179 W (PoE)
+
+
+more CPU info:&lt;br&gt;
+OCTEON Plus CN52XX - Block Diagram &lt;br&gt;
+http://www.caviumnetworks.com/OCTEON-Plus_CN52XX.html
+
+
+'''Built-in Interfaces: '''
+
+16 x 10/100/1000BASE-T
+
+
+'''Interface Modules:'''
+
+SRX-MP-1SERIAL 
+1-port Sync Serial Mini Physical Interface Module (Mini-PIM) for branch SRX Series
+
+SRX-MP-1ADSL2-A
+1-port ADSL2+ Mini-PIM supporting ADSL/ADSL2/ADSL2+ Annex A
+
+SRX-MP-1ADSL2-B
+1-port ADSL2+ Mini-PIM supporting ADSL/ADSL2/ADSL2+ Annex B
+
+SRX-MP-1SFP
+1-port SFP Mini-PIM for branch SRX Series - ''only supports 100Mbps throughput''
+
+SRX-MP-1T1E1
+1-port T1 or E1 Mini-PIM for branch SRX Series
+
+
+[[Category:Hardware]]
+[[Category:SRX-series]]
+[[Category:Stub]]</text>
+    </revision>
+  </page>
+</mediawiki>

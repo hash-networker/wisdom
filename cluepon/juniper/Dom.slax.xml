@@ -1,0 +1,136 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Dom.slax</title>
+    <ns>0</ns>
+    <id>2003</id>
+      <sha1>1101u4r70egz3v0vx3da9q61vyxp9lp</sha1>
+    <revision>
+      <id>3927</id>
+      <timestamp>2010-05-04T20:48:00Z</timestamp>
+      <contributor>
+        <username>Cougar</username>
+        <id>967</id>
+      </contributor>
+      <comment>! collect all interface descriptions with one command invoke and show physical interface description if unit 0 description does not exist</comment>
+      <text xml:space="preserve" bytes="2713">&lt;pre&gt;
+/*
+ * An op script to table optical power readings.
+ *
+ * 2010.03.12 Pierfrancesco Caci
+ * License: public domain
+ *
+ * 20100408 - added check for different output xml from ge- interfaces.
+ *
+ * 20100505 - collect all interface descriptions with one command invoke
+ *            and show physical interface description if unit 0 description
+ *            does not exist - &lt; cougar @ random . ee &gt;
+ *
+ */
+version 1.0;
+
+
+ns junos = &quot;http://xml.juniper.net/junos/*/junos&quot;;
+ns xnm = &quot;http://xml.juniper.net/xnm/1.1/xnm&quot;;
+ns jcs = &quot;http://xml.juniper.net/junos/commit-scripts/1.0&quot;;
+
+
+import &quot;../import/junos.xsl&quot;;
+
+var $arguments = {
+  &lt;argument&gt; {
+  }
+}
+
+template resolve_ifdescr($ifdescrdb, $if)
+{
+  if ($if) {
+    if ($ifdescrdb/logical-interface[name == concat($if, &quot;.0&quot;)]/description) {
+      expr $ifdescrdb/logical-interface[name == concat($if, &quot;.0&quot;)]/description;
+    } else {
+      if ($ifdescrdb/physical-interface[name == $if]/description) {
+        expr $ifdescrdb/physical-interface[name == $if]/description;
+      } else {
+        expr &quot;&quot;;        /* no descripion */
+      }
+    }
+  } else {
+    expr &quot;?&quot;;           /* should never happen (ASSERT ?)*/
+  }
+}
+
+match / {
+  &lt;op-script-results&gt; {
+      var $rpc-optics = &lt;get-interface-optics-diagnostics-information&gt; {
+      }
+      var $optics = jcs:invoke($rpc-optics);
+
+      var $rpc-ifdecr = { &lt;command&gt; 'show interface descriptions'; }
+      var $ifdescrdb = jcs:invoke($rpc-ifdecr);
+
+      &lt;output&gt; jcs:printf(&quot;Interface    In mW  In dBm Out mW Out dBm Temp C Description\n&quot;);
+
+      for-each ($optics/physical-interface) {
+	  var $unavail = optics-diagnostics/optic-diagnostics-not-available;
+	  var $tx-power = optics-diagnostics/laser-output-power;
+	  var $tx-dbm = optics-diagnostics/laser-output-power-dbm;
+	  var $rx-power = {
+	    if (optics-diagnostics/laser-rx-optical-power) { /* xe interfaces */
+	      expr optics-diagnostics/laser-rx-optical-power;
+	    }
+	    else if (optics-diagnostics/rx-signal-avg-optical-power) { /* ge */
+	      expr optics-diagnostics/rx-signal-avg-optical-power;
+	    }
+	  }
+	  var $rx-dbm = { 
+	    if (optics-diagnostics/laser-rx-optical-power-dbm) {
+	      expr optics-diagnostics/laser-rx-optical-power-dbm;
+	    }
+	    else if (optics-diagnostics/rx-signal-avg-optical-power-dbm) {
+	      expr optics-diagnostics/rx-signal-avg-optical-power-dbm;
+	    }
+	  }
+	  var $temp = optics-diagnostics/module-temperature/@junos:celsius;
+
+	  if (not ($unavail)  ) {
+	    var $if = { expr name; }
+	    var $descr = { call resolve_ifdescr($ifdescrdb, $if); }
+	    &lt;output&gt; jcs:printf(&quot;%-12s%7s%7s%7s%8s%7s %s\n&quot;,
+				name,
+				$rx-power,$rx-dbm,
+				$tx-power,$tx-dbm,
+				$temp,
+				$descr);
+	  }
+	}
+  }
+}
+&lt;/pre&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

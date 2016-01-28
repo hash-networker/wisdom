@@ -1,0 +1,70 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ER BGP overload</title>
+    <ns>0</ns>
+    <id>1540</id>
+      <sha1>kizvh66tkku492lp5ajgu8ge2qquj9w</sha1>
+    <revision>
+      <id>2365</id>
+      <timestamp>2005-09-08T09:47:07Z</timestamp>
+      <contributor>
+        <username>Psavola</username>
+        <id>64</id>
+      </contributor>
+      <text xml:space="preserve" bytes="2389">When the router boots up (or is recovering from RE failure), the BGP
+sessions seem to come up in a very varying latency.  For example, during
+one software upgrade, the first session came up at 20:25:33.750 and the
+last 20:27:09.167; that's over 90 seconds (we have roughly 20-30 peers in
+this box, we get the full routing table from 2).  In addition, extra
+latency is caused by the transfer of routing tables.  So, in the worst
+case, we're talking about 2 minutes of partial information.
+
+We must make the setup of BGP sessions more deterministic, because partial
+information when the router does not have full routing information leads
+to loops and reduced availability.
+                                                                                                                        
+One way to make this more deterministic could be to implement an
+&quot;overload&quot; and &quot;overload timeout&quot; setting for global/peer-group/peer
+configuration, in a slightly similar fashion as it exists for IS-IS and
+OSPF.  It could have the following characteristics:
+                                                                                                                        
+* when set, the router establishes BGP sessions, receives the routes, and runs the decision process as normal, but does not advertise _any_ prefix yet (either to a BGP peer -- in theory, one should restrict redistribution as well, but that's not an issue for us).
+                                                                                                                        
+* when the &quot;overload over&quot; condition is met, start advertising all the prefixes it would normally advertise.  (You could sum this up as an empty export policy until &quot;overload over&quot; condition is met.)
+                                                                                                                        
+* &quot;overload over&quot; condition could be one of the following, for example:
+                                                                                                                        
+ 1) XXX seconds (the overload timeout) has passed since rpd was restarted
+    (like OSPF/IS-IS overload timeout)
+                                                                                                                        
+ 2) YY seconds has passed since the last of the configured BGP sessions
+    came up.</text>
+    </revision>
+  </page>
+</mediawiki>

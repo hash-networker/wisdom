@@ -1,0 +1,73 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Juniper Clue</sitename>
+    <base>http://juniper.cluepon.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Juniper Clue</namespace>
+      <namespace key="5" case="first-letter">Juniper Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Sourcing Scripts</title>
+    <ns>0</ns>
+    <id>1825</id>
+      <sha1>jd0hhg8crxqhkhj9b5ph62lv90xs3v4</sha1>
+    <revision>
+      <id>4261</id>
+      <timestamp>2011-09-29T20:03:34Z</timestamp>
+      <contributor>
+        <username>Jrogers</username>
+        <id>1128</id>
+      </contributor>
+      <minor/>
+      <comment>moved [[Using OP Scripts]] to [[Sourcing Scripts]]: Better name</comment>
+      <text xml:space="preserve" bytes="707">The easiest way to manage scripts over several routers, is to pull them in from a webserver
+
+'''Configuring Router to Use Scripts'''
+
+
+    scripts {
+           op {
+           file peerdown.slax {
+            command peerdown;
+            source http://192.168.2.1/path/to/script/peerdown.slax;
+           }
+        }
+     }
+
+
+'''Refreshing Scripts'''
+
+This will download the script from the webserver.
+
+     edit system scripts
+     set op refresh   
+     refreshing 'peerdown.slax' from 'http://192.168.2.1/path/to/script/peerdown.slax'
+     /var/home/noc/...transferring.file.........qYZabR/peerdown.slax100% of 1067  B  340 kBps
+
+'''Executing Script'''
+
+This can then be executed using
+
+     op peerdown</text>
+    </revision>
+  </page>
+</mediawiki>
