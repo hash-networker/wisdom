@@ -1,0 +1,51 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Bugs</title>
+    <ns>0</ns>
+    <id>1297</id>
+      <sha1>0ww9h4ijigx6si1w18w17662rtiocu2</sha1>
+    <revision>
+      <id>1319</id>
+      <timestamp>2005-08-30T03:45:52Z</timestamp>
+      <contributor>
+        <username>Tscholl</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="909">Bugs are a common part of operating Cisco products. There are several reasons for bugs:
+
+* Issue in code
+* Issue in hardware
+* Regression bug - something modified in code to fix one bug resulted in breaking something else
+
+Cisco has developed a system to catalog and track bugs and what they impact. Each bug is assigned a &quot;DDTS&quot; id, DDTS stands for Distributed Defect Tracking System. This information is viewable to the public via the Cisco Bug Tool. However, the view given to customers via the Bug Tool is essentially useless. The &quot;Fixed-In&quot; information is typically incorrect and the descriptions very vague. Cisco of course, has an internal tool with all the information one could want about the DDTS. You will need to work with your account team to obtain that detailed information, or atleast a sanitized version of it.
+
+This section is for documenting DDTS information about specific bugs of interest</text>
+    </revision>
+  </page>
+</mediawiki>

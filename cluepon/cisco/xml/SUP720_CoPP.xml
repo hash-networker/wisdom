@@ -1,0 +1,71 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>SUP720 CoPP</title>
+    <ns>0</ns>
+    <id>1355</id>
+      <sha1>28v49gdpyusq1felsj5mly7lxhlnp0y</sha1>
+    <revision>
+      <id>1648</id>
+      <timestamp>2010-03-25T11:02:12Z</timestamp>
+      <contributor>
+        <username>Nick</username>
+        <id>84</id>
+      </contributor>
+      <comment>Create page.  Add some basic definitions.</comment>
+      <text xml:space="preserve" bytes="2096">=Control Plane Policing on the SUP720=
+
+Control Plane Policing (CoPP) is a mechanism for managing traffic which is directed towards the management plane of a Cisco router.  The SUP720 supports hardware-assisted CoPP.  This document explains how CoPP operates on a SUP720, what its limitations are, and how it interoperates with mls rate-limiting.  A sample SUP720 CoPP configuration is provided with explanations.
+
+This document was written as a summary of an extensive discussion of SUP720 CoPP on the [https://puck.nether.net/mailman/listinfo/cisco-nsp Cisco NSP] mailing list.
+
+==SUP 720 Architecture==
+
+Before reading this document, please read the SUP720 sections from the following URLs:
+
+* [http://www.cisco.com/en/US/prod/collateral/switches/ps5718/ps708/product_data_sheet09186a0080159856_ps2797_Products_Data_Sheet.html Cisco Catalyst 6500/Cisco 7600 Series Supervisor Engine 720 Data Sheet]
+* [http://www.cisco.com/en/US/prod/collateral/switches/ps5718/ps708/prod_white_paper0900aecd80673385.html Cisco Catalyst 6500 Architecture White Paper]
+* [http://www.cisco.com/en/US/products/hw/switches/ps708/products_tech_note09186a00804916e0.shtml Catalyst 6500/6000 Switch High CPU Utilization]
+* [http://www.cisco.com/en/US/products/hw/switches/ps708/products_qanda_item09186a00809a7673.shtml Catalyst 6500 Series Switches PFC, DFC, and CFC FAQ]
+
+==Definitions==
+
+===RP - The Route Processor===
+
+The RP is the primary CPU on the SUP720 card.  It handles certain types of traffic, including host traffic to / from the box (i.e. logging in, snmp, etc).  Under certain circumstances, traffic that would normally be forwarded in hardware is sent to the RP.
+
+===Glean Traffic===
+
+Glean traffic is IP traffic for which there are no ARP entries in the ARP cache, and which need ARP resolution before they can be forwarded. Glean traffic is processed by the RP.
+
+===Punt Traffic===
+
+Punt traffic is traffic which cannot be forwarded in hardware and needs to be sent (i.e. punted) to the RP CPU to be forwarded.  In some ways, this is equivalent to what used to be called &quot;process switched traffic&quot;.</text>
+    </revision>
+  </page>
+</mediawiki>

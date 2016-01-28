@@ -1,0 +1,43 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Stories</title>
+    <ns>0</ns>
+    <id>1299</id>
+      <sha1>i22zr8cuw23y0fwvtp3v3i0ipenok2o</sha1>
+    <revision>
+      <id>1323</id>
+      <timestamp>2005-08-30T04:39:49Z</timestamp>
+      <contributor>
+        <username>Tscholl</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="270">Anyone who has been working with Cisco equipment long enough should certainly have a collection of stories regarding running into software bugs, hardware issues, TAC personnel, account managers, system engineers and the like. Please feel free to share your stories here.</text>
+    </revision>
+  </page>
+</mediawiki>

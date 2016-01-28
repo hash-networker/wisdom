@@ -1,0 +1,82 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Cisco TDR (Time Domain Reflectometer)</title>
+    <ns>0</ns>
+    <id>1344</id>
+      <sha1>27xkae3ta3ztn16vctknclp69bnfp2h</sha1>
+    <revision>
+      <id>1573</id>
+      <timestamp>2008-09-02T10:42:29Z</timestamp>
+      <contributor>
+        <username>Adama</username>
+        <id>78</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1194">'''Using Cisco's Integrated TDR'''
+
+The Catalyst 2960, 2970, 3560/3560-E, and 3750/3750-E switches have an integrated Time Domain Reflector (TDR), which is used to test cables associated with a port. TDR is supported only on 10/100/1000 and some 10/100 (Catalyst 2960) copper Ethernet ports. It is not supported on 10 GigabitEthernet or SFP module ports.
+
+Helps with troubleshooting:
+
+    * Open wires
+    * Cut wires
+    * Broken wires
+    * Shorted wires
+
+With the TDR functionallity you can find the length of individual wires.
+
+
+Switch# test cable-diagnostics tdr interface gigabitethernet0/2
+
+TDR test started on interface Gi0/2
+
+
+A TDR test can take a few seconds to run on an interface. Use &quot;show cable-diagnostics tdr&quot; to read the TDR results.
+
+
+Switch#show cable-diagnostics tdr interface gigabitEthernet 0/2
+
+TDR test last run on: Dec 10 09:05:10
+
+Interface Speed Local pair Cable length Remote channel Status
+
+Gi0/1 0Mbps 1-2 102 +-2m Unknown Fault
+
+3-6 100 +-2m Unknown Fault
+
+4-5 102 +-2m Unknown Fault
+
+7-8 102 +-2m Unknown Fault
+
+
+The previous command is set to be deprecated sometime in the future and will be replaced by:
+
+# show diagnostic result interface GigabitEthernet 0/1</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,54 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MBUS</title>
+    <ns>0</ns>
+    <id>1282</id>
+      <sha1>dkzi78wgv129lnfgupfdc0uumbs8ngu</sha1>
+    <revision>
+      <id>1293</id>
+      <timestamp>2005-08-21T15:46:45Z</timestamp>
+      <contributor>
+        <username>Tscholl</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="725">'''Maintenance BUS (MBUS):'''
+
+
+The MBUS provides out of band communications to line cards. It is a simple 1Mbps 2-wire serial interface based upon Controller Area Network (CAN) 2.0 spec (ISO 11898) - http://www.can-cia.org/can/
+
+A daughter card on every line card has its own CPU, CAN controller, A/D converter, dual CAN interface, SRAM, Flash and serial EEPROM. 
+
+* CSCs and BusBoards can proxy and or multiplex MBUS signals for power supplies.
+
+Control pins reach into LED, Serial ID EEPROM, DC/DC power converter, clock select FPGA, temperature sensor and voltage sensors.
+
+* Logging messages can be enabled to be transmitted over MBUS rather than the fabric with IPC. This is done with the &quot;logging method mbus&quot; command.</text>
+    </revision>
+  </page>
+</mediawiki>

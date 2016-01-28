@@ -1,0 +1,104 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>6500 SPAN the RP</title>
+    <ns>0</ns>
+    <id>1334</id>
+      <sha1>1qm9jth0e7nydf7ajk5v34rc3e64884</sha1>
+    <revision>
+      <id>1647</id>
+      <timestamp>2010-02-09T15:22:24Z</timestamp>
+      <contributor>
+        <username>Philmayers</username>
+        <id>49</id>
+      </contributor>
+      <comment>Undo revision 1644 by [[Special:Contributions/Philmayers|Philmayers]] ([[User talk:Philmayers|Talk]])</comment>
+      <text xml:space="preserve" bytes="1850">6500s (with appropriate software revisions) can SPAN (port mirror) the interface facing the CPU, allowing you to view all the CPU-punted traffic
+
+== Monitoring under SXI ==
+
+It's really easy under SXI
+
+1) Create the monitor session of choice - the following example uses ERSPAN
+ monitor session 1 type erspan-source
+  description foobar
+  source cpu [rp|sp]
+  destination
+   erspan-id ANUMBER
+   ip address the.receiver.ip.addr
+   ip ttl 64
+   origin ip address the.loopback.ip.addr
+   ! optional
+   vrf WHATEVER
+  no shut
+
+2) Use something to receive the traffic - see below for ERSPAN
+
+== Monitoring under SXF ==
+
+At the time of writing (march 2007, IOS 12.2SXF7) you need a dummy span session and to talk to the SP IOS. Proceed as follows:
+
+1) Determine which slot your active (or only, if you have just one) supervisor is in - &quot;show mod&quot; and &quot;show red&quot; should get this
+
+2) Create the &quot;dummy&quot; SPAN session. The following example is an ERSPAN (SPAN over GRE), but ordinary SPAN and RSPAN can be used. GiX/Y is any port which is down/not in use:
+ monitor session 1 type erspan-source
+  description foobar
+  source interface GiX/Y
+  destination
+   erspan-id ANUMBER
+   ip address the.receiver.ip.addr
+   ip ttl 64
+   origin ip address the.loopback.ip.addr
+   ! optional
+   vrf WHATEVER
+
+3) attach to the active sup SP IOS - X is the slot you determined in step 1
+ attach X
+
+4) add the RP port to the session you just created
+ test monitor add 1 rp-inband both
+
+5) And/or add the SP port (layer 2 traffic)
+ test monitor add 1 sp-inband both
+
+5) exit back to the main IOS
+ exit
+
+6) enable the span session
+ conf t
+ mon sess 1
+ no shut
+
+7) you should see traffic flowing
+
+== ERSPAN to a non-cisco ==
+
+If you're using ERSPAN, you can use [http://staff.washington.edu/corey/gulp/ gulp] to receive and view the traffic on something that isn't another Cisco</text>
+    </revision>
+  </page>
+</mediawiki>

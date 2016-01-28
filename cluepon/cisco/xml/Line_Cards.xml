@@ -1,0 +1,88 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Line Cards</title>
+    <ns>0</ns>
+    <id>1284</id>
+      <sha1>frx62wqzbeakewqdl9ne7qyaax1ep8g</sha1>
+    <revision>
+      <id>1422</id>
+      <timestamp>2006-08-17T20:57:43Z</timestamp>
+      <contributor>
+        <username>Michael Shields</username>
+        <id>24</id>
+      </contributor>
+      <minor/>
+      <text xml:space="preserve" bytes="878">'''Line Cards'''
+
+
+[[Cisco GSR]] Line Cards can be classified by Engine type. This refers to how they connect to the fabric in the chassis. Each engine type has a set bandwidth limit.
+
+
+* [[Engine 0]] - 622Mbps - 200Kpps to 440Kpps
+
+* [[Engine 0]] Plus - 622Mbps - 200Kpps to 440Kpps
+
+* [[Engine 1]] - 622Mbps or 2.5Gbps - 130Kpps to 720Kpps
+
+* [[Engine 2]] - 2.5Gbps - 1.5Mpps to 4Mpps
+
+* [[Engine 3]] - 2.5Gbps - 3Mpps to 4Mpps
+
+* [[Engine 4]] - 10Gbps
+
+* [[Engine 4 Plus]] - 10Gbps - 11Mpps to 25Mpps
+
+* [[Engine 5]] - 10Gbps - 16Mpps
+
+* [[Engine 6]] - 40Gbps - 31Mpps to 50Mpps
+
+
+Line card switching engines and ASICs
+
+
+* Engine 0 - BMA
+
+* Engine 1 - Salsa/BMA48
+
+* Engine 2 - PSA/TBM/RBM 
+
+* Engine 3 (ISE) - Alpha/Conga/Radar
+
+* Engine 4 - RX/MCC/TX
+
+* Engine 4+ - RX+/MCC/TX+
+
+* Engine 5 - Wahoo/Piranha/Stingray
+
+* Engine 6 - Hermes/Ares/Hera
+
+[[Category:GSR Linecards]]</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,94 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Ios sxi</title>
+    <ns>0</ns>
+    <id>1345</id>
+      <sha1>0jcrl4h8j16eaj5z7kgxtdorqg7y6tq</sha1>
+    <revision>
+      <id>1603</id>
+      <timestamp>2008-11-20T17:55:28Z</timestamp>
+      <contributor>
+        <username>Jaredmauch</username>
+        <id>82</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1542">On Nov 13th, the 12.2(33)SXI software was released for the 6500 platform.
+
+This page aims to document what works and what doesn't
+
+== What works ==
+
+* MPLS
+** IPv4 vrfs - tested &amp; working, interop with 6500s running 12.2(18)SXF10, JunOS 8.3
+*** unicast - works
+**** including SNMP arp table i.e. ipNetToMedia
+**** including netflow
+*** multicast (MVPN) works
+** IPv6 vrfs - works, tested against JunOS 8.3 [[ios_sxi/6vpe|6vPE config]]
+*** requires &quot;mls ipv6 vrf&quot; global config command
+*** unicast - works
+**** including SNMP neigh table i.e. cInetNetToMediaPhysAddress
+**** including Netflow from VRF interfaces (assuming Netflow v9 is used)
+*** NOTE: DHCPv6 relay does not work on VRF interfaces, TAC case opened
+** ldp works
+** l2vpn (pseudowire/xconnect) tested and works including interop with JunOS
+
+* IPv4 (non-VRF/MPLS)
+** All seems to work
+
+* IPv6 (non-VRF)
+** DHCPv6 relay works (but not in a VRF)
+** HSRPv6 works
+* CLNS/ISIS
+** works including v4+v6
+* BGP
+** works including v4+v6
+
+* OSPFv2
+** interop with 6500 running 12.2(18)SFX10
+
+* Management
+** SCP works - no crash bug as per SXH3/3a
+** SNMP works - can do snmp full walk, all expected MIBs present
+
+== What doesn't ==
+
+* DHCPv6 in a VRF (TAC case opened)
+
+== Other Issues ==
+
+* The mac aging timer appears to both:
+** have changed by default from 300 to 480
+** cannot be set lower than 480
+** message logged on the console says:
+&lt;pre&gt;
+% Vlan Aging time not changed since OOB is enabled and requires aging time to be atleast 3 times OOB interval - default: 480 seconds
+&lt;/pre&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

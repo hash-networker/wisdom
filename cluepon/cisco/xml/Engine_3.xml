@@ -1,0 +1,78 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Engine 3</title>
+    <ns>0</ns>
+    <id>1289</id>
+      <sha1>9bw36r61fw123gu7flagjxo8p5e9gkk</sha1>
+    <revision>
+      <id>1492</id>
+      <timestamp>2007-02-08T19:24:30Z</timestamp>
+      <contributor>
+        <username>Cory</username>
+        <id>47</id>
+      </contributor>
+      <minor/>
+      <comment>link to engine 4</comment>
+      <text xml:space="preserve" bytes="1930">The Engine 3 (or ISE, Internet Services Engine) was Ciscos attempt to make a feature-rich linecard targeted for the edge of the network where multiple features are required. It was designed with a programmable hardware-based forwarding engine. TCAMs are utilized on this platform to deliver advanced feature processing. The ALPHA (Advanced Layer 3 Packet Handling ASIC) is what handles the high-speed feature processing with its own TCAM each. The only drawback is that the linecard still uses a 2.5Gbps connection to the fabric. This makes such things as the 4 Port Gigabit Ethernet a sad encore performance of the 3 Port Gigabit Ethernet linecard. 
+
+This linecard is one of two GSR linecard types that is supported in IOS-XR for the GSR platform. Rumor is because of its architecture utilizing TCAMs is the reason why the Engine 3 is supported.
+
+The Engine 3 linecards also had a late introduction to the market. For various reasons, the [[Engine 4]] linecard was released first before most of the Engine 3 models were ready.
+
+There is also a carrier card (SIP) that operates as an Engine 3 linecard. This carrier card can have SPAs be inserted to offer a similar architecture of PAs and VIPs.
+
+
+* 2.5Gbps to the fabric
+
+
+Engine 3:
+
+* 4 Port OC12 POS - Codename: Jag48
+* 4 Port Channelized OC12 -&gt; OC3 -&gt; DS3 - Codename: Jag48
+* 8/16 Port OC3 POS - Codename: Jag48
+* 1 Port OC48 POS - Codename: Jag48
+* 1 Port Channelized OC48 -&gt; DS3 - Codename: Jag48
+* 4/8 Port OC3 POS - Codename: Silverado
+* 1 Port Channelized OC12 -&gt; DS1 - Codename: Frosbite
+* 4 Port Gigabit Ethernet - Codename: Tetra
+* 4 Port OC3 ATM - Codename: Arava
+* 4 Port OC12 ATM - Codename: Pinnacle
+* 4 Port OC12 DPT - Codename: Merlin Edge
+
+Engine 3 SPAs:
+
+* 2 Port Channelized DS3 SPA - Codename: Patriot
+* 4 Port Channelized DS3 SPA - Codename: Patriot
+* 2 Port T3/E3 SPA - Codename: Javelin
+* 4 Port T3/E3 SPA - Codename: Javeline
+
+[[Category:GSR Linecards]]</text>
+    </revision>
+  </page>
+</mediawiki>

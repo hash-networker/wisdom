@@ -1,0 +1,54 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Engine 6</title>
+    <ns>0</ns>
+    <id>1293</id>
+      <sha1>gt8jhb2hup5x9w8vyr7mn28wyxhql0w</sha1>
+    <revision>
+      <id>1377</id>
+      <timestamp>2005-09-30T03:30:32Z</timestamp>
+      <contributor>
+        <username>Aaronw</username>
+        <id>5</id>
+      </contributor>
+      <comment>categorized</comment>
+      <text xml:space="preserve" bytes="340">The Engine 6 linecard was Ciscos answer to providing 20Gbps to a slot. Rumor has it that these linecards are similarly designed to the Engine 4+ along with similar performance impacting issues.
+
+* 20Gbps to the fabric
+
+
+Engine 6:
+
+
+* 2 Port OC192 POS - Codename: Silverbullet
+* 8 Port OC48 POS - Codename: Octopus
+[[Category:GSR Linecards]]</text>
+    </revision>
+  </page>
+</mediawiki>

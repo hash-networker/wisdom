@@ -1,0 +1,214 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ERSPAN to PCAP script</title>
+    <ns>0</ns>
+    <id>1333</id>
+      <sha1>1k7acjezthbsapxq24gpcn550de4vqr</sha1>
+    <revision>
+      <id>1536</id>
+      <timestamp>2007-10-03T22:58:14Z</timestamp>
+      <contributor>
+        <username>Nemith</username>
+        <id>64</id>
+      </contributor>
+      <minor/>
+      <comment>Removed base64 encoded version and wrapped the outputs in &lt;pre&gt; to mimick {{{ in moinmoin</comment>
+      <text xml:space="preserve" bytes="5912">6500s can SPAN (port or vlan mirror) to GRE encapsulation, allowing mirroring over multiple layer3 hops. Very useful
+
+This feature is ESPECIALLY useful on 6500s - see [[6500 SPAN the RP]] - allowing you to use the *hardware* to mirror the traffic that goes to the CPU
+
+The following script runs on Linux (and possibly other Unices). It captures the GRE traffic and either outputs a summary or, if the -pcap argument is given, outputs an ethernet-style PCAP data stream (which can be piped to &quot;tcpdump -r -&quot;)
+
+This script is Licensed under the GPL version 2 ONLY
+
+The script:
+
+&lt;pre&gt; 
+#!/usr/bin/python
+#
+# Copyright 2007 - Phil Mayers phil dot mayers at gmail dot com
+# This software is licensed under the GPL version 2 ONLY
+
+# For the latest public version, check:
+#  http://cisco.cluepon.net/index.php/ERSPAN_to_PCAP_script
+
+#    This program is free software; you can redistribute it and/or modify
+#    it under the terms of version 2 of the the GNU General Public License
+#    as published by the Free Software Foundation
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program; if not, write to the Free Software
+#    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
+
+# This program opens a GRE socket and received Cisco ERSPAN (port mirror
+# over GRE) packets, and either outputs a one-line summary or if the -pcap
+# command line argument is given, outputs an &quot;ethernet&quot; pcap stream which
+# can be written to a file, or piped to &quot;tcpdump -r -&quot;
+
+# This program contains a number of assumptions that are probably only valid
+# in simple cases. There are a number of fields in the ERSPAN header that
+# undoubtedly indicate non-ethernet packets (e.g. for POS cards on 7600s)
+# but I don't have the hardware to test it, so can't verify that. It would
+# be wonderful if Cisco documented (or even RFCed!) the ERSPAN format. Then,
+# wireshark could implement it natively and it would all be good
+
+
+
+from socket import *
+import struct
+import time
+import sys
+
+# magic, major_ver, minor_ver, gmt_offset, sigfigs, snaplen, captype
+PCAP_FILE_MAGIC = 0xa1b2c3d4L
+PCAP_FILE_MAJOR = 2
+PCAP_FILE_MINOR = 4
+PCAP_FILE_HEADER = &quot;IHHiIII&quot;
+PCAP_FILE_HEADER_LEN = struct.calcsize(PCAP_FILE_HEADER)
+PCAP_RECORD_HEADER = &quot;llII&quot;
+PCAP_RECORD_HEADER_LEN = struct.calcsize(PCAP_RECORD_HEADER)
+
+def parseIP(d):
+        # parse an IP packet
+        b0 = ord(d[0])
+        version = b0 &gt;&gt; 4
+        if version!=4:
+                return {}
+        hlen = b0 &amp; 0xf
+        hlen = hlen * 4
+        if hlen&lt;20:
+                return {}
+        tos, dlen, id, flags, ttl, protocol, cksum = struct.unpack('&gt;BHHHBBH', d[1:12])
+        src, dst = [inet_ntoa(x) for x in (d[12:16], d[16:20])]
+        offset = flags &amp; 0x1fff
+        df = flags &amp; 0x4000
+        mf = flags &amp; 0x2000
+        if hlen&gt;20:
+                options = d[20:hlen-20]
+        else:
+                options = ''
+        payload = d[hlen:]
+        del d
+        return locals()
+
+s = socket(AF_INET, SOCK_RAW, IPPROTO_GRE)
+if '-pcap' in sys.argv[1:]:
+        pcap = True
+        sys.stdout.write(struct.pack(PCAP_FILE_HEADER, PCAP_FILE_MAGIC, PCAP_FILE_MAJOR, PCAP_FILE_MINOR, 0, 0, 65535, 1)) #pcap.DLT_EN10MB))
+else:
+        pcap = False
+
+while True:
+        d, (ssrc ,port) = s.recvfrom(65535)
+        now = time.time()
+        sec = int(now)
+        usec = int((now-sec)*1000000)
+        pkt = parseIP(d)
+        if not pkt:
+                continue
+        elif pkt['protocol']!=47:
+                continue
+        elif len(pkt['payload'])&lt;8+14+20:
+                # unknown+ether+ip
+                continue
+        # GRE
+        hdr, data = pkt['payload'][:4], pkt['payload'][4:]
+        f, proto = struct.unpack('&gt;HH', hdr)
+        f_1 = (f &amp; 0xf000) &gt;&gt; 12
+        f_2 = (f &amp; 0x0f00) &gt;&gt; 8
+        flg = (f &amp; 0x00ff) &gt;&gt; 5
+        ver = (f &amp; 0x0007)
+
+        if f_1 &amp; 0x8:
+                cksum_present = True
+        else:
+                cksum_present = False
+
+        if f_1 &amp; 0x4:
+                routing_present = True
+        else:
+                routing_present = False
+
+        if f_1 &amp; 0x2:
+                key_present = True
+        else:
+                key_present = False
+
+        if f_1 &amp; 0x1:
+                seq_present = True
+        else:
+                seq_present = False
+
+        if cksum_present or routing_present:
+                cksum, offset = struct.unpack('&gt;HH', data[:4])
+                data = data[4:]
+        else:
+                cksum = 0
+                offset = 0
+
+        if key_present:
+                key = struct.unpack('&gt;I', data[:4])
+                data = data[4:]
+        else:
+                key = 0
+        if seq_present:
+                seq, = struct.unpack('&gt;I', data[:4])
+                data = data[4:]
+        else:
+                seq = 0
+
+
+        unknown, rest = data[:8], data[8:]
+        if pcap:
+                sys.stdout.write(struct.pack(PCAP_RECORD_HEADER, sec, usec, len(rest), len(rest))+rest)
+                sys.stdout.flush()
+                continue
+        ethdst = ':'.join(['%02x' % ord(x) for x in rest[:6]])
+        ethsrc = ':'.join(['%02x' % ord(x) for x in rest[6:12]])
+        ethtype = ( ord(rest[12]) &lt;&lt; 8 ) + ord(rest[13])
+        inner_payload = rest[14:]
+        if ethtype==0x800:
+                inner_pkt = parseIP(inner_payload)
+                if not inner_pkt:
+                        msg = '- - -'
+                else:
+                        msg = '%(dst)s %(src)s %(protocol)i' % inner_pkt
+        else:
+                msg = '* * *'
+
+        print ssrc, seq, ':'.join(['%02x' % ord(x) for x in unknown]), ethdst, ethsrc, hex(ethtype), msg
+&lt;/pre&gt;</text>
+    </revision>
+  </page>
+</mediawiki>

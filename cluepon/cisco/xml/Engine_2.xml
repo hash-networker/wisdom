@@ -1,0 +1,92 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Engine 2</title>
+    <ns>0</ns>
+    <id>1288</id>
+      <sha1>cstv6nfls951vtpe719qz70mkezj2r7</sha1>
+    <revision>
+      <id>1526</id>
+      <timestamp>2007-04-28T18:08:35Z</timestamp>
+      <contributor>
+        <username>Lowen</username>
+        <id>51</id>
+      </contributor>
+      <comment>Add OC12 4 port model and number; Add 1 port DPT/SRP OC48 model and number.</comment>
+      <text xml:space="preserve" bytes="2908">The Engine 2 linecard introduced a new set of unique problems to operators. The PSA (Packet Switching ASIC) microcode allowed operators to load specific bundles of features onto the linecard depending on what features were enabled on the router in general. There were three main problems with this architecture:
+
+* If you had an E2 line card in your router and you outbound ACLs on a different engine type '''anywhere''' else on the router, '''all''' Engine 2 linecards would implement an inbound ACL, resulting in a change in the microcode bundle and disabling potentially other features enabled on the E2's.
+
+* Microcode bundles only permitted specific feature sets to be enabled on a line card at a time. For example, for several years you could not mix uRPF and Netflow on the same line card. This was later fixed in 12.0(23)S2. Still today there are similar situations where a microcode bundle does not support the specific feature set you would like to have enabled at a time.
+
+* Each microcode bundle had a set priority that the operator could not override. Simply enabling a feature could result in changing microcode bundles (resulting in dropped packets in the process to switch the bundle).
+
+The 1 Port OC48 POS line card was also known to be used as a &quot;Tunnel Server&quot; card. This would permit service providers such as Sprint (who did not want to enable MPLS but rather L2TPv3 for L3VPNs) to perform GRE encapsulsation/de-encapsulation (as GSRs do not support GRE by default). This process burned an entire linecard/slot for the tunneling processing.
+
+Other complaints about this linecard is the 3 Port Gigabit Ethernet (Trident), this linecard clearly was oversubscribed and the &quot;3rd&quot; Gigabit Ethernet port would never be able to do line rate. 
+
+
+ACLs for example, have a drastic impact on performance:
+* 128 line input ACLs - 800kpps 
+* 128 line output ACLs - 675kpps
+* 448 line input ACLs - 690kpps
+* 448 line output ACLs - 460kpps
+
+
+* 2.5Gbps connection to the fabric
+
+
+* Engine 2 - lists as '''Engine: 2 - Backbone OC48 (2.5 Gbps)'''
+{| border = 1
+!Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
+|-
+|4 Port OC12 POS IR || 4OC12/POS-IR-SC-B || 800-5491-03,800-12143-01 || Unknown
+|-
+|8 Port OC3 POS || 8OC3/POS-SM || 800-5599-02 || Scepter
+|-
+|16 port OC3 POS || 16OC3/POS-SM || 800-5413-01 || Scepter
+|-
+|4 Port OC12 ATM || 4OC12/STM-4 MM-SC ATM || 800-05669-03 || Inuit
+|-
+|8 Port OC3 ATM || 8OC03/ATM/TS-IR-B || 800-20641-02 || Taz
+|-
+|3 Port Gigabit Ethernet || 3GE-GBIC-SC || 800-6376-01 || Trident
+|-
+|1 Port OC48 DPT || OC48/STM-16 SRP-SR-SC-B || 800-05619-05 || Merlin-48
+|-
+|1 Port OC48 POS SR || OC48E/POS-SR-SC-B || 800-5271-02,800-12135-01 || Unknown
+|-
+|1 Port OC48 POS LR || OC48E/POS-LR-SC-B || 800-5414-01 || Unknown
+|-
+|1 Port OC192 POS - linecard with OC192 optics but 2.5Gb fabric connection || OC192R0/POS-SR-SC || Unknown || Comet
+|}
+
+[[Category:GSR Linecards]]</text>
+    </revision>
+  </page>
+</mediawiki>

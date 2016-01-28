@@ -1,0 +1,87 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Tips and Tricks</title>
+    <ns>0</ns>
+    <id>1298</id>
+      <sha1>tgvzpo7h0n7qhb9r6hd3svfrbr6cejy</sha1>
+    <revision>
+      <id>1574</id>
+      <timestamp>2008-09-02T10:43:02Z</timestamp>
+      <contributor>
+        <username>Adama</username>
+        <id>78</id>
+      </contributor>
+      <comment>/* Diagnostics Tools */</comment>
+      <text xml:space="preserve" bytes="1638">This section covers Tips and Tricks for Cisco routers. General tips &amp; tricks will be listed here as well as platform specific options.
+
+= Protocols =
+
+* [[HSRP]] - Host Standby Router Protocol
+
+
+= Diagnostics Tools = 
+
+[[Cisco TDR (Time Domain Reflectometer)]] - Integrated cable tester
+
+= GSR Convergence Improvements =
+
+ process-max-time 50
+
+This will lower the maximum time allocated for a process to run to 50ms rather than the default of 200ms.
+
+ ip routing protocol purge interface
+
+This will allow an interface link state change to directly impact the RIB rather than waiting on routing protocol updates to the RIB to take place.
+
+ ip cef table loadinfo force
+
+This will allow common prefixes on a LC-FIB to be associated with a pointer that permits rapid modification when the LC-FIB needs to be updated. This can save several seconds in convergence events on a network. Use caution with this command on E4/E4+ linecards as this increases LC memory usage.
+
+&lt;pre&gt;
+ service internal
+
+ ip cef linecard ipc service-timer 50
+&lt;/pre&gt;
+
+This will lower the timer (200ms default) used for transmitting XDR (essentially CEF writes) messages to a linecard.
+
+= Hidden Commands =
+
+There are many hidden commands. The hidden command 
+&lt;pre&gt;show parser dump&lt;/pre&gt;
+will allow you to reveal them by dumping the parser data (the unrolled parse tree) , 
+&lt;pre&gt;show parser dump exec&lt;/pre&gt; and &lt;pre&gt;show parser dump config&lt;/pre&gt;
+are the best way of doing this, along with &lt;pre&gt;show parser dump exec debug&lt;/pre&gt; which will write a file to your disk. 
+
+= How to recover stuck telnet/ssh sessions =
+
+[[TCB_Recovery|How to recover stuck telnet/ssh sessions]]</text>
+    </revision>
+  </page>
+</mediawiki>

@@ -1,0 +1,60 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Dealing with ISSU-SP-3-PEER IMAGE INCOMPATIBLE when the images are compatible</title>
+    <ns>0</ns>
+    <id>1348</id>
+      <sha1>cfqp0tcdw8lffc0vfnd723xihql1l9x</sha1>
+    <revision>
+      <id>1612</id>
+      <timestamp>2009-03-24T01:23:51Z</timestamp>
+      <contributor>
+        <username>Lochii</username>
+        <id>73</id>
+      </contributor>
+      <text xml:space="preserve" bytes="514">Most likely you are also getting this:
+
+&lt;pre&gt;
+%PFREDUN-SP-4-INCOMPATIBLE_ISSU_MATRIX: Compatibility Matrix check failed. reason 100
+&lt;/pre&gt;
+
+This is preventing you moving to SSO.
+
+reason 100 refers to some configuration commands being mismatched between synchronised versions
+of the startup-config, use the command
+
+'''redundancy config-sync validate mismatched-commands'''
+
+to check which these are, fix them and then issue
+
+'''show issu config-sync mismatched-commands'''
+
+You are now ready to reload the standby.</text>
+    </revision>
+  </page>
+</mediawiki>

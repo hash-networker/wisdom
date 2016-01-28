@@ -1,0 +1,57 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>MSFC</title>
+    <ns>0</ns>
+    <id>1314</id>
+      <sha1>kcp5fxizeva0gw1tn2zn4khixksiu8m</sha1>
+    <revision>
+      <id>1576</id>
+      <timestamp>2008-09-12T03:55:58Z</timestamp>
+      <contributor>
+        <username>Aaronw</username>
+        <id>5</id>
+      </contributor>
+      <comment>added msfc4</comment>
+      <text xml:space="preserve" bytes="316">There are several types of Multi Service Feature Cards for the 6500 series:
+
+
+{| border =1
+! Card || Model || Fabric connection
+|-
+|Cat6k MSFC 2 daughterboard || WS-F6K-MSFC2 || 
+|-
+|Cat6k MSFC 2A daughterboard || WS-F6K-MSFC2A || 
+|-
+|MSFC3 Daughterboard || WS-SUP720 || 
+|-
+|MSFC4 Daughterboard || 7600-MSFC4 ||
+|}</text>
+    </revision>
+  </page>
+</mediawiki>

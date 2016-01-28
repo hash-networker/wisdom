@@ -1,0 +1,72 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Main Page</title>
+    <ns>0</ns>
+    <id>1</id>
+      <sha1>dghbhdu3zkj2ag2gdt00i783i5f7o3z</sha1>
+    <revision>
+      <id>316870</id>
+      <timestamp>2012-11-07T02:28:49Z</timestamp>
+      <contributor>
+        <username>Humble226</username>
+        <id>1</id>
+      </contributor>
+      <comment>un-spam</comment>
+      <text xml:space="preserve" bytes="1350">[[Image:cisco.jpg|thumb|right|Cisco 12000 Series Gigabit Switch Routers]]
+Welcome to Cisco Clue.
+
+----
+
+Have Cisco routers? Have clue or need a clue? If so, this may be the site for you.
+
+Cisco Clue seeks to provide a compendium of useful knowledge, from the field, from other operators about Ciscos higher end router equipment. &lt;span class=&quot;plainlinks&quot;&gt; This site is neither affiliated with nor endorsed by Cisco Systems. All users are encouraged to contribute by making edits to pages.
+
+This site currently focuses on the higher end of Cisco routers:
+
+* [[Cisco CRS-1]]
+* [[Cisco GSR]]
+* [[Cisco 6500/7600]]
+* [[Cisco 7500]]
+* [[Cisco 7200]]
+* [[Cisco ASR9000]]
+
+Browse by subject:
+
+* [[Basics]] covers architecture and design of Cisco routers.
+* [[Catalyst Switches]] cover the switching products
+* [[Tips and Tricks]] covers common pitfalls and interesting/exotic tricks.
+* [[Deployment Applications]] cover real world deployment senarios
+* [[Product Enhancement Requests]] covers a place to discuss desired features and enhancements.
+* [[Bugs]] would be the place to discuss something we all seem to frequently run into.
+* [[Stories]] contains interesting stories about Cisco and their equipment.
+* [[Certification]] discusses the many Cisco certifications that exist.
+* [[Other resources]] contains links to other useful Cisco router resources.</text>
+    </revision>
+  </page>
+</mediawiki>

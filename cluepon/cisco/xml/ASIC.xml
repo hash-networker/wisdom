@@ -1,0 +1,86 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>ASIC</title>
+    <ns>0</ns>
+    <id>1347</id>
+      <sha1>s98fmx8wteta9il6kx97mef383qsyhu</sha1>
+    <revision>
+      <id>1629</id>
+      <timestamp>2009-09-18T21:09:36Z</timestamp>
+      <contributor>
+        <username>Jof</username>
+        <id>94</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1137">A short listing of some ASICs used on Cisco platforms.
+
+{| border=1
+! ASIC || Name || Description || Applications
+|-
+|COIL || || 12 port Gigabit interface || Typically deployed with a COIL behind each interface of PINNACLE
+|-
+|SUPERMAN ||[[EARL]] L2 Engine|| ||
+|-
+|TYCHO ||[[EARL]] L3 Engine|| ||
+|-
+|DHANUSH || || ||
+|-
+|HYPERION || || ||
+|-
+|JANUS || || ||
+|-
+|ASTRO ||8 port 10/100 controller stub ASIC || ||
+|-
+|NiCER ||4 port 1000 controller stub ASIC || ||
+|-
+|LEMANS ||8 port 10/100/1000 controller stub ASIC|| ||
+|-
+|METRO_ARGUS || Metropolis Argos || ||
+|-
+|PINNACLE || Pinnacle || 4 port Gigabit interface || Common on supervisors bus-based service modules
+|-
+|MEDUSA || || ||
+|-
+|REVATI || || || ? 8 port gigabit (6 on WS6548-GE-TX) ?
+|-
+|ROHINI || || ||
+|-
+|R2D2 || || ||
+|-
+|SSA || Super Santa Anna || ||
+|-
+|SSO || || ||
+|-
+|VISHAKHA || || 8 port Gigabit || WS-X6148A-GE-TX uses 6, all connected to DHANUSH
+|}
+
+==References==
+[http://www.cisco.com/en/US/products/hw/switches/ps663/products_tech_note09186a00801c9221.shtml Understanding and Troubleshooting Astro/Lemans/NiceR Timeouts on Catalyst 4000/4500 Series Switches]</text>
+    </revision>
+  </page>
+</mediawiki>

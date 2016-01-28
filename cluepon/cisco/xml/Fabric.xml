@@ -1,0 +1,97 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Fabric</title>
+    <ns>0</ns>
+    <id>1281</id>
+      <sha1>l4eef38tlhn83t7n7jrkhgemxnjrocr</sha1>
+    <revision>
+      <id>1292</id>
+      <timestamp>2005-08-21T15:41:05Z</timestamp>
+      <contributor>
+        <username>Tscholl</username>
+        <id>2</id>
+      </contributor>
+      <text xml:space="preserve" bytes="1954">'''Fabric on the GSR:'''
+
+The GSR utilizes a crossbar switch fabric. This provides connectivity between line cards and to the route processors.
+
+64 Byte Cells are used within the switching fabric. The &quot;Cisco Cell&quot; is comprised of an 8 byte header, 48 byte payload and 8 byte CRC. It takes roughly 160 nanoseconds to transmit a cell.
+
+Unicast and Multicast data &amp; routing protocol packets are transmitting over the fabric.
+
+Multicast packets are replicated within the fabric and transmitted to the destination line cards by means of partial fufillment. (Busy line cards are sent copies later when they are not busy).
+
+Local traffic on a line card still has to transit the fabric.
+
+2.5Gbps fabric has a 16 x 16 crossbar and uses the ESLIP algorithm for scheduling.
+
+10Gbps fabric has a 64 x 64 crossbar and uses multichannel matching algorithm for scheduling.
+
+
+'''Switch Fabric Cards (SFC) and Clock Scheduler Cards (CSC):'''
+
+Typically 5 switching fabrics (3 SFC and 2 CSC).
+
+For some models (12410), there is a combined SFC/CSC card.
+
+For proper operation, 4 fabric cards must be active at a time. This includes 3 CSC.
+
+* SCA - Scheduler Control ASIC (only on CSC). Arbitration of line card and RP request to transmit data through fabric.
+
+
+'''Cisco Cell In-Depth'''
+
+Cisco Cell Header - 4 bytes
+
+Payload Header - 4 bytes
+
+Payload - 48 bytes
+
+CRC - 8 bytes
+
+
+FIA (Fabric Interface ASICs) performs segmentation and reassmbly for Cisco cells.
+
+The cell header carries information regarding the disposition of the cell such as
+if cell starts or ends a packet.
+
+Sending a Cisco Cell:
+
+
+During each clock period (160ns)
+
+* Sending line cards send a ''fabric request'' to the SCA
+* SCA runs the ''ESLIP'' scheduling algorithm
+* SCA returns a ''fabric grant'' to the line card
+* Line card responds with a ''fabric grant accept''
+* SCA sets the crossbar for that cell clock
+* SCA listens for ''fabric backpressure'' to stop scheduling for a particular line card</text>
+    </revision>
+  </page>
+</mediawiki>

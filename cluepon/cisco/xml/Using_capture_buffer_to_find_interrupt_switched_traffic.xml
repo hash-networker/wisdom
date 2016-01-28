@@ -1,0 +1,87 @@
+<mediawiki xmlns="http://www.mediawiki.org/xml/export-0.6/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mediawiki.org/xml/export-0.6/ http://www.mediawiki.org/xml/export-0.6.xsd" version="0.6" xml:lang="en">
+  <siteinfo>
+    <sitename>Cisco Clue</sitename>
+    <base>http://cisco.cluepon.meerval.net/index.php/Main_Page</base>
+    <generator>MediaWiki 1.19.2</generator>
+    <case>first-letter</case>
+    <namespaces>
+      <namespace key="-2" case="first-letter">Media</namespace>
+      <namespace key="-1" case="first-letter">Special</namespace>
+      <namespace key="0" case="first-letter" />
+      <namespace key="1" case="first-letter">Talk</namespace>
+      <namespace key="2" case="first-letter">User</namespace>
+      <namespace key="3" case="first-letter">User talk</namespace>
+      <namespace key="4" case="first-letter">Cisco Clue</namespace>
+      <namespace key="5" case="first-letter">Cisco Clue talk</namespace>
+      <namespace key="6" case="first-letter">File</namespace>
+      <namespace key="7" case="first-letter">File talk</namespace>
+      <namespace key="8" case="first-letter">MediaWiki</namespace>
+      <namespace key="9" case="first-letter">MediaWiki talk</namespace>
+      <namespace key="10" case="first-letter">Template</namespace>
+      <namespace key="11" case="first-letter">Template talk</namespace>
+      <namespace key="12" case="first-letter">Help</namespace>
+      <namespace key="13" case="first-letter">Help talk</namespace>
+      <namespace key="14" case="first-letter">Category</namespace>
+      <namespace key="15" case="first-letter">Category talk</namespace>
+    </namespaces>
+  </siteinfo>
+  <page>
+    <title>Using capture buffer to find interrupt switched traffic</title>
+    <ns>0</ns>
+    <id>1342</id>
+      <sha1>1j6df3d3ifltxjbcng999v10gsijc8o</sha1>
+    <revision>
+      <id>1544</id>
+      <timestamp>2007-11-14T05:42:12Z</timestamp>
+      <contributor>
+        <username>Aaronw</username>
+        <id>5</id>
+      </contributor>
+      <comment>more detail</comment>
+      <text xml:space="preserve" bytes="2269">The built-in capture buffer is very useful to look at the headers of traffic that is being interrupt switched so that you can diagnose the problem.
+
+Note that this only works for interrupt switched traffic, i.e, that traffic that is causing the second % in your show proc cpu to be high.  If your IP Input is high that is process switched traffic, and is found via show buffers input-interface &lt;interface&gt; packet
+
+* Turn on service internal.
+* Check to see that you have a PINNACLE ASIC in the supervisor.
+ show plat cap buffer asic
+
+ Slot Cpu   Asic   Inst Ver PB Elam Active Filter
+ ---- --- -------- ---- --- -- ---- ------ ------
+ 1    0   HYPERION 0    6.0 Y
+ 1    0   PINNACLE 0    4.0 Y
+
+* Turn on the PINNACLE ASIC to capture traffic.  Specify the slot of the active supervisor, and port 4 - direction out - priority lo.  Ports 1 and 2 are the on-board GIGE ports, port 3 faces the SP, and port 4 faces the RP.  Direction out means out from the ASIC towards the RP, whereas direction in would mean traffic from the RP.  Priority lo refers to general IP traffic as opposed to high priority (routing protocols, etc).
+ show plat cap buffer asic pinnacle slot 1 port 4 direction out priority lo
+
+* Capture data for 5 seconds (or so).
+ show plat cap buffer collect for 5
+
+* Check the status of the capture session.
+ show plat cap buffer status
+
+ Slot Cpu   Asic   Inst Ver PB Elam
+ ---- --- -------- ---- --- -- ----
+ 1    0   PINNACLE 0    4.0 Y
+ PB handling logical port 4, OUT direction, LOW queue
+ COS mapped on it: 0 1 2 3 4 5 6 7
+ CBL drops: 0
+ buffer size is 400 Kbytes [0x3200 lines of 32 bytes each]
+ it starts at 0xA600 [pointer is now 0xBF21]
+ filtering DISABLED
+ log is disabled. collection not intrusive. duration is 5 sec.
+ collection completed
+ 280 UNFILTERED samples collected
+
+* Then, look at the filtered samples.
+ show plat cap buffer data filt
+
+* Once you find a particular sample, look at it in more detail.
+ show plat cap buffer data sample 100
+
+Decoding the output is up to you, but generally speaking you will be able to find out a particular pattern of either DMACs, SMACs, or something else that will help you to narrow it down.
+
+[http://cisco.com/en/US/products/hw/switches/ps708/products_tech_note09186a00804916e0.shtml Cat 6000 high cpu]</text>
+    </revision>
+  </page>
+</mediawiki>
