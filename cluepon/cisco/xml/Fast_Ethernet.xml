@@ -40,7 +40,7 @@
       <text xml:space="preserve" bytes="618">There are many types of Fast Ethernet cards for the 6500 series:
 
 
-{| border =1
+{|
 ! Card || Model || Fabric connection || Installation options || [[ASIC]] count
 |-
 |48 port 10/100 mb RJ-21 ethernet || WS-X6148-RJ-21 || Classic Bus || || PINNACLE x1, COIL x4

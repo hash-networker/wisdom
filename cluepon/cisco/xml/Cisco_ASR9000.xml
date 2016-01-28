@@ -49,7 +49,7 @@ Cisco ASR9000
 * ASR9922 - Code Name: Megatron
 
 ==Linecards==
-{| border = 1
+{|
 !Card || Type/PID ||Long name || Codename 
 |-
 |8 port 10GE oversubscribed || A9K-8T/4-B || 8-Port, 10GE 2:1 Oversubscribed Line Card, Requires XFPs 

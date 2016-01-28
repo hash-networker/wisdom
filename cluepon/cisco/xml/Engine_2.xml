@@ -62,7 +62,7 @@ ACLs for example, have a drastic impact on performance:
 
 
 * Engine 2 - lists as '''Engine: 2 - Backbone OC48 (2.5 Gbps)'''
-{| border = 1
+{|
 !Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
 |-
 |4 Port OC12 POS IR || 4OC12/POS-IR-SC-B || 800-5491-03,800-12143-01 || Unknown

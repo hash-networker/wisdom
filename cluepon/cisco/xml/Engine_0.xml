@@ -44,7 +44,7 @@
 
 
 Engine 0 - lists as '''L3 Engine: 0 - OC12 (622 Mbps)'''
-{| border = 1
+{|
 !Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
 |-
 |4 Port OC3 POS SM || LC-4OC3/POS-SM || 800-2389-02 || Unknown

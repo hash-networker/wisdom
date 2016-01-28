@@ -44,7 +44,7 @@ There have been many different supervisors used on the Catalyst 6000 system thro
 
 Here is a short tabled guide to them
 
-{|border = 1
+{|
 !Card name || Card Type || Model
 |-
 |Supervisor 1A ||Cat 6k sup 1 Enhanced QoS || WS-X6K-SUP1A-2GE

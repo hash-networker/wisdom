@@ -39,7 +39,7 @@
       </contributor>
       <text xml:space="preserve" bytes="1137">A short listing of some ASICs used on Cisco platforms.
 
-{| border=1
+{|
 ! ASIC || Name || Description || Applications
 |-
 |COIL || || 12 port Gigabit interface || Typically deployed with a COIL behind each interface of PINNACLE

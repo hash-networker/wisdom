@@ -45,7 +45,7 @@ A nice addition to the GSR family was the modular Gigabit Ethernet linecard nick
 * 10Gbps connection to the fabric
 
 * Engine 4+ - lists as '''L3 Engine: 4 - Enhanced Services OC192/QOC48 (10 Gbps)'''
-{| border = 1
+{|
 !Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
 |-
 |1 Port 10-Gigabit Ethernet || 1x10GE-LR-SC= || 800-20017-09 || Ashara

@@ -41,7 +41,7 @@
       <text xml:space="preserve" bytes="316">There are several types of Multi Service Feature Cards for the 6500 series:
 
 
-{| border =1
+{|
 ! Card || Model || Fabric connection
 |-
 |Cat6k MSFC 2 daughterboard || WS-F6K-MSFC2 || 

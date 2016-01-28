@@ -48,7 +48,7 @@ Most service providers have traded this linecard in to upgrade to the Engine 4+ 
 
 
 Engine 4 - lists as '''L3 Engine: 4 - Backbone OC192/QOC48 (10 Gbps)'''
-{| border = 1
+{|
 !Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
 |-
 |4 Port OC48 POS SR - Backbone Release || 4OC48/POS-SR-SC || 800-5517-01 || Unknown

@@ -45,7 +45,7 @@
 
 Engine 5 SIP - lists as '''L3 Engine: 5 - ISE OC192 (10 Gbps)''' or '''L3 Engine: 5 - ISE 10 Gbps'''
 
-{| border = 1
+{|
 !Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
 |-
 |SIP carrier || 12000-SIP-600 || 800-26102-02 || Bluenose
@@ -55,7 +55,7 @@ Engine 5 SIP - lists as '''L3 Engine: 5 - ISE OC192 (10 Gbps)''' or '''L3 Engine
 
 Engine 5 SPA:
 
-{| border = 1
+{|
 !Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
 |-
 |1 Port 10-Gigabit Ethernet SPA || SPA-1XTENGE-XFP || Unknown || Scorpion

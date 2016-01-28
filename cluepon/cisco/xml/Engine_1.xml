@@ -51,7 +51,7 @@ Contrary to the name, GE-SX/LH-SC takes a GBIC.
 
 
 Engine 1 - lists as '''Engine: 1 - Standard OC48 (2.5 Gbps)'''
-{| border = 1
+{|
 !Card || Part Name (FRU) || Part Number (MAIN)|| Codename 
 |-
 |8 Port Fast Ethernet Copper||8FE-TX-RJ45-B || 800-7801-01 || Eiffel
